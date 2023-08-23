@@ -1,4 +1,8 @@
+'use client'
 //import { editProduct } from "@/actions/product";
+import { useAppDispatch } from "@/hooks";
+import { uiSetSearchText } from "@/reducers/uiSlice";
+import { useRouter } from "next/navigation";
 import { useState } from "react"
 //import { useDispatch } from "react-redux";
 /*
@@ -13,14 +17,16 @@ returns a array of values
   2nd: a function for changing the state
 */
 export const useForm = (initialState: any = {}) => {
+    const dispatch = useAppDispatch()
     const [values, setValues] = useState(initialState);
-    //const dispatch = useDispatch()
+    const router = useRouter();
 
     const reset = () => {
         setValues(initialState);
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
         const { name, type, value, checked } = e.target;
         //const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
 
@@ -29,7 +35,8 @@ export const useForm = (initialState: any = {}) => {
             [name]: value,
 
         });
-        // dispatch( editProduct([target.name], value ))
+        dispatch(uiSetSearchText(value));
+        router.refresh();
     };
 
     return [values, handleInputChange, reset];

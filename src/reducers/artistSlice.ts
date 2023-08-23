@@ -4,22 +4,24 @@ interface ArtistState {
   _id: string;
   artistName: string;
   briefDescription: string;
-  activeSince: Date;
+  activeSince: number;
   biography: string;
   songs: string[]
   profiles: object[],
   images: string[]
+  ranking: number
 }
 
 const initialState: ArtistState = {
   _id: "",
   artistName: "",
   briefDescription: "",
-  activeSince: new Date(),
+  activeSince: 1000,
   biography: "",
   songs: [],
   profiles: [],
-  images: []
+  images: [],
+  ranking: 0
 };
 
 const artistSlice = createSlice({
