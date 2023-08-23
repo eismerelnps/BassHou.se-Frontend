@@ -1,5 +1,8 @@
 'use client'
+import { useAppDispatch, useAppSelector } from '@/hooks';
 import { useForm } from '@/hooks/useForm';
+import { login } from '@/reducers/authSlice';
+import { uiSetSearchText } from '@/reducers/uiSlice';
 //import { useDispatch } from 'react-redux';
 
 
@@ -8,19 +11,23 @@ import { useForm } from '@/hooks/useForm';
 
 export default function SearchBar() {
   //const dispatch = useDispatch();
+  const  searchText  = useAppSelector(state => state.ui.searchText);
+  const dispatch = useAppDispatch()
 
 
 
   const [formValues, handdleInputChange] = useForm({
-    searchText: "",
+    searchArtist: "",
     // password: "",
   });
 
-  const { searchText } = formValues;
+   const { searchArtist } = formValues;
 
   const handleSearch = (e) => {
     e.preventDefault();
     console.log(searchText);
+    dispatch(uiSetSearchText(searchArtist));
+    //dispatch(login({name: "eisme"}))
     //dispatch( handledSearch(searchText) );
     //dispatch(startLoginWithUserAndPassword(username, password));
 
@@ -33,8 +40,8 @@ export default function SearchBar() {
         <form onSubmit={handleSearch} className=''>
           <div className="mt-2 rounded-md shadow-sm">
             <input
-              id="searchText"
-              name="searchText"
+              id="searchArtist"
+              name="searchArtist"
               type="text"
               autoComplete="true"
               placeholder='Search artists'
