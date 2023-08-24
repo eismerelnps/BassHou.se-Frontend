@@ -21,7 +21,7 @@ export default function ArtistList() {
 
 
     return (
-        <section className='flex flex-wrap flex-col sm:flex-row m-12 lg:mx-24 place-content-start'>
+        <section className='flex flex-wrap flex-col sm:flex-row m-12 lg:mx-24 place-content-start '>
             {artistsArray.map((artist: Artist) => (
                 <ArtistCard key={artist.id} item={artist} />
             ))}
