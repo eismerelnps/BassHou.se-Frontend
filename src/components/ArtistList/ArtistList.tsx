@@ -12,16 +12,14 @@ import { getArtistByName } from '@/helpers/getArtistByName';
 
 export default function ArtistList() {
     //const dispatch = useAppDispatch()
-    const  searchText  = useAppSelector(state => state.ui.searchText);
+    const searchText = useAppSelector(state => state.ui.searchText);
 
-    
+
     const artistsArray: Artist[] = searchText ? getArtistByName(artists, searchText) : artists
-   
-
-
 
     return (
-        <section className='flex flex-wrap flex-col sm:flex-row m-12 lg:mx-24 place-content-start'>
+        <section className='bg-white flex flex-wrap flex-col m-12 sm:flex-row  place-content-start shadow-xl'>
+            
             {artistsArray.map((artist: Artist) => (
                 <ArtistCard key={artist.id} item={artist} />
             ))}

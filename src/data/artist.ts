@@ -9,7 +9,7 @@ export const artists: Artist[] =
       activeSince: 2012,
       briefDescription: "Martin Garrix has hit No. 1 in the Top 100 DJs poll for the fourth time, an astonishing achievement",
       biography: "Martin Garrix has hit No. 1 in the Top 100 DJs poll for the fourth time, an astonishing achievement in a career already filled with defining moments. After a vertiginous live streamed show from the top of New York’s Empire State Building, he tells DJ Mag about working with U2, writing music on guitar, how he stays grounded, his charity work and his STMPD label — and explains that staying independent has been a recipe for happiness and success. Martin Garrix has once more ascended to the apex of the Top 100 DJs poll for 2022. The prodigious young Dutchman is still only 26, having broken through onto the scene in his mid- teens via his proto - EDM tune ‘Animals’, and scooped the Top 100 DJs crown in 2016 and the subsequent two years.His great friend and mentor David Guetta won the poll the last two years, and now Garrix is back on top.It’s a placing that is well deserved — and not completely unexpected.Garrix really is up there in the superstar bracket now, transcending the dance scene to mingle alongside the likes of Ed Sheeran, Dua Lipa, Usher and U2, all of whom he has collaborated with.His fourth victory takes him above Guetta and his other great friend and mentor, Tiësto, in the all - time DJ popularity stakes, and is second only to Dutch trance overlord Armin van Buuren, with his five No.1s.How does that notoriety feel to Martin ? ",
-      songs: ["lorem", "ipsum", "quiet"],
+      songs: ["lorem", "ipsum", "quiet", "lorem", "ipsum", "quiet", "lorem", "ipsum", "quiet"],
       profiles: [{ name: "X", link: "#" }, { name: "Facebook", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_1005x565/public/2022-10/MGlifestyle-3.jpg.webp?itok=0fb-09-9"],
       ranking: 1
@@ -62,7 +62,7 @@ export const artists: Artist[] =
       id: 392847129,
       artistName: 'The Chainsmokers',
       activeSince: 2018,
-      briefDescription: "It’s been a quiet year for Alex Pall and Drew Taggart of The Chainsmokers, who went dark on social media on February 24th 2020",
+      briefDescription: "It’s been a quiet year for Alex Pall and Drew Taggart of The Chainsmokers, who went dark on social",
       biography: "  Even if the two chose to do absolutely nothing in 2021, it’s not to say they haven’t earned it. Their single ‘Closer’ with Halsey went 12-times platinum in the States last April, making it one of only four tracks to have accomplished that feat (among them are Eminem and Rihanna’s ‘Love the Way You Lie’ and Justin Bieber and Ludacris’s ‘Baby’, for reference).",
       songs: ["Reckless Heart", "Break the Chains", "Midnight Skies"],
       profiles: [{ name: "Facebook", link: "#" }, { name: "YouTube", link: "#" }],
@@ -73,11 +73,11 @@ export const artists: Artist[] =
       id: 628374920,
       artistName: 'Marshmello',
       activeSince: 2017,
-      briefDescription: "Mask-wearing DJ/producer Marshmello continued to cross genres in his productions while delivering DJ sets to some of the world's biggest audiences in 2022",
+      briefDescription: "Mask-wearing DJ/producer Marshmello continued to cross genres in his productions while delivering ",
       biography: "Marshmello continues to tease his much-anticipated 'Joytime IV' — the fourth instalment in his album series that started in 2016 — which he announced with the release of 'BeFoRe U' in March. The 11-track album is said to feature artists including Chicago drill rapper Polo G, Detroit MC 42 Dugg and the late Juice WRLD. The helmet has been seen everywhere from the F1 to the NFL in 2022, while Marshmello also ran a subscription service for his fans — which he affectionately calls his Mello Gang — and released a watermelon strawberry-flavoured limited edition Coca Cola in June. No, seriously.",
       songs: ["Eclipse", "Shadowdance", "Enigma"],
       profiles: [{ name: "SoundCloud", link: "#" }, { name: "Bandcamp", link: "#" }],
-      images: [],
+      images: ["https://djmag.com/sites/default/files/styles/djm_23_494x278/public/top100/djs/image/quick-13_0.jpg.webp?itok=NNI3EJO4"],
       ranking: 16
     },
 

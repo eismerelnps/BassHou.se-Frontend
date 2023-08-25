@@ -1,11 +1,10 @@
+import ArtistList from '@/components/ArtistList/ArtistList'
 import HomePage from '@/components/HomePage/HomePage'
-import SearchBar from '@/components/SearchBar/SearchBar'
 
 export default function Home() {
   return (
-    <main className="">
-      <SearchBar />
-      <HomePage />
+    <main className="relative top-60 mx-8 z-10">
+           <ArtistList />
     </main>
   )
 }

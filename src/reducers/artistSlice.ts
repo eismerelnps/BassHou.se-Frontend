@@ -1,3 +1,4 @@
+import { Artist } from '@/interfaces/Artists';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ArtistState {
@@ -12,8 +13,8 @@ interface ArtistState {
   ranking: number
 }
 
-const initialState: ArtistState = {
-  _id: "",
+const initialState: Artist = {
+  id: 1,
   artistName: "",
   briefDescription: "",
   activeSince: 1000,
@@ -28,19 +29,21 @@ const artistSlice = createSlice({
   name: 'artist',
   initialState,
   reducers: {
-    addArtist: (state, action: PayloadAction<ArtistState>) => {
-      return action.payload;
+    addArtist: (state, action: PayloadAction<Artist>) => {
+      return {
+        ...action.payload,
+      };
     },
-    editArtist: (state, action: PayloadAction<{ item: keyof ArtistState; value: any }>) => {
-      const { item, value } = action.payload;
-      state[item] = value;
-    },
-    deleteArtist: (state, action: PayloadAction<ArtistState>) => {
-      return action.payload;
-    },
-    resetArtist: (state, action: PayloadAction<ArtistState>) => {
-      return action.payload;
-    },
+    // editArtist: (state, action: PayloadAction<{ item: keyof ArtistState; value: any }>) => {
+    //   const { item, value } = action.payload;
+    //   state[item] = value;
+    // },
+    // deleteArtist: (state, action: PayloadAction<ArtistState>) => {
+    //   return action.payload;
+    // },
+    // resetArtist: (state, action: PayloadAction<ArtistState>) => {
+    //   return action.payload;
+    // },
   },
 });
 
