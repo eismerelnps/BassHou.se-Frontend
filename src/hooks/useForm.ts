@@ -2,7 +2,7 @@
 //import { editProduct } from "@/actions/product";
 import { useAppDispatch } from "@/hooks";
 import { uiSetSearchText } from "@/reducers/uiSlice";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react"
 //import { useDispatch } from "react-redux";
 /*
@@ -20,6 +20,9 @@ export const useForm = (initialState: any = {}) => {
     const dispatch = useAppDispatch()
     const [values, setValues] = useState(initialState);
     const router = useRouter();
+    const params = useParams();
+
+    console.log(params)
 
     const reset = () => {
         setValues(initialState);
@@ -36,7 +39,9 @@ export const useForm = (initialState: any = {}) => {
 
         });
         dispatch(uiSetSearchText(value));
+        router.push('/');
         router.refresh();
+       
     };
 
     return [values, handleInputChange, reset];
