@@ -18,8 +18,7 @@ export default function ArtistList() {
     const artistsArray: Artist[] = searchText ? getArtistByName(artists, searchText) : artists
 
     return (
-        <section className='bg-white flex flex-wrap flex-col m-12 sm:flex-row  place-content-start shadow-xl'>
-            
+        <section className='relative top-72 bg-white flex flex-wrap flex-col mx-12 mb-8 sm:flex-row  place-content-start shadow-xl z-10'>
             {artistsArray.map((artist: Artist) => (
                 <ArtistCard key={artist.id} item={artist} />
             ))}

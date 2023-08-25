@@ -16,7 +16,7 @@ export default function SearchBar() {
   return (
     <div className='fixed top-0  w-full z-30 '>
 
-   
+   <div className='w-full h-12 bg-white'></div>
     <div className='relative bg-[#efed84] py-4  '>
 
       <div className='flex flex-col  place-content-stretch'>

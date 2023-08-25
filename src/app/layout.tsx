@@ -36,14 +36,33 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-100`}>
+        <head>
+        {/* <link rel="icon" href="" /> */}
+        <Script src={`https://www.googletagmanager.com/gtag/G-G047DKTEXM`} />
+        <Script id="google-analytics">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-G047DKTEXM');
+        `}
+        </Script>
+        <Script
+          src="https://kit.fontawesome.com/b88354b395.js"
+          crossorigin="anonymous"
+        ></Script>
+      </head>
+      <body className={`${inter.className} bg-gray-100 my-16`}>
         <PersistProvider>
           <StoreProvider>
-            <SearchBar />
-            <div className='bg-[#efed84] fixed top-72  w-full h-12 z-0'>
+             <SearchBar /> 
+             
+             {children}
+           
 
-            </div>
-            {children}
+            
+           
           </StoreProvider>
         </PersistProvider>
       </body>

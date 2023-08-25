@@ -22,7 +22,7 @@ export const useForm = (initialState: any = {}) => {
     const router = useRouter();
     const params = useParams();
 
-    console.log(params)
+    //console.log(params)
 
     const reset = () => {
         setValues(initialState);
