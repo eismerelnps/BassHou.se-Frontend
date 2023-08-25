@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
 
-import martin_garrix from '../../../public/martin_garrix.webp'
-
 // Artists interface
 import { Artist } from '@/interfaces/Artists'
 import OpenArtist from './OpenArtist';

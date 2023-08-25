@@ -12,6 +12,7 @@ import persistStore from 'redux-persist/es/persistStore';
 import { PersistGate } from "redux-persist/integration/react";
 //import { persistor, storeCore } from "@/store/storeCore";
 import { persistor, store } from "@/store/store";
+import SearchBar from "@/components/SearchBar/SearchBar";
 
 const StoreProvider = dynamic(
   () => import("@/components/Provider/StoreProvider"),
@@ -35,9 +36,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} bg-gray-100`}>
         <PersistProvider>
           <StoreProvider>
+            <SearchBar />
+            <div className='hgujv fixed top-72 bbbb bg-yellow-200 w-full h-12 z-0'>
+
+            </div>
             {children}
           </StoreProvider>
         </PersistProvider>
