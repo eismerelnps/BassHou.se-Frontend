@@ -40,7 +40,7 @@ export default function RootLayout({
         <PersistProvider>
           <StoreProvider>
             <SearchBar />
-            <div className='hgujv fixed top-72 bbbb bg-yellow-200 w-full h-12 z-0'>
+            <div className='bg-[#efed84] fixed top-72  w-full h-12 z-0'>
 
             </div>
             {children}
