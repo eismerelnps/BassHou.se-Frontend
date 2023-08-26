@@ -2,12 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface AuthState {
   logged: boolean;
-  user: object[]
+  user: object[];
+  token: String;
 }
 
 const initialState: AuthState = {
   logged: false,
-  user: []
+  user: [],
+  token: ''
 };
 
 const authSlice = createSlice({
@@ -16,7 +18,8 @@ const authSlice = createSlice({
   reducers: {
     login: (state, action) => {
       state.logged = true;
-      state.user = action.payload; 
+      state.user = action.payload.user;
+      state.token = action.payload.token 
     },
     logout: (state) => {
       state.logged = false;

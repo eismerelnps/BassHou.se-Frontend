@@ -1,11 +1,15 @@
+import { login } from "@/reducers/authSlice";
+import { uiFinishLoading, uiSetError, uiStartLoading } from "@/reducers/uiSlice";
 import { types } from "@/types/types";
+import { Action } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 
 //get the endpoint of the api bd
-const url = process.env.NEXT_PUBLIC_DB_API_USERS_LOGIN;
+const url: string = process.env.NEXT_PUBLIC_DB_API_USERS_LOGIN || ""; // Valor predeterminado en caso de que sea undefined
  
 export const startLoginWithUserAndPassword = (username: string, password: string) => {
-    return async (dispatch) => {
-      dispatch(startLoading());
+    return async (dispatch: ThunkDispatch<{}, {}, Action>) => {
+      dispatch(uiStartLoading());
   
       try {
         const bodyData = new FormData();
@@ -16,28 +20,31 @@ export const startLoginWithUserAndPassword = (username: string, password: string
         headerData.append("Content-Type", "application/json");
         headerData.append("Accept-Encoding", "gzip, deflate, br");
   
-        const response = await fetch(url, {
+
+        const requestOptions: RequestInit = {
           method: "POST",
-          body: JSON.stringify({
-                 username: username,
-                 password: password,
-               }),
-          headers: headerData,
-        });
+          body: bodyData,
+          headers: {
+            "Content-Type": "application/json",
+            "Accept-Encoding": "gzip, deflate, br"
+          }
+        };
+        
+        const response = await fetch(url, requestOptions);
   
         if (!response.ok) {
           throw new Error("Error en la solicitud de red");
         }
         const data = await response.json();
-        dispatch(finishLoading());
+        dispatch(uiFinishLoading());
         if (data.user) {
-          dispatch(login(data.user, data.token));
+          dispatch(login({user: data.user, token: data.token}));
         } else {
-          dispatch(setError(data.message));
+          dispatch(uiSetError(data.message));
         }
       } catch (error) {
-        dispatch(finishLoading());
-        dispatch(setError("Ha producido un error al iniciar sesión."));
+        dispatch(uiFinishLoading());
+        dispatch(uiSetError("Ha producido un error al iniciar sesión."));
       }
   
       // fetch(url, {
