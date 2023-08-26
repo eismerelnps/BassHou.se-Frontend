@@ -3,12 +3,15 @@ import { useForm } from '@/hooks/useForm';
 import Image from 'next/image';
 import giphy from '/public/giphy.gif';
 import { rubik_glitch } from '@/fonts/glitch_goblin';
+import { Router } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 
 
 
 export default function SearchBar() {
+  const router = useRouter()
   const [handdleInputChange] = useForm({
     searchArtist: "",
   });
@@ -16,7 +19,7 @@ export default function SearchBar() {
   return (
     <div className='fixed top-0  w-full z-30 '>
 
-   <div className='w-full h-12 bg-white'></div>
+   <div className='w-full h-12 bg-white' ></div>
     <div className='relative bg-[#efed84] py-4  '>
 
       <div className='flex flex-col  place-content-stretch'>

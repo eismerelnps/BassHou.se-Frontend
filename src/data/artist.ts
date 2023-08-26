@@ -4,7 +4,7 @@ import { Artist } from '@/interfaces/Artists'
 export const artists: Artist[] =
   [
     {
-      id: 1902134234,
+      _id: 1902134234,
       artistName: 'Martin Garrix',
       activeSince: 2012,
       briefDescription: "Martin Garrix has hit No. 1 in the Top 100 DJs poll for the fourth time, an astonishing achievement",
@@ -12,10 +12,11 @@ export const artists: Artist[] =
       songs: ["lorem", "ipsum", "quiet", "lorem", "ipsum", "quiet", "lorem", "ipsum", "quiet"],
       profiles: [{ name: "X", link: "#" }, { name: "Facebook", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_1005x565/public/2022-10/MGlifestyle-3.jpg.webp?itok=0fb-09-9"],
-      ranking: 1
+      ranking: 1,
+      visible: true
     },
     {
-      id: 1123445678,
+      _id: 1123445678,
       artistName: 'Calvin Harris',
       activeSince: 2005,
       briefDescription: "Calvin Harris is a Grammy-winning DJ and producer known for his chart-topping electronic and pop hits.",
@@ -23,10 +24,11 @@ export const artists: Artist[] =
       songs: ["Summer", "This Is What You Came For", "Feel So Close"],
       profiles: [{ name: "Twitter", link: "#" }, { name: "Instagram", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_472x265/public/article/image/calvin-harris.jpg.webp?itok=W244dNbR"],
-      ranking: 4
+      ranking: 4,
+      visible: true
     },
     {
-      id: 2234556789,
+      _id: 2234556789,
       artistName: 'Avicii',
       activeSince: 2008,
       briefDescription: "Avicii was a Swedish DJ and producer known for his influential contributions to electronic dance music.",
@@ -35,9 +37,11 @@ export const artists: Artist[] =
       profiles: [{ name: "Website", link: "#" }, { name: "Facebook", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_472x265/public/article/image/02-avicii-press-2017-cr-Sean-Eriksson-billboard-1548.jpg.webp?itok=vQcxqQpy"],
       ranking: 100
+      ,
+      visible: true
     },
     {
-      id: 3344567890,
+      _id: 3344567890,
       artistName: 'Zedd',
       activeSince: 2010,
       briefDescription: "Zedd is a Russian-German DJ, producer, and songwriter known for his electronic and pop collaborations.",
@@ -46,9 +50,11 @@ export const artists: Artist[] =
       profiles: [{ name: "YouTube", link: "#" }, { name: "SoundCloud", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_472x265/public/top100/djs/image/ZEDD_02_095_D.jpg.webp?itok=azDWKhCM"],
       ranking: 23
+      ,
+      visible: false
     },
     {
-      id: 873928746,
+      _id: 873928746,
       artistName: 'DAVID GUETTA',
       activeSince: 2011,
       briefDescription: "Ava Rivers is a versatile artist known for blending various music genres into her own unique sound.",
@@ -57,9 +63,11 @@ export const artists: Artist[] =
       profiles: [{ name: "Instagram", link: "#" }, { name: "Twitter", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_961x540/public/2022-10/20210826_GuilleGS_HighScream_DavidGuetta_Creamfields_2048px_78.jpg.webp?itok=jrZjxOtU"],
       ranking: 15
+      ,
+      visible: true
     },
     {
-      id: 392847129,
+      _id: 392847129,
       artistName: 'The Chainsmokers',
       activeSince: 2018,
       briefDescription: "It’s been a quiet year for Alex Pall and Drew Taggart of The Chainsmokers, who went dark on social",
@@ -67,10 +75,11 @@ export const artists: Artist[] =
       songs: ["Reckless Heart", "Break the Chains", "Midnight Skies"],
       profiles: [{ name: "Facebook", link: "#" }, { name: "YouTube", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_961x540/public/top100/djs/image/29.%20The%20Chainsmokers%20_%20Danilo%20Lewis.jpeg.webp?itok=r3a9J48P"],
-      ranking: 1
+      ranking: 1,
+      visible: false
     },
     {
-      id: 628374920,
+      _id: 628374920,
       artistName: 'Marshmello',
       activeSince: 2017,
       briefDescription: "Mask-wearing DJ/producer Marshmello continued to cross genres in his productions while delivering ",
@@ -78,11 +87,12 @@ export const artists: Artist[] =
       songs: ["Eclipse", "Shadowdance", "Enigma"],
       profiles: [{ name: "SoundCloud", link: "#" }, { name: "Bandcamp", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_494x278/public/top100/djs/image/quick-13_0.jpg.webp?itok=NNI3EJO4"],
-      ranking: 16
+      ranking: 16,
+      visible: true
     },
 
     {
-      id: 1902334234,
+      _id: 1902334234,
       artistName: 'Skrillex',
       activeSince: 2012,
       briefDescription: "Spending less time on the stage and more time in the studio these days, it was at the start of this summer that Skrillex announced",
@@ -90,10 +100,11 @@ export const artists: Artist[] =
       songs: ["lorem", "ipsum", "quiet"],
       profiles: [{ name: "X", link: "#" }, { name: "Facebook", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_961x540/public/2022-10/23.%20Skrillex%20LY%20FB.jpg.webp?itok=h5vLX1qR"],
-      ranking: 10
+      ranking: 10,
+      visible: true
     },
     {
-      id: 1102134234,
+      _id: 1102134234,
       artistName: 'Don Diablo',
       activeSince: 2012,
       briefDescription: "Don Diablo has had a busy year by anyone's standards. He was hugely productive in the studio, experimenting with new sounds, ",
@@ -101,6 +112,7 @@ export const artists: Artist[] =
       songs: ["lorem", "ipsum", "quiet"],
       profiles: [{ name: "X", link: "#" }, { name: "Facebook", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_961x540/public/2022-10/8.%20Don%20Diablo%20Cr.%20Jasper%20Suyk%202.jpg.webp?itok=1uYTW3Kx"],
-      ranking: 10
+      ranking: 11,
+      visible: true
     },
   ]

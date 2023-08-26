@@ -1,15 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface UiState {
+  editArtist: boolean;
+  addArtist: boolean;
+  deleteArtist: boolean;
+
   loading: boolean;
   showFeedback: boolean;
   msgError: string;
   uploadingImage: boolean;
   cloudImageMessage: string;
   searchText: string;
+
 }
 
 const initialState: UiState = {
+  editArtist: false,
+  addArtist: false,
+  deleteArtist: false,
+
   loading: false,
   showFeedback: false,
   msgError: "",
@@ -49,8 +58,17 @@ const uiSlice = createSlice({
       state.cloudImageMessage = "";
     },
     uiSetSearchText: (state, action: PayloadAction<string>) => {
-        state.searchText = action.payload;
-      },
+      state.searchText = action.payload;
+    },
+    adminEditArtist: (state, action: PayloadAction<boolean>) => {
+      state.editArtist = action.payload;
+    },
+    adminAddArtist: (state, action: PayloadAction<boolean>) => {
+      state.addArtist = action.payload;
+    },
+    adminDeleteArtist: (state, action: PayloadAction<boolean>) => {
+      state.deleteArtist = action.payload;
+    }
   },
 });
 
@@ -63,7 +81,10 @@ export const {
   uiFinishUpLoadingImage,
   uiSetCloudImageMessage,
   uiRemoveCloudImageMessage,
-  uiSetSearchText
+  uiSetSearchText,
+  adminEditArtist,
+  adminAddArtist,
+  adminDeleteArtist,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

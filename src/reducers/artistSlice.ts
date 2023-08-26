@@ -1,20 +1,8 @@
 import { Artist } from '@/interfaces/Artists';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface ArtistState {
-  _id: string;
-  artistName: string;
-  briefDescription: string;
-  activeSince: number;
-  biography: string;
-  songs: string[]
-  profiles: object[],
-  images: string[]
-  ranking: number
-}
-
 const initialState: Artist = {
-  id: 1,
+  _id: 1,
   artistName: "",
   briefDescription: "",
   activeSince: 1000,
@@ -22,7 +10,8 @@ const initialState: Artist = {
   songs: [],
   profiles: [],
   images: [],
-  ranking: 0
+  ranking: 0,
+  visible: true,
 };
 
 const artistSlice = createSlice({
@@ -34,22 +23,22 @@ const artistSlice = createSlice({
         ...action.payload,
       };
     },
-    // editArtist: (state, action: PayloadAction<{ item: keyof ArtistState; value: any }>) => {
-    //   const { item, value } = action.payload;
-    //   state[item] = value;
-    // },
-    // deleteArtist: (state, action: PayloadAction<ArtistState>) => {
-    //   return action.payload;
-    // },
-    // resetArtist: (state, action: PayloadAction<ArtistState>) => {
-    //   return action.payload;
-    // },
+    //  editArtist: (state, action: PayloadAction<{ item: keyof Artist; value: any }>) => {
+    //    const { item, value } = action.payload;
+    //    state[item] = value;
+    //  },
+    deleteArtist: (state, action: PayloadAction<Artist>) => {
+      return action.payload;
+    },
+    resetArtist: (state, action: PayloadAction<Artist>) => {
+      return action.payload;
+    },
   },
 });
 
 export const {
   addArtist,
-  editArtist,
+ // editArtist,
   deleteArtist,
   resetArtist,
 } = artistSlice.actions;

@@ -10,7 +10,9 @@ import { artists } from '@/data/artist';
 import { getArtistByName } from '@/helpers/getArtistByName';
 
 
+// export default function ArtistList({artists}: {artists: Artist[]}) {
 export default function ArtistList() {
+
     //const dispatch = useAppDispatch()
     const searchText = useAppSelector(state => state.ui.searchText);
 
@@ -20,7 +22,7 @@ export default function ArtistList() {
     return (
         <section className='relative top-72 bg-white flex flex-wrap flex-col mx-12 mb-8 sm:flex-row  place-content-start shadow-xl z-10'>
             {artistsArray.map((artist: Artist) => (
-                <ArtistCard key={artist.id} item={artist} />
+                <ArtistCard key={artist._id} item={artist} />
             ))}
         </section>
     )

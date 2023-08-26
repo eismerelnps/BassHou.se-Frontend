@@ -1,6 +1,6 @@
 
 export interface Artist {
-    id: number;
+    _id: number;
     artistName: string;
     activeSince: number;
     briefDescription: string;
@@ -9,4 +9,5 @@ export interface Artist {
     profiles: { name: string; link: string }[];
     images: string[];
     ranking: number;
+    visible: Boolean;
 }
