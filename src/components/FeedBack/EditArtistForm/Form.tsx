@@ -1,0 +1,470 @@
+import { startUploadingPhoto } from '@/actions/artist';
+import { adminEditArtist, adminResetArtist } from '@/reducers/artistSlice';
+import { uiEditArtist } from '@/reducers/uiSlice';
+import React, { useState } from 'react'
+import { UpLoadingImage } from '../UpLoadingImage';
+import Image from 'next/image';
+import { Artist } from '@/interfaces/Artists';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import EditArtists from './EditArtists';
+import AddArtist from './AddArtist';
+import { PlusCircleIcon } from '@heroicons/react/24/outline';
+import { useForm } from '@/hooks/useForm';
+
+export default function Form() {
+    const dispatch = useAppDispatch();
+    const artist = useAppSelector((state) => state.artist);
+    const { cloudImageMessage, uploadingImage, addArtist, editArtist } = useAppSelector((state) => state.ui);
+
+
+    const [newSong, setNewSong] = useState(0);
+
+
+    // const useForm = (initialValues: Artist) => {
+    //     const [formValues, setFormValues] = useState(initialValues);
+
+    //     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    //         const { name, value } = e.target;
+    //         setFormValues({
+    //             ...formValues,
+    //             [name]: value,
+    //         });
+    //     };
+    //     //dispatch( adminEditArtist());
+    //     const reset = () => {
+    //         setFormValues(initialValues);
+    //     };
+
+    //     return [formValues, handleInputChange, reset] as const;
+    // };
+
+    // Uso del hook
+    const [formValues, handleInputChange, reset] = useForm(artist);
+
+    const {
+        _id,
+        artistName,
+        activeSince,
+        briefDescription,
+        biography,
+        songs,
+        profiles,
+        images,
+        ranking,
+        visible,
+        youtubeVideo,
+    } = formValues;
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        const file: File | undefined = e.target.files?.[0];
+        if (file) {
+            //llama a la funcion que se encarga de subir la imagen
+            dispatch(startUploadingPhoto(file));
+        }
+        //console.log(file);
+    };
+
+
+    const handleCloseForm = () => {
+        dispatch(uiEditArtist(false));
+        dispatch(adminResetArtist())
+    }
+    const handdleCancel = () => {
+        dispatch(uiEditArtist(false));
+        dispatch(adminResetArtist());
+    };
+    const handdleAddSong = (e:  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        e.preventDefault()
+        dispatch(adminEditArtist({songs: [...songs, '']}));
+    }
+    const handdleAddProfile = (e:  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        e.preventDefault()
+        dispatch(adminEditArtist({songs: [...songs, '']}));
+    }
+
+    return (
+        <form>
+            <div className="space-y-12">
+                <div className="border-b border-gray-900/10 pb-12">
+
+                    <div className="mt-10 ">
+                        <div className="col-span-full">
+                            <label
+                                htmlFor="photocontainer"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                            >
+                                Photo
+                            </label>
+                            <div id='photocontainer' className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 ">
+                                <div className="">
+                                    <div className="flex justify-center">
+                                        {uploadingImage ? (
+                                            <UpLoadingImage />
+                                        ) : (
+                                            <div className="">
+                                                {images[0] ? (
+                                                    <>
+                                                        <div className="flex justify-center">
+                                                            <Image
+                                                                className="rounded-lg text-center"
+                                                                width={350}
+                                                                height={100}
+                                                                src={artist.images[0]}
+                                                                alt={"alt"}
+                                                            />
+                                                        </div>
+
+                                                        <div className="mt-4 flex flex-col  leading-6 text-gray-600 px-6 ">
+                                                            <label
+                                                                htmlFor="image"
+                                                                className=" text-center relative cursor-pointer rounded-md bg-white  text-red-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-red-500 focus-within:ring-offset-2 hover:text-red-500"
+                                                            >
+                                                                <span className=" text-center font-semibold">
+                                                                    Change photo
+                                                                </span>
+
+                                                                <input
+                                                                    id="image"
+                                                                    name="image"
+                                                                    type="file"
+                                                                    onChange={handleFileChange}
+                                                                    className="sr-only "
+                                                                />
+
+                                                            </label>
+                                                            <span className="ms-2 text-xs text-center leading-5 text-gray-600">
+                                                                PNG, JPG to 1MB
+                                                            </span>
+                                                        </div>
+
+                                                    </>
+                                                ) : (
+                                                    <div>
+                                                        <svg
+                                                            className="mx-auto h-20 w-20 text-neutral-300 animate-pulse"
+                                                            viewBox="0 0 24 24"
+                                                            fill="currentColor"
+                                                            aria-hidden="true"
+                                                        >
+                                                            <path
+                                                                fill-rule="evenodd"
+                                                                d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                                                                clip-rule="evenodd"
+                                                            />
+                                                        </svg>
+                                                        <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                                                            <label
+                                                                htmlFor="image"
+                                                                className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                                                            >
+                                                                <span>Seleccionar foto</span>
+                                                                <input
+                                                                    id="image"
+                                                                    name="image"
+                                                                    type="file"
+                                                                    onChange={handleFileChange}
+                                                                    className="sr-only"
+                                                                />
+                                                            </label>
+                                                        </div>
+                                                        <p className="text-xs leading-5 text-gray-600">
+                                                            PNG, JPG hasta 1MB
+                                                        </p>
+                                                    </div>
+                                                )}
+                                                <h2 className=" mt-4 text-center text-xs leading-5 text-gray-600">
+                                                    {cloudImageMessage}
+                                                </h2>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div className="mt-4">
+                            <label
+                                htmlFor="name"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                            >
+                                Artist&apos;s name
+                            </label>
+                            <div className="">
+                                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                    {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">{name} </span> */}
+                                    <input
+                                        value={artistName}
+                                        type="text"
+                                        name="artistName"
+                                        id="artistName"
+                                        autoComplete="off"
+                                        className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow  placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                        placeholder="Nombre del producto"
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="mt-4">
+                            <label
+                                htmlFor="name"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                            >
+                                Ranking
+                            </label>
+                            <div className="">
+                                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                    {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">{name} </span> */}
+                                    <input
+                                        value={ranking}
+                                        type="number"
+                                        name="ranking"
+                                        id="ranking"
+                                        autoComplete="off"
+                                        className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow  placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                        placeholder="Nombre del producto"
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className="mt-4">
+                            <label
+                                htmlFor="category"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                            >
+                                Youtube Video
+                            </label>
+                            <div className="">
+                                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                    <input
+                                        value={youtubeVideo}
+                                        type="text"
+                                        name="youtubeVideo"
+                                        id="youtubeVideo"
+                                        autoComplete="off"
+                                        className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50  duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow   placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                        placeholder="Categoría del producto"
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="mt-4">
+                            <label
+                                htmlFor="price"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                            >
+                                Active Since
+                            </label>
+                            <div className="">
+                                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                    <input
+                                        value={activeSince}
+                                        type="number"
+                                        name="activeSince"
+                                        id="activeSince"
+                                        autoComplete='true'
+                                        className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300  focus:outline-2 hover:bg-slate-50  duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow    placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                        placeholder="Precio del producto"
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div className="my-4">
+                            <label
+                                htmlFor="inOffer"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                            >
+                                Visible
+                            </label>
+                            <div className=" rounded-lg border border-dashed border-gray-900/25 py-2 px-3 ">
+                                <fieldset>
+                                    <div className="">
+                                        <div className="relative flex gap-x-3">
+                                            <div className="flex items-center">
+                                                <input
+                                                    id="visinle"
+                                                    name="visible"
+                                                    type="checkbox"
+                                                    checked={visible}
+                                                    onChange={handleInputChange}
+                                                    className={`${'quicksand.className'}  bg-white  outline  outline-1 outline-slate-300   focus:outline-2 hover:bg-slate-50   duration-100 block w-full rounded-md   text-slate-950 shadow  placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                                />
+                                            </div>
+                                            <div className="text-sm leading-6">
+                                                {visible ? (
+                                                    <p className="text-gray-500 text-sm">
+                                                        Artist is visible
+                                                    </p>
+                                                ) : (
+                                                    <p className="text-gray-500 text-sm">
+                                                        Artists is not visible
+                                                    </p>
+                                                )}
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                      
+
+                        <div className="mt-4">
+                            <label
+                                htmlFor="briefDescription"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                            >
+                                Brief Description
+                            </label>
+                            <div className="">
+                                <textarea
+                                    onChange={handleInputChange}
+                                    placeholder="Brief Description"
+                                    id="briefDescription"
+                                    name="briefDescription"
+                                    rows={3}
+                                    className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                    defaultValue={briefDescription}
+                                />
+                            </div>
+
+
+                        </div>
+                        <div className="mt-4">
+                            <label
+                                htmlFor="description"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                            >
+                                Biography
+                            </label>
+                            <div className="">
+                                <textarea
+                                    onChange={handleInputChange}
+                                    placeholder="Biography"
+                                    id="biography"
+                                    name="biography"
+                                    rows={9}
+                                    className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                    defaultValue={biography}
+                                />
+                            </div>
+
+
+                        </div>
+                        <div className='mt-4'>
+                            <label
+                                htmlFor="description"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-900`}
+                            >
+                                Songs
+                            </label>
+                            <div className='rounded-lg border border-dashed border-gray-900/25 py-2 px-3'>
+                                {songs.map((song, i) => (
+                                    <div key={i} className="mt-4">
+                                        <label
+                                            htmlFor="price"
+                                            className={` ${'quicksand.className'} block ms-2 text-sm font-medium leading-6 text-gray-900`}
+                                        >
+                                            Song ({i + 1})
+                                        </label>
+                                        <div className="">
+                                            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                                <input
+                                                    value={songs[i]}
+                                                    type="text"
+                                                    name="songs"
+                                                    id="songs"
+                                                    autoComplete='true'
+                                                    className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300  focus:outline-2 hover:bg-slate-50  duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow    placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                                    placeholder="Precio del producto"
+                                                    onChange={handleInputChange}
+                                                />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                ))
+                                }
+                                <button onClick={handdleAddSong} className='flex w-full justify-center p-1 my-4 rounded-md shadow-sm ring-1 ring-inset ring-red-500 hover:ring-2 hover:ring-inset hover:ring-red-400 sm:max-w-md'>
+                                    <PlusCircleIcon
+                                        className="h-8 w-8 text-red-500"
+                                        aria-hidden="true" />
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className='mt-4'>
+                            <label
+                                htmlFor="description"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-900`}
+                            >
+                                Social Networks
+                            </label>
+                            <div className='rounded-lg border border-dashed border-gray-900/25 py-2 px-3'>
+                                {profiles.map((profile, i) => (
+                                    <div key={i} className="mt-4 ">
+                                        <label
+                                            htmlFor="price"
+                                            className={` ${'quicksand.className'} ms-2 block text-sm font-medium leading-6 text-gray-900`}
+                                        >
+                                            {profile.name}
+                                        </label>
+                                        <div className="">
+                                            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                                <input
+                                                    value={profile.name[i]}
+                                                    type="text"
+                                                    name="songs"
+                                                    id="songs"
+                                                    autoComplete='true'
+                                                    className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300  focus:outline-2 hover:bg-slate-50  duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow    placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                                    placeholder="Precio del producto"
+                                                    onChange={handleInputChange}
+                                                />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                ))
+                                }
+                                <button onClick={handdleAddProfile} className='flex w-full justify-center p-1 my-4 rounded-md shadow-sm ring-1 ring-inset ring-red-500 hover:ring-2 hover:ring-inset hover:ring-red-400 sm:max-w-md'>
+                                    <PlusCircleIcon
+                                        className="h-8 w-8 text-red-500"
+                                        aria-hidden="true" />
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div className="mt-6 flex items-center justify-end gap-x-6">
+                <button
+                    onClick={handdleCancel}
+                    //onClick={test}
+                    type="button"
+                    className="text-sm font-semibold leading-6 text-gray-900"
+                >
+                    Cancelar
+                </button>
+                {addArtist && <AddArtist />}
+                {editArtist && <EditArtists />}
+            </div>
+        </form>
+    )
+}

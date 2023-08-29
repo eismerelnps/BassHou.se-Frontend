@@ -1,5 +1,7 @@
-import { uiSetSearchText } from "@/reducers/uiSlice";
-import { ReactHTML, useState } from "react"
+import { editProduct } from "@/actions/product";
+import { Artist } from "@/interfaces/Artists";
+import { adminEditArtist } from "@/reducers/artistSlice";
+import { useState } from "react"
 import { useDispatch } from "react-redux";
 /*
 
@@ -12,7 +14,7 @@ returns a array of values
   1st: State value
   2nd: a function for changing the state
 */
-export const useForm = (initialState = {}) => {
+export const useForm = (initialState: Artist ) => {
   const [values, setValues] = useState(initialState);
   const dispatch = useDispatch()
 
@@ -20,16 +22,15 @@ export const useForm = (initialState = {}) => {
     setValues(initialState);
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { target } = event;
-    const value = target.value;
+  const handleInputChange = ({ target }: {target: any}) => {
+    const value = target.type === "checkbox" ? target.checked : target.value;
     
     setValues({
       ...values,
       [target.name]: value,
      
     });
-    dispatch( uiSetSearchText('testing'))
+    dispatch( adminEditArtist({[target.name]: value} ))
   };
 
   return [values, handleInputChange, reset];

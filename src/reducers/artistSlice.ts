@@ -12,35 +12,35 @@ const initialState: Artist = {
   images: [],
   ranking: 0,
   visible: true,
+  youtubeVideo: "",
 };
 
 const artistSlice = createSlice({
   name: 'artist',
   initialState,
   reducers: {
-    addArtist: (state, action: PayloadAction<Artist>) => {
+    adminAddArtist: (state, action: PayloadAction<Artist>) => {
       return {
         ...action.payload,
       };
     },
-    //  editArtist: (state, action: PayloadAction<{ item: keyof Artist; value: any }>) => {
-    //    const { item, value } = action.payload;
-    //    state[item] = value;
-    //  },
-    deleteArtist: (state, action: PayloadAction<Artist>) => {
-      return action.payload;
+    adminEditArtist: (state,  action: PayloadAction<Partial<Artist>>) => {
+      return {
+        ...state,
+        ...action.payload,
+      };
     },
-    resetArtist: (state, action: PayloadAction<Artist>) => {
-      return action.payload;
-    },
+   
+    adminResetArtist: () => {
+      return initialState;
+    }
   },
 });
 
 export const {
-  addArtist,
- // editArtist,
-  deleteArtist,
-  resetArtist,
+  adminAddArtist,
+  adminEditArtist,
+  adminResetArtist
 } = artistSlice.actions;
 
 export default artistSlice.reducer;

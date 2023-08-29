@@ -9,6 +9,6 @@ export interface Artist {
     profiles: { name: string; link: string }[];
     images: string[];
     ranking: number;
-    visible: Boolean;
-    youtubeVideo: String;
+    visible: boolean;
+    youtubeVideo: string;
 }
