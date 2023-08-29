@@ -60,13 +60,13 @@ const uiSlice = createSlice({
     uiSetSearchText: (state, action: PayloadAction<string>) => {
       state.searchText = action.payload;
     },
-    adminEditArtist: (state, action: PayloadAction<boolean>) => {
+    uiEditArtist: (state, action: PayloadAction<boolean>) => {
       state.editArtist = action.payload;
     },
-    adminAddArtist: (state, action: PayloadAction<boolean>) => {
+    uiAddArtist: (state, action: PayloadAction<boolean>) => {
       state.addArtist = action.payload;
     },
-    adminDeleteArtist: (state, action: PayloadAction<boolean>) => {
+    uiDeleteArtist: (state, action: PayloadAction<boolean>) => {
       state.deleteArtist = action.payload;
     }
   },
@@ -93,11 +93,11 @@ export const {
   uiSetSearchText,
 
   //enables or disable the modal with filled form for editing and artist info and update it to db
-  adminEditArtist,
+  uiEditArtist,
   //enables or disable the modal with a empty form for adding a new artist to db
-  adminAddArtist,
+  uiAddArtist,
   //handle a modal to confirm that the artist will be removed from the db
-  adminDeleteArtist,
+  uiDeleteArtist,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;
