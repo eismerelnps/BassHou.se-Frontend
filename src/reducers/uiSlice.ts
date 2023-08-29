@@ -73,17 +73,30 @@ const uiSlice = createSlice({
 });
 
 export const {
-  uiSetError,
-  uiRemoveError,
+  //adds or removes the modal panel to the app 
+  uiSetError,//(receives as parameters the message)
+  uiRemoveError,//removes the modal panel from the app
+
+  // adds or removes the backdrop to avoid user do any action during fetching
   uiStartLoading,
   uiFinishLoading,
+
+  //adds or removes the feedback to app when a artist's image us uploading to cloud
   uiStartUpLoadingImage,
   uiFinishUpLoadingImage,
+
+  //adds or removes the feedback to app when a artist's image is uploaded to cloud
   uiSetCloudImageMessage,
   uiRemoveCloudImageMessage,
+
+  //edits the search field on context to handle a app search
   uiSetSearchText,
+
+  //enables or disable the modal with filled form for editing and artist info and update it to db
   adminEditArtist,
+  //enables or disable the modal with a empty form for adding a new artist to db
   adminAddArtist,
+  //handle a modal to confirm that the artist will be removed from the db
   adminDeleteArtist,
 } = uiSlice.actions;
 
