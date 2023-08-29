@@ -1,22 +1,15 @@
 'use client'
-import React from 'react'
-
-// Artists interface
+// Artist interface
 import { Artist } from '@/interfaces/Artists'
-
+//child components
 import ArtistCard from '../ArtistCard/ArtistCard'
+//hooks
 import { useAppSelector } from '@/hooks';
-import { artists } from '@/data/artist';
+//helpers
 import { getArtistByName } from '@/helpers/getArtistByName';
 
-
-// export default function ArtistList({artists}: {artists: Artist[]}) {
-export default function ArtistList() {
-
-    //const dispatch = useAppDispatch()
+export default function ArtistList({ artists }: { artists: Artist[] }) {
     const searchText = useAppSelector(state => state.ui.searchText);
-
-
     const artistsArray: Artist[] = searchText ? getArtistByName(artists, searchText) : artists
 
     return (
