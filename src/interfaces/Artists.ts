@@ -10,4 +10,5 @@ export interface Artist {
     images: string[];
     ranking: number;
     visible: Boolean;
+    youtubeVideo: String;
 }
