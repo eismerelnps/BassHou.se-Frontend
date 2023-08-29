@@ -16,6 +16,7 @@ import SearchBar from "@/components/SearchBar/SearchBar";
 import Modal from "@/components/FeedBack/Modal";
 import DeleteModal from "@/components/FeedBack/DeleteModal";
 import BackDrop from "@/components/FeedBack/BackDrop";
+import EditArtistForm from "@/components/FeedBack/EditArtistForm/EditArtistForm";
 
 const StoreProvider = dynamic(
   () => import("@/components/Provider/StoreProvider"),
@@ -59,6 +60,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-gray-100`}>
         <PersistProvider>
           <StoreProvider>
+            <EditArtistForm />
             <BackDrop />
             <Modal />
             <DeleteModal />

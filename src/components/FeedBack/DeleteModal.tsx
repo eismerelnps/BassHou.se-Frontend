@@ -1,31 +1,21 @@
 "use client";
 import { ArrowPathIcon, TrashIcon } from "@heroicons/react/24/outline";
 //Imports from React
-import { useContext } from "react";
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
-//fonts
+////fonts
 //import { francois_one } from "@/fonts/francois_one";
 //import { quicksand } from "@/fonts/quicksand";
 //import { gilda_display } from "@/fonts/gilda_display";
-import { ArrowCircleDown } from "heroicons-react";
+////icons
+//import { ArrowCircleDown } from "heroicons-react";
 import { useRouter } from "next/navigation";
-//import BackDrop from "../backDrop/BackDrop";
-//import Modal from "../dialog/Modal";
 
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { adminDeleteArtist } from "@/reducers/uiSlice";
+import { uiDeleteArtist } from "@/reducers/uiSlice";
 import { startDeletingArtist } from "@/actions/artist";
-
-// import {
-//   finishLoading,
-//   removeError,
-//   setError,
-//   startLoading,
-// } from "@/actions/ui";
-
 
 export default function DeleteModal() {
   //get the endpoint of the api bd
@@ -38,7 +28,7 @@ export default function DeleteModal() {
   const { deleteArtist } = useAppSelector((state) => state.ui);
 
   const handleDelete = () => {
-    //setOpen();
+    dispatch(uiDeleteArtist(false))
     dispatch(startDeletingArtist());
   };
 
@@ -48,7 +38,7 @@ export default function DeleteModal() {
         as="div"
         className="relative z-40"
         initialFocus={cancelButtonRef}
-        onClose={() => adminDeleteArtist(false)}
+        onClose={() => uiDeleteArtist(false)}
       >
         <Transition.Child
           as={Fragment}
@@ -108,7 +98,7 @@ export default function DeleteModal() {
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                    onClick={() => dispatch(adminDeleteArtist(false))}
+                    onClick={() => dispatch(uiDeleteArtist(false))}
                     ref={cancelButtonRef}
                   >
                     Cancel
