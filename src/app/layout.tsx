@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang="en">
         <head>
         {/* <link rel="icon" href="" /> */}
-        <Script src={`https://www.googletagmanager.com/gtag/G-G047DKTEXM`} />
+        {/* <Script src={`https://www.googletagmanager.com/gtag/G-G047DKTEXM`} />
         <Script id="google-analytics">
           {`
           window.dataLayer = window.dataLayer || [];
@@ -47,11 +47,11 @@ export default function RootLayout({
  
           gtag('config', 'G-G047DKTEXM');
         `}
-        </Script>
-        <Script
+        </Script> */}
+        {/* <Script
           src="https://kit.fontawesome.com/b88354b395.js"
           crossorigin="anonymous"
-        ></Script>
+        ></Script> */}
       </head>
       <body className={`${inter.className} bg-gray-100 my-16`}>
         <PersistProvider>
