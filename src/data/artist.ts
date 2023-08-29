@@ -13,7 +13,8 @@ export const artists: Artist[] =
       profiles: [{ name: "X", link: "#" }, { name: "Facebook", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_1005x565/public/2022-10/MGlifestyle-3.jpg.webp?itok=0fb-09-9"],
       ranking: 1,
-      visible: true
+      visible: true,
+      youtubeVideo: "http://www.youtube.com"
     },
     {
       _id: 1123445678,
@@ -25,7 +26,8 @@ export const artists: Artist[] =
       profiles: [{ name: "Twitter", link: "#" }, { name: "Instagram", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_472x265/public/article/image/calvin-harris.jpg.webp?itok=W244dNbR"],
       ranking: 4,
-      visible: true
+      visible: true,
+      youtubeVideo: "https:wwww.youtube.com/"
     },
     {
       _id: 2234556789,
@@ -36,9 +38,9 @@ export const artists: Artist[] =
       songs: ["Levels", "Wake Me Up", "Hey Brother"],
       profiles: [{ name: "Website", link: "#" }, { name: "Facebook", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_472x265/public/article/image/02-avicii-press-2017-cr-Sean-Eriksson-billboard-1548.jpg.webp?itok=vQcxqQpy"],
-      ranking: 100
-      ,
-      visible: true
+      ranking: 100,
+      visible: true,
+      youtubeVideo: "http://www.youtube.com"
     },
     {
       _id: 3344567890,
@@ -51,7 +53,8 @@ export const artists: Artist[] =
       images: ["https://djmag.com/sites/default/files/styles/djm_23_472x265/public/top100/djs/image/ZEDD_02_095_D.jpg.webp?itok=azDWKhCM"],
       ranking: 23
       ,
-      visible: false
+      visible: false,
+      youtubeVideo: "http://www.youtube.com"
     },
     {
       _id: 873928746,
@@ -64,7 +67,8 @@ export const artists: Artist[] =
       images: ["https://djmag.com/sites/default/files/styles/djm_23_961x540/public/2022-10/20210826_GuilleGS_HighScream_DavidGuetta_Creamfields_2048px_78.jpg.webp?itok=jrZjxOtU"],
       ranking: 15
       ,
-      visible: true
+      visible: true,
+      youtubeVideo: "http://www.youtube.com"
     },
     {
       _id: 392847129,
@@ -76,7 +80,8 @@ export const artists: Artist[] =
       profiles: [{ name: "Facebook", link: "#" }, { name: "YouTube", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_961x540/public/top100/djs/image/29.%20The%20Chainsmokers%20_%20Danilo%20Lewis.jpeg.webp?itok=r3a9J48P"],
       ranking: 1,
-      visible: false
+      visible: false,
+      youtubeVideo: "http://www.youtube.com"
     },
     {
       _id: 628374920,
@@ -88,7 +93,8 @@ export const artists: Artist[] =
       profiles: [{ name: "SoundCloud", link: "#" }, { name: "Bandcamp", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_494x278/public/top100/djs/image/quick-13_0.jpg.webp?itok=NNI3EJO4"],
       ranking: 16,
-      visible: true
+      visible: true,
+      youtubeVideo: "http://www.youtube.com"
     },
 
     {
@@ -101,7 +107,8 @@ export const artists: Artist[] =
       profiles: [{ name: "X", link: "#" }, { name: "Facebook", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_961x540/public/2022-10/23.%20Skrillex%20LY%20FB.jpg.webp?itok=h5vLX1qR"],
       ranking: 10,
-      visible: true
+      visible: true,
+      youtubeVideo: "http://www.youtube.com"
     },
     {
       _id: 1102134234,
@@ -113,6 +120,7 @@ export const artists: Artist[] =
       profiles: [{ name: "X", link: "#" }, { name: "Facebook", link: "#" }],
       images: ["https://djmag.com/sites/default/files/styles/djm_23_961x540/public/2022-10/8.%20Don%20Diablo%20Cr.%20Jasper%20Suyk%202.jpg.webp?itok=1uYTW3Kx"],
       ranking: 11,
-      visible: true
+      visible: true,
+      youtubeVideo: "http://www.youtube.com"
     },
   ]
