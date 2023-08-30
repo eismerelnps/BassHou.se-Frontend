@@ -1,12 +1,12 @@
 import { startUploadingPhoto } from '@/actions/artist';
 import { adminEditArtist, adminResetArtist } from '@/reducers/artistSlice';
-import { uiEditArtist } from '@/reducers/uiSlice';
+import { uiAddArtist, uiEditArtist } from '@/reducers/uiSlice';
 import React, { useState } from 'react'
 import { UpLoadingImage } from '../UpLoadingImage';
 import Image from 'next/image';
 import { Artist } from '@/interfaces/Artists';
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import EditArtists from './EditArtists';
+import EditArtists from './EditArtistsButton';
 import AddArtist from './AddArtist';
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { useForm } from '@/hooks/useForm';
@@ -58,6 +58,7 @@ export default function Form() {
     }
     const handdleCancel = () => {
         dispatch(uiEditArtist(false));
+        dispatch(uiAddArtist(false));
         dispatch(adminResetArtist());
     };
 
@@ -91,11 +92,6 @@ export default function Form() {
         newProfiles[index] = { name: profileName, link: event.target.value };
         setProfiles(newProfiles);
 
-        // // Here we remove the element if the input is empty
-        // if (event.target.value === '') {
-        //     newSongs.splice(index, 1); // Eliminamos el elemento del array
-        // }
-        //get actual artist from context and updates the songs field
         const updatedArtist = {
             ...artist,
             profiles: newProfiles,
@@ -174,24 +170,29 @@ export default function Form() {
                                                                 clip-rule="evenodd"
                                                             />
                                                         </svg>
-                                                        <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                                                        <div className="mt-4 flex flex-col  leading-6 text-gray-600 px-6 ">
                                                             <label
                                                                 htmlFor="image"
-                                                                className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                                                                className=" text-center relative cursor-pointer rounded-md bg-white  text-red-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-red-500 focus-within:ring-offset-2 hover:text-red-500"
                                                             >
-                                                                <span>Seleccionar foto</span>
+                                                                <span className=" text-center font-semibold">
+                                                                    Select photo
+                                                                </span>
+
                                                                 <input
                                                                     id="image"
                                                                     name="image"
                                                                     type="file"
                                                                     onChange={handleFileChange}
-                                                                    className="sr-only"
+                                                                    className="sr-only "
                                                                 />
+
                                                             </label>
+                                                            <span className="ms-2 text-xs text-center leading-5 text-gray-600">
+                                                                PNG, JPG to 1MB
+                                                            </span>
                                                         </div>
-                                                        <p className="text-xs leading-5 text-gray-600">
-                                                            PNG, JPG hasta 1MB
-                                                        </p>
+                                                    
                                                     </div>
                                                 )}
                                                 <h2 className=" mt-4 text-center text-xs leading-5 text-gray-600">
@@ -223,7 +224,7 @@ export default function Form() {
                                         id="artistName"
                                         autoComplete="off"
                                         className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow  placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
-                                        placeholder="Nombre del producto"
+                                        placeholder="Name"
                                         onChange={handleInputChange}
                                     />
                                 </div>
@@ -246,7 +247,7 @@ export default function Form() {
                                         id="ranking"
                                         autoComplete="off"
                                         className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow  placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
-                                        placeholder="Nombre del producto"
+                                        placeholder="Ranking"
                                         onChange={handleInputChange}
                                     />
                                 </div>
@@ -270,7 +271,7 @@ export default function Form() {
                                         id="youtubeVideo"
                                         autoComplete="off"
                                         className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50  duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow   placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
-                                        placeholder="Categoría del producto"
+                                        placeholder="Youtube video URL"
                                         onChange={handleInputChange}
                                     />
                                 </div>
@@ -292,7 +293,7 @@ export default function Form() {
                                         id="activeSince"
                                         autoComplete='true'
                                         className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300  focus:outline-2 hover:bg-slate-50  duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow    placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
-                                        placeholder="Precio del producto"
+                                        placeholder="Artist's debut year"
                                         onChange={handleInputChange}
                                     />
                                 </div>
@@ -476,7 +477,6 @@ export default function Form() {
             <div className="mt-6 flex items-center justify-end gap-x-6">
                 <button
                     onClick={handdleCancel}
-                    //onClick={test}
                     type="button"
                     className="text-sm font-semibold leading-6 text-gray-900"
                 >

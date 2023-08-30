@@ -6,25 +6,26 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { adminResetArtist } from "@/reducers/artistSlice";
 
 import Form from "./Form";
-import { uiEditArtist } from "@/reducers/uiSlice";
+import { uiAddArtist, uiEditArtist } from "@/reducers/uiSlice";
 
 
 export default function EditArtistForm() {
     const dispatch = useAppDispatch();
     const artist = useAppSelector((state) => state.artist);
    
-    const { editArtist } = useAppSelector((state) => state.ui);
+    const { editArtist, addArtist } = useAppSelector((state) => state.ui);
 
 
     const handleCloseForm = () => {
-        dispatch(uiEditArtist(false));
-        dispatch(adminResetArtist())
+        // dispatch(adminResetArtist());
+        // dispatch(uiAddArtist(false));
+        // dispatch(uiEditArtist(false));
     }
 
     return (
 
         <div className="mt-16">
-            <Transition.Root show={editArtist} as={Fragment}>
+            <Transition.Root show={editArtist || addArtist} as={Fragment}>
                 <Dialog
                     as="div"
                     className="relative z-30"

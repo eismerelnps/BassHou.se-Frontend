@@ -2,6 +2,7 @@
 import { Artist } from '@/interfaces/Artists'
 import React from 'react'
 import EditDeleteButton from './EditDeleteButton'
+import AddNewArtistButton from './AddNewArtistButton'
 
 export default function AdminPanel({ artists }: { artists: Artist[] }) {
     return (
@@ -11,6 +12,7 @@ export default function AdminPanel({ artists }: { artists: Artist[] }) {
         flex flex-wrap flex-col  place-content-start
         px-0.5 mb-8 sm:flex-row 
         shadow-xl z-10'>
+            <AddNewArtistButton />
             <table className="table-auto w-full border-separate border-spacing-y-6">
                 <thead className="
                 bg-gray-50 border-b-2 w-full

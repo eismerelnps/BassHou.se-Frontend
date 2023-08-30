@@ -12,7 +12,7 @@ export default function BackDrop() {
           <div className="w-8 h-8 rounded-full border-t-4 border-white animate-spin absolute top-0 left-1/2 transform -translate-x-1/2"></div>
 
           {/* Mensaje */}
-          <p className="text-white text-2xl mt-4">Autenticando...</p>
+          <p className="text-white text-2xl mt-4">Please Wait...</p>
         </div>
       </div>
     )

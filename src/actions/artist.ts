@@ -7,49 +7,45 @@ import { fileUpload } from "@/helpers/fileUpload";
 import { adminEditArtist } from "@/reducers/artistSlice";
 
 const token = process.env.NEXT_PUBLIC_TOKEN;
-const url = process.env.NEXT_PUBLIC_DB_API_ARTISTS;
+const url = process.env.NEXT_PUBLIC_DB_API_ARTISTS || '';
 
 
 rootReducer
-//get the endpoint of the api bd
 
+//To add a new product to the database
+export const startAddingNewArtist = () => {
+  return async (dispatch: Dispatch<AnyAction>, getState: () => RootState) => {
+    //const { token } = getState().auth;
+    const artist = getState().artist;
 
-//To add a new artist to DB
-export const startAddingNewProduct = () => {
-    return async (dispatch: Dispatch<AnyAction>, getState: () => RootState) => {
-      //const { token } = getState().auth;
-      const artits = getState().artist;
-  
-      dispatch(uiStartLoading());
-      console.log(artits)
-    //   fetch(url, {
-    //     method: "POST",
-    //     body: JSON.stringify(product),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Accept: "*/*",
-    //       "Accept-Encoding": "gzip, deflate, br",
-    //       Authorization: token,
-    //     },
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       dispatch(finishLoading());
-    //       dispatch(setError(data.message));
-    //       //router.refresh();
-    //     })
-  
-    //     .catch((error) => {
-    //       dispatch(finishLoading());
-    //       dispatch(
-    //         setError(
-    //           "Se ha producido un error al crear el producto. Por favor, inténtelo de nuevo."
-    //         )
-    //       );
-    //     });
-    };
+    dispatch(uiStartLoading());
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(artist),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        Authorization: token,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(uiFinishLoading());
+        dispatch(uiSetError(data.message));
+        //router.refresh();
+      })
+
+      .catch((error) => {
+        dispatch(uiFinishLoading());
+        dispatch(
+          uiSetError(
+            "There was an error adding the artist. Please try again."
+          )
+        );
+      });
   };
-
+};
 
 
 
@@ -60,6 +56,7 @@ export const startEditingArtist = () => {
     const artist = getState().artist;
 
     const { _id } = artist;
+    dispatch(uiStartLoading())
 
     fetch(`${url}/${_id}`, {
       method: "PUT",
