@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { uiSetSearchText } from '@/reducers/uiSlice';
 
-
+import './searchBar.css'
 
 
 
@@ -28,9 +28,12 @@ export default function SearchBar() {
   return (
     <div className='fixed top-0  w-full z-30 '>
 
-      <div className='w-full h-12 bg-white flex items-center' >
-        <marquee className='text-xl'>House Music Forever! ¡Música house para siempre! Musique house pour toujours ! 永遠的浩室音樂！</marquee>
-      </div>
+<div className='w-full h-12 bg-white flex items-center overflow-hidden'>
+  <div className='marquee-content'>
+    House Music Forever! ¡Música house para siempre! Musique house pour toujours ! 永遠的浩室音樂！
+  </div>
+</div>
+
       <div className='relative bg-[#efed84] py-4  '>
 
         <div className='flex flex-col  place-content-stretch'>

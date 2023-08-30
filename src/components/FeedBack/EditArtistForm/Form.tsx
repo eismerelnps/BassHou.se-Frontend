@@ -17,15 +17,10 @@ export default function Form() {
     const { cloudImageMessage, uploadingImage, addArtist, editArtist } = useAppSelector((state) => state.ui);
 
 
-
-
-
-
-    // Uso del hook
+    // hook use
     const [formValues, handleInputChange, reset] = useForm(artist);
 
     const {
-        _id,
         artistName,
         activeSince,
         briefDescription,
@@ -45,7 +40,7 @@ export default function Form() {
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const file: File | undefined = e.target.files?.[0];
         if (file) {
-            //llama a la funcion que se encarga de subir la imagen
+            //call the function that is responsible for uploading the image
             dispatch(startUploadingPhoto(file));
         }
         //console.log(file);

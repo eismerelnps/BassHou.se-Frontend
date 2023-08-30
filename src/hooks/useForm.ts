@@ -13,7 +13,7 @@ returns a array of values
   1st: State value
   2nd: a function for changing the state
 */
-export const useForm = (initialState: Artist) => {
+export const useForm = (initialState: any) => {
   const [values, setValues] = useState(initialState);
   const dispatch = useDispatch()
 

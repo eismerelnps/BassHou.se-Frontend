@@ -4,10 +4,7 @@ import { Artist } from "@/interfaces/Artists";
 import { adminAddArtist } from "@/reducers/artistSlice";
 import { useRouter } from "next/navigation";
 
-export default function OpenArtist({ item }: {
-  children: React.ReactNode;
-  item: Artist
-}) {
+export default function OpenArtist({item }: {item: Artist}) {
   const router = useRouter()
   const dispatch = useAppDispatch()
   const handdleOpenArtist = () => {

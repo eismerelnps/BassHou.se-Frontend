@@ -1,0 +1,14 @@
+.marquee-content {
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  

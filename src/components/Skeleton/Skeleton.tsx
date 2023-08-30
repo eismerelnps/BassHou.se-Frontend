@@ -7,7 +7,7 @@ export default function Skeleton() {
       <h1
         className={`animate-pulse text-2xl text-slate-950 text-center m-4 b`}
       >
-        Cargando productos
+        Loading please wait
       </h1>
       <div className="animate-pulse flex justify-center">
         <div className="basis-1/2  space-y-6 py-1">

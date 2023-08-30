@@ -4,11 +4,9 @@ import React from 'react'
 // Artists interface
 import { Artist } from '@/interfaces/Artists'
 import OpenArtist from './OpenArtist';
-interface ArtistCardProps {
-  item: Artist;
-}
 
-export default async function ArtistCard({ item }: ArtistCardProps) {
+
+export default async function ArtistCard({ item }: { item: Artist }) {
   const { artistName, briefDescription, activeSince, images, visible } = item
   return (
 
