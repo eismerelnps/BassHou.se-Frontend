@@ -8,6 +8,7 @@ export default function ArtistScreen() {
   const { artistName, activeSince, briefDescription, biography, songs, profiles, images, ranking } = artist
   return (
     <section className=' 
+    relative top-72
     mx-8 mt-2
     md:mx-24 md:mt-4 '>
       <article className='text-center'>

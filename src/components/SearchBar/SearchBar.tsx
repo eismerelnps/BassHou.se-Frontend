@@ -21,6 +21,7 @@ export default function SearchBar() {
 
     dispatch(uiSetSearchText(value))
     router.refresh();
+    router.push('/main')
 
   };
 

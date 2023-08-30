@@ -1,7 +1,8 @@
+'use client'
+import { useRouter } from 'next/navigation';
 
-import HomePage from '@/components/HomePage/HomePage'
-
-export default function page() {
-
-  return <HomePage />
+export default function HomePage() {
+    const router = useRouter();
+    router.push('/main')
+  return true
 }

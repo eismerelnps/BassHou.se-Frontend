@@ -1,10 +1,14 @@
+
+import React from 'react'
 import ArtistList from '@/components/ArtistList/ArtistList'
 
-export default async function page() {
-  //get the endpoint of the api bd
+ //get the endpoint of the api bd
   const url: string = process.env.NEXT_PUBLIC_DB_API_ARTISTS || '';
 
 
+
+export default async function IndexPage() {
+ 
  const fetchMenu = () => {
   return fetch(url, { cache: "no-store" }).then((res) => res.json());
    };
