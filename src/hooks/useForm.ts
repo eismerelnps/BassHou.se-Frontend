@@ -1,4 +1,3 @@
-import { editProduct } from "@/actions/product";
 import { Artist } from "@/interfaces/Artists";
 import { adminEditArtist } from "@/reducers/artistSlice";
 import { useState } from "react"
@@ -22,7 +21,7 @@ export const useForm = (initialState: Artist) => {
     setValues(initialState);
   };
 
-  const handleInputChange = (e: Event) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = e;
     const value = target.type === "checkbox" ? target.checked : target.value;
     
