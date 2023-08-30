@@ -1,7 +1,7 @@
 'use client'
 import { useAppDispatch } from "@/hooks";
 import { Artist } from "@/interfaces/Artists";
-import { addArtist } from "@/reducers/artistSlice";
+import { adminAddArtist } from "@/reducers/artistSlice";
 import { useRouter } from "next/navigation";
 
 export default function OpenArtist({ item }: {
@@ -11,7 +11,7 @@ export default function OpenArtist({ item }: {
   const router = useRouter()
   const dispatch = useAppDispatch()
   const handdleOpenArtist = () => {
-    dispatch(addArtist(item))
+    dispatch(adminAddArtist(item))
     router.push('./artist')
   }
   return (

@@ -1,10 +1,7 @@
-'use client'
-//import { editProduct } from "@/actions/product";
-import { useAppDispatch } from "@/hooks";
-import { uiSetSearchText } from "@/reducers/uiSlice";
-import { useParams, useRouter } from "next/navigation";
+import { Artist } from "@/interfaces/Artists";
+import { adminEditArtist } from "@/reducers/artistSlice";
 import { useState } from "react"
-//import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 /*
 
 handle input change receives as parameter a event
@@ -16,33 +13,25 @@ returns a array of values
   1st: State value
   2nd: a function for changing the state
 */
-export const useForm = (initialState: any = {}) => {
-    const dispatch = useAppDispatch()
-    const [values, setValues] = useState(initialState);
-    const router = useRouter();
-    const params = useParams();
+export const useForm = (initialState: Artist) => {
+  const [values, setValues] = useState(initialState);
+  const dispatch = useDispatch()
 
-    //console.log(params)
+  const reset = () => {
+    setValues(initialState);
+  };
 
-    const reset = () => {
-        setValues(initialState);
-    };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { target } = e;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    
+    setValues({
+      ...values,
+      [target.name]: value,
+     
+    });
+    dispatch( adminEditArtist({[target.name]: value} ))
+  };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault();
-        const { name, type, value, checked } = e.target;
-        //const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
-
-        setValues({
-            ...values,
-            [name]: value,
-
-        });
-        dispatch(uiSetSearchText(value));
-        router.push('/');
-        router.refresh();
-       
-    };
-
-    return [values, handleInputChange, reset];
+  return [values, handleInputChange, reset];
 };

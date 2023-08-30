@@ -5,42 +5,50 @@ const initialState: Artist = {
   _id: 1,
   artistName: "",
   briefDescription: "",
-  activeSince: 1000,
+  activeSince: 2023,
   biography: "",
   songs: [],
-  profiles: [],
+  profiles: [
+    {name: 'Web Site', link: ''},
+    {name: 'Facebook', link: ''}, 
+    {name: 'Music', link: ''}, 
+    {name: 'My Space', link: ''},
+    {name: 'SoundCloud', link: ''},
+    {name: 'YouTube', link: ''}, 
+    {name: 'X', link: ''},   
+  ],
   images: [],
-  ranking: 0,
+  ranking: 100,
   visible: true,
+  youtubeVideo: "",
 };
 
 const artistSlice = createSlice({
   name: 'artist',
   initialState,
   reducers: {
-    addArtist: (state, action: PayloadAction<Artist>) => {
+    adminAddArtist: (state, action: PayloadAction<Artist>) => {
       return {
         ...action.payload,
       };
     },
-    //  editArtist: (state, action: PayloadAction<{ item: keyof Artist; value: any }>) => {
-    //    const { item, value } = action.payload;
-    //    state[item] = value;
-    //  },
-    deleteArtist: (state, action: PayloadAction<Artist>) => {
-      return action.payload;
+    adminEditArtist: (state,  action: PayloadAction<Partial<Artist>>) => {
+      return {
+        ...state,
+        ...action.payload,
+      };
     },
-    resetArtist: (state, action: PayloadAction<Artist>) => {
-      return action.payload;
-    },
+   
+    adminResetArtist: () => {
+      return initialState;
+    }
   },
 });
 
 export const {
-  addArtist,
- // editArtist,
-  deleteArtist,
-  resetArtist,
+  adminAddArtist,
+  adminEditArtist,
+  adminResetArtist
 } = artistSlice.actions;
 
 export default artistSlice.reducer;
