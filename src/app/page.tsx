@@ -1,11 +1,7 @@
-'use client'
-import { useRouter } from 'next/navigation'
-import React from 'react'
+
+import HomePage from '@/components/HomePage/HomePage'
 
 export default function page() {
-  const router = useRouter();
-  router.push('/index')
-  return (
-    <></>
-  )
+
+  return <HomePage />
 }
