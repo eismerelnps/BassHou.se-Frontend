@@ -14,7 +14,7 @@ export default async function Home() {
 
   return (
     <main className="my-5 ">
-      <div className='bg-red-500 fixed top-72 my-5 w-full h-20  z-0'></div>
+      <div className='bg-[#efed84] fixed top-72 my-5 w-full h-20  z-0'></div>
        <ArtistList  artists={artists } />
     </main>
   )

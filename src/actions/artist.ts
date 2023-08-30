@@ -10,43 +10,6 @@ const token = process.env.NEXT_PUBLIC_TOKEN;
 const url = process.env.NEXT_PUBLIC_DB_API_ARTISTS || '';
 
 
-<<<<<<< HEAD
-//To add a new artist to DB
-// export const startAddingNewProduct = () => {
-//     return async (dispatch, getState) => {
-//       //const { token } = getState().auth;
-//       const artits = getState().artist;
-  
-//       dispatch(uiStartLoading());
-//       console.log(artits)
-//     //   fetch(url, {
-//     //     method: "POST",
-//     //     body: JSON.stringify(product),
-//     //     headers: {
-//     //       "Content-Type": "application/json",
-//     //       Accept: "*/*",
-//     //       "Accept-Encoding": "gzip, deflate, br",
-//     //       Authorization: token,
-//     //     },
-//     //   })
-//     //     .then((response) => response.json())
-//     //     .then((data) => {
-//     //       dispatch(finishLoading());
-//     //       dispatch(setError(data.message));
-//     //       //router.refresh();
-//     //     })
-  
-//     //     .catch((error) => {
-//     //       dispatch(finishLoading());
-//     //       dispatch(
-//     //         setError(
-//     //           "Se ha producido un error al crear el producto. Por favor, inténtelo de nuevo."
-//     //         )
-//     //       );
-//     //     });
-//     };
-//   };
-=======
 rootReducer
 
 //To add a new product to the database
@@ -161,13 +124,6 @@ export const startDeletingArtist = () => {
    };
 };
 
-// //accion para editar un producto en el contexto
-// export const editArtist = (item, value) => ({
-//   type: "[admin] EditProduct",
-//   payload: { item, value },
-// });
-
-
 //action to upload a image tu a cloud service
 export const startUploadingPhoto = (file: File) => {
   return async (dispatch: Dispatch<AnyAction>) => {
@@ -181,4 +137,3 @@ export const startUploadingPhoto = (file: File) => {
     }
   };
 };
->>>>>>> develop
