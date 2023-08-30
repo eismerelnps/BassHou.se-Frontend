@@ -1,6 +1,6 @@
 import ArtistList from '@/components/ArtistList/ArtistList'
 
-export default async function Home() {
+export default async function page() {
   //get the endpoint of the api bd
   const url: string = process.env.NEXT_PUBLIC_DB_API_ARTISTS || '';
 

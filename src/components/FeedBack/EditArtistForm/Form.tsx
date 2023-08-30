@@ -51,6 +51,7 @@ export default function Form() {
         dispatch(uiEditArtist(false));
         dispatch(adminResetArtist())
     }
+    
     const handdleCancel = () => {
         dispatch(uiEditArtist(false));
         dispatch(uiAddArtist(false));
