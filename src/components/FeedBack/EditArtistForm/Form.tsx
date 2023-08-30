@@ -17,26 +17,9 @@ export default function Form() {
     const { cloudImageMessage, uploadingImage, addArtist, editArtist } = useAppSelector((state) => state.ui);
 
 
-    const [newSong, setNewSong] = useState(0);
 
 
-    // const useForm = (initialValues: Artist) => {
-    //     const [formValues, setFormValues] = useState(initialValues);
 
-    //     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    //         const { name, value } = e.target;
-    //         setFormValues({
-    //             ...formValues,
-    //             [name]: value,
-    //         });
-    //     };
-    //     //dispatch( adminEditArtist());
-    //     const reset = () => {
-    //         setFormValues(initialValues);
-    //     };
-
-    //     return [formValues, handleInputChange, reset] as const;
-    // };
 
     // Uso del hook
     const [formValues, handleInputChange, reset] = useForm(artist);
@@ -47,13 +30,17 @@ export default function Form() {
         activeSince,
         briefDescription,
         biography,
-        songs,
-        profiles,
         images,
         ranking,
         visible,
         youtubeVideo,
     } = formValues;
+
+
+    const [songs, setSongs] = useState(formValues.songs);
+    const [profiles, setProfiles] = useState(formValues.profiles);
+
+
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const file: File | undefined = e.target.files?.[0];
@@ -73,13 +60,48 @@ export default function Form() {
         dispatch(uiEditArtist(false));
         dispatch(adminResetArtist());
     };
-    const handdleAddSong = (e:  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        e.preventDefault()
-        dispatch(adminEditArtist({songs: [...songs, '']}));
+
+
+
+    const handleAddSong = (e: any) => {
+        e.preventDefault();
+        setSongs([...songs, '']);
     }
-    const handdleAddProfile = (e:  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        e.preventDefault()
-        dispatch(adminEditArtist({songs: [...songs, '']}));
+
+    const handleSongChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
+        const newSongs = [...songs];
+        newSongs[index] = event.target.value;
+        setSongs(newSongs);
+
+        // Here we remove the element if the input is empty
+        if (event.target.value === '') {
+            newSongs.splice(index, 1); // Eliminamos el elemento del array
+        }
+        //get actual artist from context and updates the songs field
+        const updatedArtist = {
+            ...artist,
+            songs: newSongs,
+        };
+
+        dispatch(adminEditArtist(updatedArtist));
+    };
+
+    const handleProfiletChange = (index: number, event: React.ChangeEvent<HTMLInputElement>, profileName: string) => {
+        const newProfiles = [...profiles];
+        newProfiles[index] = { name: profileName, link: event.target.value };
+        setProfiles(newProfiles);
+
+        // // Here we remove the element if the input is empty
+        // if (event.target.value === '') {
+        //     newSongs.splice(index, 1); // Eliminamos el elemento del array
+        // }
+        //get actual artist from context and updates the songs field
+        const updatedArtist = {
+            ...artist,
+            profiles: newProfiles,
+        };
+
+        dispatch(adminEditArtist(updatedArtist));
     }
 
     return (
@@ -107,8 +129,8 @@ export default function Form() {
                                                         <div className="flex justify-center">
                                                             <Image
                                                                 className="rounded-lg text-center"
-                                                                width={350}
-                                                                height={100}
+                                                                width={500}
+                                                                height={150}
                                                                 src={artist.images[0]}
                                                                 alt={"alt"}
                                                             />
@@ -320,7 +342,7 @@ export default function Form() {
                                 </fieldset>
                             </div>
                         </div>
-                      
+
 
                         <div className="mt-4">
                             <label
@@ -369,10 +391,48 @@ export default function Form() {
                                 htmlFor="description"
                                 className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-900`}
                             >
+                                Social Networks
+                            </label>
+                            <div className='rounded-lg border border-dashed border-gray-900/25 py-2 px-3'>
+                                {profiles.map(({ name, link }: { name: string, link: string }, i: number) => (
+                                    <div key={i} className="mt-4 ">
+                                        <label
+                                            htmlFor="price"
+                                            className={` ${'quicksand.className'} ms-2 block text-sm font-medium leading-6 text-gray-900`}
+                                        >
+                                            {name}
+                                        </label>
+                                        <div className="">
+                                            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                                <input
+                                                    value={link}
+                                                    type="text"
+                                                    name="profiles"
+                                                    id="profiles"
+                                                    autoComplete='true'
+                                                    className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300  focus:outline-2 hover:bg-slate-50  duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow    placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                                    placeholder="URL here"
+                                                    onChange={(e) => handleProfiletChange(i, e, name)}
+                                                />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                ))
+                                }
+                            </div>
+                        </div>
+
+
+                        <div className='mt-4'>
+                            <label
+                                htmlFor="description"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-900`}
+                            >
                                 Songs
                             </label>
                             <div className='rounded-lg border border-dashed border-gray-900/25 py-2 px-3'>
-                                {songs.map((song, i) => (
+                                {songs.map((song: string, i: number) => (
                                     <div key={i} className="mt-4">
                                         <label
                                             htmlFor="price"
@@ -383,14 +443,14 @@ export default function Form() {
                                         <div className="">
                                             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                                 <input
-                                                    value={songs[i]}
+                                                    value={song}
                                                     type="text"
                                                     name="songs"
                                                     id="songs"
                                                     autoComplete='true'
                                                     className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300  focus:outline-2 hover:bg-slate-50  duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow    placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
-                                                    placeholder="Precio del producto"
-                                                    onChange={handleInputChange}
+                                                    placeholder="Song name here"
+                                                    onChange={(e) => handleSongChange(i, e)}
                                                 />
                                             </div>
                                         </div>
@@ -398,7 +458,7 @@ export default function Form() {
                                     </div>
                                 ))
                                 }
-                                <button onClick={handdleAddSong} className='flex w-full justify-center p-1 my-4 rounded-md shadow-sm ring-1 ring-inset ring-red-500 hover:ring-2 hover:ring-inset hover:ring-red-400 sm:max-w-md'>
+                                <button onClick={handleAddSong} className='flex w-full justify-center p-1 my-4 rounded-md shadow-sm ring-1 ring-inset ring-red-500 hover:ring-2 hover:ring-inset hover:ring-red-400 sm:max-w-md'>
                                     <PlusCircleIcon
                                         className="h-8 w-8 text-red-500"
                                         aria-hidden="true" />
@@ -406,47 +466,7 @@ export default function Form() {
                             </div>
                         </div>
 
-                        <div className='mt-4'>
-                            <label
-                                htmlFor="description"
-                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-900`}
-                            >
-                                Social Networks
-                            </label>
-                            <div className='rounded-lg border border-dashed border-gray-900/25 py-2 px-3'>
-                                {profiles.map((profile, i) => (
-                                    <div key={i} className="mt-4 ">
-                                        <label
-                                            htmlFor="price"
-                                            className={` ${'quicksand.className'} ms-2 block text-sm font-medium leading-6 text-gray-900`}
-                                        >
-                                            {profile.name}
-                                        </label>
-                                        <div className="">
-                                            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                                <input
-                                                    value={profile.name[i]}
-                                                    type="text"
-                                                    name="songs"
-                                                    id="songs"
-                                                    autoComplete='true'
-                                                    className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300  focus:outline-2 hover:bg-slate-50  duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow    placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
-                                                    placeholder="Precio del producto"
-                                                    onChange={handleInputChange}
-                                                />
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                ))
-                                }
-                                <button onClick={handdleAddProfile} className='flex w-full justify-center p-1 my-4 rounded-md shadow-sm ring-1 ring-inset ring-red-500 hover:ring-2 hover:ring-inset hover:ring-red-400 sm:max-w-md'>
-                                    <PlusCircleIcon
-                                        className="h-8 w-8 text-red-500"
-                                        aria-hidden="true" />
-                                </button>
-                            </div>
-                        </div>
 
 
                     </div>
