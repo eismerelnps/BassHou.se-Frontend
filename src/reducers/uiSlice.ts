@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface UiState {
   editArtist: boolean;
   addArtist: boolean;
+  requestAddArtist: boolean;
   deleteArtist: boolean;
 
   loading: boolean;
@@ -17,6 +18,7 @@ interface UiState {
 const initialState: UiState = {
   editArtist: false,
   addArtist: false,
+  requestAddArtist: false,
   deleteArtist: false,
 
   loading: false,
@@ -66,6 +68,9 @@ const uiSlice = createSlice({
     uiAddArtist: (state, action: PayloadAction<boolean>) => {
       state.addArtist = action.payload;
     },
+    uiRequestAddArtist: (state, action: PayloadAction<boolean>) => {
+      state.requestAddArtist = action.payload;
+    },
     uiDeleteArtist: (state, action: PayloadAction<boolean>) => {
       state.deleteArtist = action.payload;
     }
@@ -96,6 +101,8 @@ export const {
   uiEditArtist,
   //enables or disable the modal with a empty form for adding a new artist to db
   uiAddArtist,
+  //enables or disable the modal with a empty form for adding a new artist request to administration
+  uiRequestAddArtist,
   //handle a modal to confirm that the artist will be removed from the db
   uiDeleteArtist,
 } = uiSlice.actions;
