@@ -4,13 +4,29 @@ import { Dispatch, AnyAction } from 'redux';
 
 import { RootState, rootReducer } from "@/store/store";
 import { fileUpload } from "@/helpers/fileUpload";
-import { adminEditArtist } from "@/reducers/artistSlice";
 
-const token = process.env.NEXT_PUBLIC_TOKEN;
+const token = process.env.NEXT_PUBLIC_TOKEN || '';
 const url = process.env.NEXT_PUBLIC_DB_API_ARTISTS || '';
 
 
 rootReducer
+
+type HttpHeaders = {
+  "Content-Type": string;
+  Accept: string;
+  "Accept-Encoding": string;
+  Authorization: string;
+};
+
+const headers: HttpHeaders = {
+  "Content-Type": "application/json",
+  Accept: "*/*",
+  "Accept-Encoding": "gzip, deflate, br",
+  Authorization: token,
+};
+
+
+
 
 //To add a new product to the database
 export const startAddingNewArtist = () => {
@@ -18,16 +34,13 @@ export const startAddingNewArtist = () => {
     //const { token } = getState().auth;
     const artist = getState().artist;
 
+    
+
     dispatch(uiStartLoading());
     fetch(url, {
       method: "POST",
       body: JSON.stringify(artist),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "*/*",
-        "Accept-Encoding": "gzip, deflate, br",
-        Authorization: token,
-      },
+      headers
     })
       .then((response) => response.json())
       .then((data) => {
@@ -61,12 +74,7 @@ export const startEditingArtist = () => {
     fetch(`${url}/${_id}`, {
       method: "PUT",
       body: JSON.stringify(artist),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "*/*",
-        "Accept-Encoding": "gzip, deflate, br",
-        Authorization: token,
-      },
+      headers
     })
       .then((response) => response.json())
       .then((data) => {
@@ -99,13 +107,7 @@ export const startDeletingArtist = () => {
     fetch(`${url}/${_id}`, {
       method: "DELETE",
       body: JSON.stringify({}),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "*/*",
-        "Accept-Encoding": "gzip, deflate, br",
-        Authorization: token,
-      },
-      //{headers},
+      headers
     })
       .then((response) => response.json())
       .then((data) => {
