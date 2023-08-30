@@ -14,7 +14,7 @@ returns a array of values
   1st: State value
   2nd: a function for changing the state
 */
-export const useForm = (initialState: Artist ) => {
+export const useForm = (initialState: Artist) => {
   const [values, setValues] = useState(initialState);
   const dispatch = useDispatch()
 
@@ -22,7 +22,8 @@ export const useForm = (initialState: Artist ) => {
     setValues(initialState);
   };
 
-  const handleInputChange = ({ target }: {target: any}) => {
+  const handleInputChange = (e: Event) => {
+    const { target } = e;
     const value = target.type === "checkbox" ? target.checked : target.value;
     
     setValues({
