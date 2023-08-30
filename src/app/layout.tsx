@@ -13,6 +13,10 @@ import { PersistGate } from "redux-persist/integration/react";
 //import { persistor, storeCore } from "@/store/storeCore";
 import { persistor, store } from "@/store/store";
 import SearchBar from "@/components/SearchBar/SearchBar";
+import Modal from "@/components/FeedBack/Modal";
+import DeleteModal from "@/components/FeedBack/DeleteModal";
+import BackDrop from "@/components/FeedBack/BackDrop";
+import EditArtistForm from "@/components/FeedBack/EditArtistForm/EditArtistForm";
 
 const StoreProvider = dynamic(
   () => import("@/components/Provider/StoreProvider"),
@@ -36,7 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-        <head>
+      <head>
         {/* <link rel="icon" href="" /> */}
         {/* <Script src={`https://www.googletagmanager.com/gtag/G-G047DKTEXM`} />
         <Script id="google-analytics">
@@ -53,16 +57,14 @@ export default function RootLayout({
           crossorigin="anonymous"
         ></Script> */}
       </head>
-      <body className={`${inter.className} bg-gray-100 my-16`}>
+      <body className={`${inter.className} bg-gray-100`}>
         <PersistProvider>
           <StoreProvider>
-             <SearchBar /> 
-             
-             {children}
-           
-
-            
-           
+            <EditArtistForm />
+            <BackDrop />
+            <Modal />
+            <DeleteModal />
+            {children}
           </StoreProvider>
         </PersistProvider>
       </body>

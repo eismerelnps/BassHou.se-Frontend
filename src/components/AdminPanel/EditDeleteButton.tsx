@@ -1,19 +1,19 @@
 'use client'
 import { useAppDispatch } from '@/hooks'
 import { Artist } from '@/interfaces/Artists';
-import { addArtist } from '@/reducers/artistSlice';
-import { adminDeleteArtist, adminEditArtist } from '@/reducers/uiSlice';
+import { adminAddArtist } from '@/reducers/artistSlice';
+import { uiDeleteArtist, uiEditArtist } from '@/reducers/uiSlice';
 
 export default function EditDeleteButton({ artist }: { artist: Artist }) {
   const dispatch = useAppDispatch();
 
   const handleOpenEdit = () => {
-    dispatch(addArtist(artist));
-    dispatch(adminEditArtist(true));
+    dispatch(adminAddArtist(artist));
+    dispatch(uiEditArtist(true));
   }
   const handleOpenDelete = () => {
-    dispatch(addArtist(artist));
-    dispatch(adminDeleteArtist(true));
+    dispatch(adminAddArtist(artist));
+    dispatch(uiDeleteArtist(true));
   }
 
   return (
