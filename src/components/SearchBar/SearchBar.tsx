@@ -2,14 +2,9 @@
 import Image from 'next/image';
 import giphy from '/public/giphy.gif';
 import { rubik_glitch } from '@/fonts/glitch_goblin';
-<<<<<<< HEAD
 
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
-=======
-import { useRouter } from 'next/navigation';
-import { useAppDispatch } from '@/hooks';
->>>>>>> develop
 import { uiSetSearchText } from '@/reducers/uiSlice';
 
 
@@ -17,7 +12,6 @@ import { uiSetSearchText } from '@/reducers/uiSlice';
 
 
 export default function SearchBar() {
-<<<<<<< HEAD
   const router = useRouter();
   const dispatch = useDispatch()
 
@@ -30,20 +24,6 @@ export default function SearchBar() {
 
   };
 
-=======
-  const router = useRouter()
-  const dispatch = useAppDispatch();
-  
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const { target } = e;
-    const value = target.value;
-
-    
-    dispatch(uiSetSearchText(value));
-    router.refresh()
-  };
->>>>>>> develop
 
   return (
     <div className='fixed top-0  w-full z-30 '>
@@ -67,10 +47,7 @@ export default function SearchBar() {
           <div className='flex justify-center mt-4 '>
             <div className=" mt-2 rounded-[1px] w-1/2  shadow-sm">
               <input
-<<<<<<< HEAD
                 onChange={handleInputChange}
-=======
->>>>>>> develop
                 id="searchArtist"
                 name="searchArtist"
                 type="text"
@@ -82,11 +59,6 @@ export default function SearchBar() {
                           focus:outline-2 hover:bg-slate-50 
                           duration-100 block w-full rounded-[1px]  py-1.5 ps-1.5 text-slate-950 shadow  
                           placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
-<<<<<<< HEAD
-
-=======
-                onChange={handleInputChange}
->>>>>>> develop
               />
             </div>
           </div>
