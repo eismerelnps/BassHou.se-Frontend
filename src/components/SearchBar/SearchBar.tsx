@@ -12,7 +12,7 @@ import './searchBar.css'
 export default function SearchBar() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const searchText = searchParams.get("search");
+  const searchText = searchParams.get("search") || '';
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
