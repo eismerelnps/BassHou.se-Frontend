@@ -13,15 +13,15 @@ import './searchBar.css'
 
 export default function SearchBar() {
   const router = useRouter();
-  const dispatch = useDispatch()
+  //const dispatch = useDispatch()
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { value } = event.target;
 
-    dispatch(uiSetSearchText(value))
+    //dispatch(uiSetSearchText(value))
     router.refresh();
-    router.push('/main')
+    router.push(`/main/?search=${value}`);
 
   };
 

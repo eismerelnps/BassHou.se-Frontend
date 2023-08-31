@@ -1,8 +1,19 @@
+
 import React from 'react'
 import ArtistScreen from '@/components/ArtistScreen/ArtistScreen'
+import { useSearchParams } from 'next/navigation';
 
-export default function page() {
+//get the endpoint of the api bd
+const artists_url = process.env.NEXT_PUBLIC_DB_API_ARTISTS || '';
+
+
+export default async function ArtistPage() {
+  const fetchMenu = () => {
+    return fetch(artists_url, { cache: "no-store" }).then((res) => res.json());
+  };
+  const artists = await fetchMenu();
+
   return (
-    <ArtistScreen/>
+    <ArtistScreen artists={artists} />
   )
 }

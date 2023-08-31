@@ -33,7 +33,7 @@ export default async function ArtistCard({ item }: { item: Artist }) {
               ?
               (
                 <Image
-                  className=' self-center'
+                  className='max-h-40 self-center'
                   src={images[0]}
                   width={576}
                   height={250}
@@ -64,12 +64,9 @@ export default async function ArtistCard({ item }: { item: Artist }) {
 
         <article className=' px-2 mt-0 text-start'>
 
-          <article className='mt-0.5 whitespace-nowrap'>
-            <h2 className='
-          sm:text-3xl
-          md:text-2xl
-           mt-0.5 text-center text-stone-950 text-xl  '>
-              {artistName}</h2>
+          <article className='mt-0.5 overflow-x-auto'>
+            <p className='sm:text-3xl md:text-2xl mt-0.5 text-center text-stone-950 text-xl break-words truncate overflow-x-auto'>
+              {artistName}</p>
           </article>
 
 

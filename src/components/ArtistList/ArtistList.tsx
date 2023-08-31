@@ -7,9 +7,13 @@ import ArtistCard from '../ArtistCard/ArtistCard'
 import { useAppSelector } from '@/hooks';
 //helpers
 import { getArtistByName } from '@/helpers/getArtistByName';
+import { useSearchParams } from 'next/navigation';
 
 export default function ArtistList({ artists }: { artists: Artist[] }) {
-    const searchText = useAppSelector(state => state.ui.searchText);
+    //const searchText = useAppSelector(state => state.ui.searchText);
+    const searchParams = useSearchParams();
+    const searchText = searchParams.get("search");
+
     const artistsArray: Artist[] = searchText ? getArtistByName(artists, searchText) : artists
 
     return (
