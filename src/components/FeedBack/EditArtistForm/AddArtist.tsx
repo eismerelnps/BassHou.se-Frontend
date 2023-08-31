@@ -24,7 +24,7 @@ export default function AddArtist() {
       );
       return false;
     } 
-    else if (artistName.trim().length > 12)  {
+    else if (artistName.trim().length > 20)  {
       dispatch(uiSetError("Enter a shorter name"));
       return false;
     } 
@@ -34,8 +34,8 @@ export default function AddArtist() {
     } else if (briefDescription.length < 20 || briefDescription.length > 120 ) {
       dispatch(uiSetError("Enter a brief description between 20 and 120 characters"));
       return false;
-    } else if (biography.length < 100 || biography.length > 1000) {
-      dispatch(uiSetError("Please type a biography between 100 and 1000 characters "));
+    } else if (biography.length < 200 || biography.length > 10000) {
+      dispatch(uiSetError("Please type a biography between 200 and 10000 characters "));
       return false;
     } 
     dispatch(uiRemoveError());

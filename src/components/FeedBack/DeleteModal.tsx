@@ -16,8 +16,10 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { uiDeleteArtist } from "@/reducers/uiSlice";
 import { startDeletingArtist } from "@/actions/artist";
+import { startDeletingRequest } from "@/actions/requests";
 
 export default function DeleteModal() {
+  const { seeRequests } = useAppSelector((state) => state.ui);
   //get the endpoint of the api bd
   const url = process.env.NEXT_PUBLIC_DB_API_ARTISTS;
 
@@ -30,6 +32,10 @@ export default function DeleteModal() {
   const handleDelete = () => {
     dispatch(uiDeleteArtist(false))
     dispatch(startDeletingArtist());
+  };
+  const handleDenyRequest = () => {
+    dispatch(uiDeleteArtist(false))
+    dispatch(startDeletingRequest());
   };
 
   return (
@@ -73,27 +79,68 @@ export default function DeleteModal() {
                       />
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                      <Dialog.Title
-                        as="h3"
-                        className="text-base font-semibold leading-6 text-gray-900"
-                      >
-                        Delete an Artist
-                      </Dialog.Title>
+                      {
+                        seeRequests
+                          ?
+                          (
+                            <Dialog.Title
+                              as="h3"
+                              className="text-base font-semibold leading-6 text-gray-900"
+                            >
+                              Deny Request
+                            </Dialog.Title>
+                          )
+                          :
+                          (
+                            <Dialog.Title
+                              as="h3"
+                              className="text-base font-semibold leading-6 text-gray-900"
+                            >
+                              Delete an Artist
+                            </Dialog.Title>
+                          )
+                      }
+
                       <div className="mt-2">
-                        <p className="text-sm text-gray-500">
-                        Once you perform this action, the artist will no longer be visible in the app and the information cannot be recovered.                        </p>
+                        {
+                          seeRequests
+                          ?
+                            (<p className="text-sm text-gray-500">Once you perform this action, the request will no longer be visible in the admin panel and the information cannot be recovered.                        </p>
+                          )
+                          :
+                            (<p className="text-sm text-gray-500">Once you perform this action, the artist will no longer be visible in the app and the information cannot be recovered.                        </p>
+                          )
+                        }
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                  <button
-                    type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                    onClick={() => handleDelete()}
-                  >
-                    Delete Anyway
-                  </button>
+                  
+                  {
+                    seeRequests
+                    ?
+                    (
+                      <button
+                      type="button"
+                      className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                      onClick={() => handleDenyRequest()}
+                    >
+                      Delete Request
+                    </button>
+                    )
+                    :
+                    (
+                      <button
+                      type="button"
+                      className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                      onClick={() => handleDelete()}
+                    >
+                      Delete Anyway
+                    </button>
+                    )
+                  }
+                 
 
                   <button
                     type="button"

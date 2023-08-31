@@ -9,13 +9,13 @@ const initialState: Artist = {
   biography: "",
   songs: [],
   profiles: [
-    {name: 'Web Site', link: ''},
-    {name: 'Facebook', link: ''}, 
-    {name: 'Music', link: ''}, 
-    {name: 'My Space', link: ''},
-    {name: 'SoundCloud', link: ''},
-    {name: 'YouTube', link: ''}, 
-    {name: 'X', link: ''},   
+    { name: 'Web Site', link: '', image: "/public/website.png" },
+    { name: 'Facebook', link: '', image: "/public/facebook.png" },
+    { name: 'Music', link: '', image: "/public/music.png" },
+    { name: 'My Space', link: '', image: "/public/myspace.png" },
+    { name: 'SoundCloud', link: '', image: "/public/soundcloud.png" },
+    { name: 'YouTube', link: '', image: "/public/youtube.png" },
+    { name: 'X', link: '', image: "/public/twitter.png" },
   ],
   images: [],
   ranking: 100,
@@ -32,13 +32,13 @@ const artistSlice = createSlice({
         ...action.payload,
       };
     },
-    adminEditArtist: (state,  action: PayloadAction<Partial<Artist>>) => {
+    adminEditArtist: (state, action: PayloadAction<Partial<Artist>>) => {
       return {
         ...state,
         ...action.payload,
       };
     },
-   
+
     adminResetArtist: () => {
       return initialState;
     }

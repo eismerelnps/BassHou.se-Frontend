@@ -6,10 +6,12 @@ import { useRouter } from "next/navigation";
 
 export default function OpenArtist({item }: {item: Artist}) {
   const router = useRouter()
-  const dispatch = useAppDispatch()
+  //const dispatch = useAppDispatch()
+
   const handdleOpenArtist = () => {
-    dispatch(adminAddArtist(item))
-    router.push('./artist')
+    const  { _id  } = item
+    router.push(`/artist/?S=${_id}`);
+
   }
   return (
     <div className="flex justify-center   my-2">

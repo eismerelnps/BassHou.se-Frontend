@@ -4,6 +4,7 @@ import { Dispatch, AnyAction } from 'redux';
 
 import { RootState, rootReducer } from "@/store/store";
 import { fileUpload } from "@/helpers/fileUpload";
+import { adminEditArtist } from "@/reducers/artistSlice";
 
 const token = process.env.NEXT_PUBLIC_TOKEN || '';
 const url = process.env.NEXT_PUBLIC_DB_API_ARTISTS || '';
@@ -133,7 +134,7 @@ export const startUploadingPhoto = (file: File) => {
     dispatch(uiSetCloudImageMessage("Uploading image..."));
     const fileUrl = await fileUpload(file);
     if (fileUrl) {
-      //dispatch(adminEditArtist({item: 'image', fileUrl: fileUrl}))
+      dispatch(adminEditArtist({images: [fileUrl]}))
       dispatch(uiFinishUpLoadingImage());
       dispatch(uiSetCloudImageMessage("Image uploaded successfully"));
     }

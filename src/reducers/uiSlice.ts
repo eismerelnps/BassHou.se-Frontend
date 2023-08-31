@@ -11,7 +11,8 @@ interface UiState {
   msgError: string;
   uploadingImage: boolean;
   cloudImageMessage: string;
-  searchText: string;
+  
+  seeRequests: boolean;
 
 }
 
@@ -26,7 +27,8 @@ const initialState: UiState = {
   msgError: "",
   uploadingImage: false,
   cloudImageMessage: "",
-  searchText: ""
+  
+  seeRequests: false
 };
 
 const uiSlice = createSlice({
@@ -59,9 +61,6 @@ const uiSlice = createSlice({
     uiRemoveCloudImageMessage: (state) => {
       state.cloudImageMessage = "";
     },
-    uiSetSearchText: (state, action: PayloadAction<string>) => {
-      state.searchText = action.payload;
-    },
     uiEditArtist: (state, action: PayloadAction<boolean>) => {
       state.editArtist = action.payload;
     },
@@ -73,7 +72,10 @@ const uiSlice = createSlice({
     },
     uiDeleteArtist: (state, action: PayloadAction<boolean>) => {
       state.deleteArtist = action.payload;
-    }
+    },
+    adminSetSeeRequests: (state, action: PayloadAction<boolean>) => {
+      state.seeRequests = action.payload;
+    },
   },
 });
 
@@ -94,8 +96,8 @@ export const {
   uiSetCloudImageMessage,
   uiRemoveCloudImageMessage,
 
-  //edits the search field on context to handle a app search
-  uiSetSearchText,
+  //edits the seeRequests properti on context to display the requests or the artists on admin panel
+  adminSetSeeRequests,
 
   //enables or disable the modal with filled form for editing and artist info and update it to db
   uiEditArtist,

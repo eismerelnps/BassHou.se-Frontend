@@ -6,7 +6,7 @@ export interface Artist {
     briefDescription: string;
     biography: string;
     songs: string[];
-    profiles: { name: string; link: string }[];
+    profiles: { name: string; link: string, image: string }[];
     images: string[];
     ranking: number;
     visible: boolean;

@@ -10,10 +10,12 @@ import EditArtists from './EditArtistsButton';
 import AddArtist from './AddArtist';
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { useForm } from '@/hooks/useForm';
+import AcceptRequest from './AcceptRequest';
 
 export default function Form() {
     const dispatch = useAppDispatch();
     const artist = useAppSelector((state) => state.artist);
+    const { seeRequests } = useAppSelector((state) => state.ui);
     const { cloudImageMessage, uploadingImage, addArtist, editArtist } = useAppSelector((state) => state.ui);
 
 
@@ -51,7 +53,7 @@ export default function Form() {
         dispatch(uiEditArtist(false));
         dispatch(adminResetArtist())
     }
-    
+
     const handdleCancel = () => {
         dispatch(uiEditArtist(false));
         dispatch(uiAddArtist(false));
@@ -188,7 +190,7 @@ export default function Form() {
                                                                 PNG, JPG to 1MB
                                                             </span>
                                                         </div>
-                                                    
+
                                                     </div>
                                                 )}
                                                 <h2 className=" mt-4 text-center text-xs leading-5 text-gray-600">
@@ -478,8 +480,9 @@ export default function Form() {
                 >
                     Cancelar
                 </button>
-                {addArtist && <AddArtist />}
-                {editArtist && <EditArtists />}
+
+
+                {seeRequests ? <AcceptRequest /> : (addArtist ? <AddArtist /> : <EditArtists />)}
             </div>
         </form>
     )
