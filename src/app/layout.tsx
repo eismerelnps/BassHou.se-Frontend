@@ -32,6 +32,7 @@ const PersistProvider = dynamic(
 );
 const inter = Inter({ subsets: ["latin"] });
 
+const id = process.env.NEXT_PUBLIC_ANALYTICS_ID;
 
 export default function RootLayout({
   children,
@@ -42,14 +43,14 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* <link rel="icon" href="" /> */}
-         <Script src={`https://www.googletagmanager.com/gtag/G-G047DKTEXM`} />
+         <Script src={`https://www.googletagmanager.com/gtag/${id}`}  />
         <Script id="google-analytics">
           {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
  
-          gtag('config', 'G-G047DKTEXM');
+          gtag('config', ${id});
         `}
         </Script> 
         {/* <Script
