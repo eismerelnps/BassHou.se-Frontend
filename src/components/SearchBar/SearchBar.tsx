@@ -4,8 +4,6 @@ import giphy from '/public/giphy.gif';
 import { rubik_glitch } from '@/fonts/glitch_goblin';
 
 import { useRouter } from 'next/navigation';
-import { useDispatch } from 'react-redux';
-import { uiSetSearchText } from '@/reducers/uiSlice';
 
 import './searchBar.css'
 

@@ -1,5 +1,4 @@
 'use client'
-import { startDeletingRequest } from '@/actions/requests';
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { Artist } from '@/interfaces/Artists';
 import { adminAddArtist } from '@/reducers/artistSlice';
