@@ -10,7 +10,7 @@ import ArtistList from '@/components/ArtistList/ArtistList'
 export default async function IndexPage() {
  
  const fetchMenu = () => {
-  return fetch(url, { cache: "no-store" }).then((res) => res.json());
+  return fetch(url).then((res) => res.json());
    };
 
  const artists = await fetchMenu();
