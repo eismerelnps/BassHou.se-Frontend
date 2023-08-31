@@ -6,7 +6,7 @@ import AddNewArtistButton from './AddNewArtistButton'
 import SwitchRender from './SwitchRender'
 import { useAppSelector } from '@/hooks'
 
-export default function AdminPanel({ artists, requests }: { artists: Artist[], requests: any }) {
+export default function AdminPanel({ artists, requests }: { artists: Artist[], requests: Artist[] }) {
     const { seeRequests } = useAppSelector((state) => state.ui);
 
     return (
