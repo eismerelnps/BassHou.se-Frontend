@@ -43,7 +43,7 @@ export const startAcceptingRequestAndDelete = () => {
       .then((data) => {
         dispatch(uiFinishLoading());
         dispatch(uiSetError(data.message));
-        dispatch(startDeletingRequest())
+        //dispatch(startDeletingRequest())
         
       })
 
