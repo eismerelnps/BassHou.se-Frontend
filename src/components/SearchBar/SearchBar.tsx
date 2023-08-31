@@ -3,7 +3,7 @@ import Image from 'next/image';
 import giphy from '/public/giphy.gif';
 import { rubik_glitch } from '@/fonts/glitch_goblin';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import './searchBar.css'
 
@@ -11,13 +11,12 @@ import './searchBar.css'
 
 export default function SearchBar() {
   const router = useRouter();
-  //const dispatch = useDispatch()
+  const searchParams = useSearchParams();
+  const searchText = searchParams.get("search");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { value } = event.target;
-
-    //dispatch(uiSetSearchText(value))
     router.refresh();
     router.push(`/main/?search=${value}`);
 
@@ -51,6 +50,7 @@ export default function SearchBar() {
           <div className='flex justify-center mt-4 '>
             <div className=" mt-2 rounded-[1px] w-1/2  shadow-sm">
               <input
+              value={searchText}
                 onChange={handleInputChange}
                 id="searchArtist"
                 name="searchArtist"
