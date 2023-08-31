@@ -13,6 +13,12 @@ const images = {
         port: "",
         pathname: "/sites/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "/de3tluzbk/**",
+      },
     ],
   }
 
@@ -26,6 +32,12 @@ module.exports = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "/**", 
+      }
     ],
   }
   
