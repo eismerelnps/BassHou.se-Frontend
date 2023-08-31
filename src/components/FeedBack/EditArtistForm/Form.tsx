@@ -1,6 +1,6 @@
 import { startUploadingPhoto } from '@/actions/artist';
 import { adminEditArtist, adminResetArtist } from '@/reducers/artistSlice';
-import { uiAddArtist, uiEditArtist } from '@/reducers/uiSlice';
+import { uiAddArtist, uiEditArtist, uiRequestAddArtist } from '@/reducers/uiSlice';
 import React, { useState } from 'react'
 import { UpLoadingImage } from '../UpLoadingImage';
 import Image from 'next/image';
@@ -11,12 +11,14 @@ import AddArtist from './AddArtist';
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { useForm } from '@/hooks/useForm';
 import AcceptRequest from './AcceptRequest';
+import AddNewRequestButton from '@/components/SearchBar/AddNewRequestButton';
+import AddNewArtistButton from '@/components/AdminPanel/AddNewArtistButton';
+import AddRequest from './AddRequest';
 
 export default function Form() {
     const dispatch = useAppDispatch();
     const artist = useAppSelector((state) => state.artist);
-    const { seeRequests } = useAppSelector((state) => state.ui);
-    const { cloudImageMessage, uploadingImage, addArtist, editArtist } = useAppSelector((state) => state.ui);
+    const { cloudImageMessage, uploadingImage } = useAppSelector((state) => state.ui);
 
 
     // hook use
@@ -54,11 +56,7 @@ export default function Form() {
         dispatch(adminResetArtist())
     }
 
-    const handdleCancel = () => {
-        dispatch(uiEditArtist(false));
-        dispatch(uiAddArtist(false));
-        dispatch(adminResetArtist());
-    };
+    
 
 
 
@@ -472,18 +470,7 @@ export default function Form() {
                 </div>
             </div>
 
-            <div className="mt-6 flex items-center justify-end gap-x-6">
-                <button
-                    onClick={handdleCancel}
-                    type="button"
-                    className="text-sm font-semibold leading-6 text-gray-900"
-                >
-                    Cancelar
-                </button>
-
-
-                {seeRequests ? <AcceptRequest /> : (addArtist ? <AddArtist /> : <EditArtists />)}
-            </div>
+          
         </form>
     )
 }

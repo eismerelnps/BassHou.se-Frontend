@@ -6,26 +6,38 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { adminResetArtist } from "@/reducers/artistSlice";
 
 import Form from "./Form";
-import { uiAddArtist, uiEditArtist } from "@/reducers/uiSlice";
+import AcceptRequest from "./AcceptRequest";
+import AddArtist from "./AddArtist";
+import EditArtists from "./EditArtistsButton";
+import AddRequest from "./AddRequest";
+import { uiAddArtist, uiEditArtist, uiEditRequests, uiRequestAddArtist } from "@/reducers/uiSlice";
 
 
 export default function EditArtistForm() {
     const dispatch = useAppDispatch();
     const artist = useAppSelector((state) => state.artist);
-   
-    const { editArtist, addArtist } = useAppSelector((state) => state.ui);
+
+    const { seeRequests, requestAddArtist, addArtist, editArtist, editRequest } = useAppSelector((state) => state.ui);
 
 
     const handleCloseForm = () => {
-        // dispatch(adminResetArtist());
-        // dispatch(uiAddArtist(false));
-        // dispatch(uiEditArtist(false));
+        //dispatch(adminResetArtist());
+        //dispatch(uiAddArtist(false));
+        //dispatch(uiEditArtist(false));
+        //dispatch(uiRequestAddArtist(false))
     }
+    const handdleCancel = () => {
+        dispatch(uiEditArtist(false));
+        dispatch(uiAddArtist(false));
+        dispatch(adminResetArtist());
+        dispatch(uiRequestAddArtist(false));
+        dispatch(uiEditRequests(false))
+    };
 
     return (
 
         <div className="mt-16">
-            <Transition.Root show={editArtist || addArtist} as={Fragment}>
+            <Transition.Root show={editArtist || addArtist || requestAddArtist || editRequest  } as={Fragment}>
                 <Dialog
                     as="div"
                     className="relative z-30"
@@ -70,20 +82,27 @@ export default function EditArtistForm() {
                                                     Edit Artist&apos;s Info
                                                 </Dialog.Title>
                                                 <div className="mt-2">
-                                                        <div className="space-y-12">
-                                                            <div>
-                                                                <p
-                                                                    className={`${'quicksand.className'} mt-1 text-sm leading-6 text-gray-600`}>
-                                                                    Please verify all fields before submitting any change
-                                                                </p>
-                                                            </div>
-
+                                                    <div className="space-y-12">
+                                                        <div>
+                                                            <p
+                                                                className={`${'quicksand.className'} mt-1 text-sm leading-6 text-gray-600`}>
+                                                                Please verify all fields before submitting any change
+                                                            </p>
                                                         </div>
-                                                    
+
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
                                         <Form />
+                                        <div className="mt-6 flex items-center justify-end gap-x-6">
+                                            <button onClick={handdleCancel} type="button" className="text-sm font-semibold leading-6 text-gray-900"> Cancelar </button>
+                                            {seeRequests && <AcceptRequest />}
+                                            {addArtist && <AddArtist />}
+                                            {editArtist && <EditArtists />}
+                                            {requestAddArtist && <AddRequest />}
+                                        </div>
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
@@ -92,6 +111,5 @@ export default function EditArtistForm() {
                 </Dialog>
             </Transition.Root>
         </div>
-
     )
 }

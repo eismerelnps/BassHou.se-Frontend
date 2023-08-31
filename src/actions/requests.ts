@@ -26,6 +26,44 @@ const headers: HttpHeaders = {
 };
 
 
+
+
+//To add a new request to the database
+export const startAddingNewRequest = () => {
+  return async (dispatch: Dispatch<AnyAction>, getState: () => RootState) => {
+    //const { token } = getState().auth;
+    const artist = getState().artist;
+
+    
+
+    dispatch(uiStartLoading());
+    fetch(urlRequests, {
+      method: "POST",
+      body: JSON.stringify(artist),
+      headers
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(uiFinishLoading());
+        dispatch(uiSetError(data.message));
+        //router.refresh();
+      })
+
+      .catch((error) => {
+        dispatch(uiFinishLoading());
+        dispatch(
+          uiSetError(
+            "There was an error adding the artist. Please try again."
+          )
+        );
+      });
+  };
+};
+
+
+
+
+// in administration to accep a request
 export const startAcceptingRequestAndDelete = () => {
   return async (dispatch: Dispatch<AnyAction>, getState: () => RootState) => {
     //const { token } = getState().auth;

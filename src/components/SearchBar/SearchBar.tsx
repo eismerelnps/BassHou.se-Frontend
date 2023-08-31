@@ -6,6 +6,7 @@ import { rubik_glitch } from '@/fonts/glitch_goblin';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import './searchBar.css'
+import AddNewRequestButton from './AddNewRequestButton';
 
 
 
@@ -17,7 +18,6 @@ export default function SearchBar() {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { value } = event.target;
-    router.refresh();
     router.push(`/main/?search=${value}`);
 
   };
@@ -27,12 +27,18 @@ export default function SearchBar() {
     <div className='fixed top-0  w-full z-30 '>
 
 <div className='w-full h-12 bg-white flex items-center overflow-hidden'>
+<div className='marquee-container'>
   <div className='marquee-content'>
-    House Music Forever! ¡Música house para siempre! Musique house pour toujours ! 永遠的浩室音樂！
+    House Music Forever! ¡Música house para siempre! Musique house pour toujours ! 永遠的浩室音樂！موسيقى البيت إلى الأبد! House glazba zauvijek! Huismusiek vir altyd! Muzyka house na zawsze!  Muzică House pentru totdeauna! Хаусмузыка навсегда! Doma Muziko Eterne! Âm nhạc gia đình mãi mãi! Musique house pour toujours!
+  </div>
+  <div className='marquee-content'>
+    House Music Forever! ¡Música house para siempre! Musique house pour toujours ! 永遠的浩室音樂！موسيقى البيت إلى الأبد! House glazba zauvijek! Huismusiek vir altyd! Muzyka house na zawsze!  Muzică House pentru totdeauna! Хаусмузыка навсегда! Doma Muziko Eterne! Âm nhạc gia đình mãi mãi! Musique house pour toujours!
   </div>
 </div>
+  
+</div>
 
-      <div className='relative bg-[#efed84] py-4  '>
+      <div className='relative bg-[#efed84] pb-2  '>
 
         <div className='flex flex-col  place-content-stretch'>
           <div className='flex flex-col sm:flex-row mt-8 justify-center  items-center'>
@@ -50,7 +56,7 @@ export default function SearchBar() {
           <div className='flex justify-center mt-4 '>
             <div className=" mt-2 rounded-[1px] w-1/2  shadow-sm">
               <input
-              value={searchText}
+                value={searchText}
                 onChange={handleInputChange}
                 id="searchArtist"
                 name="searchArtist"
@@ -65,6 +71,9 @@ export default function SearchBar() {
                           placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
               />
             </div>
+          </div>
+          <div>
+            <AddNewRequestButton />
           </div>
 
           <div className='flex flex-row justify-center mt-4  '>

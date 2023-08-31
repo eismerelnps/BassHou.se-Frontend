@@ -13,6 +13,7 @@ interface UiState {
   cloudImageMessage: string;
   
   seeRequests: boolean;
+  editRequest: boolean;
 
 }
 
@@ -28,7 +29,8 @@ const initialState: UiState = {
   uploadingImage: false,
   cloudImageMessage: "",
   
-  seeRequests: false
+  seeRequests: false,
+  editRequest: false,
 };
 
 const uiSlice = createSlice({
@@ -73,6 +75,9 @@ const uiSlice = createSlice({
     uiDeleteArtist: (state, action: PayloadAction<boolean>) => {
       state.deleteArtist = action.payload;
     },
+    uiEditRequests: (state, action: PayloadAction<boolean>) => {
+      state.editRequest = action.payload;
+    },
     adminSetSeeRequests: (state, action: PayloadAction<boolean>) => {
       state.seeRequests = action.payload;
     },
@@ -105,6 +110,8 @@ export const {
   uiAddArtist,
   //enables or disable the modal with a empty form for adding a new artist request to administration
   uiRequestAddArtist,
+  //enambles the form to edit a request
+  uiEditRequests, 
   //handle a modal to confirm that the artist will be removed from the db
   uiDeleteArtist,
 } = uiSlice.actions;
