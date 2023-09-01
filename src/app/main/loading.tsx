@@ -1,8 +1,7 @@
-import Skeleton from '@/components/Skeleton/Skeleton'
-import React from 'react'
+import SkeletonArtistCard from '@/components/Loading/LoadingArtistCard'
 
 export default function loading() {
   return (
-    <Skeleton/>
+    <SkeletonArtistCard />
   )
 }

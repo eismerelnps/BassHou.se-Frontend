@@ -18,6 +18,7 @@ export default async function ArtistCard({ item }: { item: Artist }) {
     sm:w-48 sm:basis-1/2 sm:mx-0 sm:px-4
     md:basis-1/3 
     lg:lg:basis-1/4 
+    
    ` }>
 
       <section className='
@@ -26,7 +27,7 @@ export default async function ArtistCard({ item }: { item: Artist }) {
         h-full
         border-2 border-slate-950
         shadow shadow-sky-100/50 
-        hover:shadow-lg hover:shadow-sky-200/50'>
+        hover:shadow-sm hover:shadow-yellow-500 '>
         <article className='flex flex-col'>
           {
             images[0]

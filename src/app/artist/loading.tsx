@@ -1,8 +1,5 @@
-import Skeleton from '@/components/Skeleton/Skeleton'
-import React from 'react'
+import LoadingArtistScreen from '@/components/Loading/LoadingArtistScreen'
 
 export default function loading() {
-  return (
-    <Skeleton/>
-  )
+  return <LoadingArtistScreen />
 }

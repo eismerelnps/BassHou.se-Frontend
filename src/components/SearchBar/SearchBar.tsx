@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import AddNewRequestButton from './AddNewRequestButton';
 import Marquee from '../Marquee/Marquee';
+import Link from 'next/link';
 
 
 
@@ -31,7 +32,7 @@ export default function SearchBar() {
       <div className='relative bg-[#efed84] pb-2  '>
 
         <div className='flex flex-col  place-content-stretch'>
-          <div className='flex flex-col sm:flex-row mt-2 sm:mt-8 justify-center  items-center'>
+          <Link href={'/main'} className='flex flex-col sm:flex-row mt-2 sm:mt-8 justify-center  items-center'>
             <Image
               width={70}
               height={70}
@@ -39,7 +40,7 @@ export default function SearchBar() {
               alt='giphy'
             />
             <h1 className={`${rubik_glitch.className} text-xl sm:text-4xl text-center align-middle`}>BASSHOU.SE</h1>
-          </div>
+          </Link>
           <div className='text-center text-xs sm:text-xl mt-2 sm:mt-4 '>
             <h2>The biggest database of Bass House Artists!</h2>
           </div>

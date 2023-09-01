@@ -15,7 +15,7 @@ import { useSearchParams } from 'next/navigation';
 import { getArtistsById } from '@/helpers/getArtistById';
 import { Artist } from '@/interfaces/Artists';
 
-const networkImages = [website, facebook, music, myspace, soundcloud, youtube, twitter ]
+const networkImages = [website, facebook, music, myspace, soundcloud, youtube, twitter]
 
 export default function ArtistScreen({ artists }: { artists: Artist[] }) {
   const searchParams = useSearchParams();
@@ -27,11 +27,7 @@ export default function ArtistScreen({ artists }: { artists: Artist[] }) {
     const { artistName, activeSince, briefDescription, biography, songs, profiles, images, ranking, youtubeVideo } = artist
 
     return (
-      <section className='
-      shadow 
-      relative top-72
-      mx-8 mt-2
-      md:mx-24 md:mt-4 px-4 py-8 '>
+      <section className='shadow relative top-72 mx-8 mt-2 md:mx-24 md:mt-4 px-4 py-8 '>
         <hr className='h-0.5 bg-neutral-300 ' />
 
         <div className='flex flex-col sm:flex-row mt-2'>
@@ -110,7 +106,7 @@ export default function ArtistScreen({ artists }: { artists: Artist[] }) {
         <section className='my-4'>
           <h2 className='text-center text-2xl'>Sounds Like:</h2>
           <div className='flex justify-center'>
-            <iframe width="768" height="480" src={youtubeVideo} title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+            <iframe width="768" height="480" src={youtubeVideo} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
           </div>
         </section>
       </section>
