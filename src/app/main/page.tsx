@@ -18,7 +18,7 @@ export default async function IndexPage() {
 
   return (
     <main className="my-5 ">
-      <div className='bg-[#efed84] fixed top-72 my-5 w-full h-20  z-0'></div>
+      <div className='bg-[#efed84] fixed top-60 sm:top-72 my-5 w-full h-24  z-0'></div>
        <ArtistList  artists={artists } />
     </main>
   )

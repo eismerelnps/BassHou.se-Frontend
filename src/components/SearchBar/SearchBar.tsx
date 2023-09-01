@@ -5,8 +5,8 @@ import { rubik_glitch } from '@/fonts/glitch_goblin';
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import './searchBar.css'
 import AddNewRequestButton from './AddNewRequestButton';
+import Marquee from '../Marquee/Marquee';
 
 
 
@@ -25,36 +25,26 @@ export default function SearchBar() {
 
   return (
     <div className='fixed top-0  w-full z-30 '>
+      <Marquee />
 
-<div className='w-full h-12 bg-white flex items-center overflow-hidden'>
-<div className='marquee-container'>
-  <div className='marquee-content'>
-    House Music Forever! ¡Música house para siempre! Musique house pour toujours ! 永遠的浩室音樂！موسيقى البيت إلى الأبد! House glazba zauvijek! Huismusiek vir altyd! Muzyka house na zawsze!  Muzică House pentru totdeauna! Хаусмузыка навсегда! Doma Muziko Eterne! Âm nhạc gia đình mãi mãi! Musique house pour toujours!
-  </div>
-  <div className='marquee-content'>
-    House Music Forever! ¡Música house para siempre! Musique house pour toujours ! 永遠的浩室音樂！موسيقى البيت إلى الأبد! House glazba zauvijek! Huismusiek vir altyd! Muzyka house na zawsze!  Muzică House pentru totdeauna! Хаусмузыка навсегда! Doma Muziko Eterne! Âm nhạc gia đình mãi mãi! Musique house pour toujours!
-  </div>
-</div>
-  
-</div>
 
       <div className='relative bg-[#efed84] pb-2  '>
 
         <div className='flex flex-col  place-content-stretch'>
-          <div className='flex flex-col sm:flex-row mt-8 justify-center  items-center'>
+          <div className='flex flex-col sm:flex-row mt-2 sm:mt-8 justify-center  items-center'>
             <Image
-              width={100}
-              height={100}
+              width={70}
+              height={70}
               src={giphy}
               alt='giphy'
             />
-            <h1 className={`${rubik_glitch.className} text-4xl text-center align-middle`}>BASSHOU.SE</h1>
+            <h1 className={`${rubik_glitch.className} text-xl sm:text-4xl text-center align-middle`}>BASSHOU.SE</h1>
           </div>
-          <div className='flex justify-center mt-4 '>
+          <div className='text-center text-xs sm:text-xl mt-2 sm:mt-4 '>
             <h2>The biggest database of Bass House Artists!</h2>
           </div>
-          <div className='flex justify-center mt-4 '>
-            <div className=" mt-2 rounded-[1px] w-1/2  shadow-sm">
+          <div className='flex justify-center mt-2 sm:mt-4 '>
+            <div className=" rounded-[1px] w-3/4 sm:w-1/2 shadow-sm">
               <input
                 value={searchText}
                 onChange={handleInputChange}
@@ -68,7 +58,7 @@ export default function SearchBar() {
                           outline  outline-2 outline-slate-950
                           focus:outline-2 hover:bg-slate-50 
                           duration-100 block w-full rounded-[1px]  py-1.5 ps-1.5 text-slate-950 shadow  
-                          placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                          placeholder:text-gray-400 f text-xs  sm:text-sm sm:leading-6`}
               />
             </div>
           </div>
@@ -76,8 +66,8 @@ export default function SearchBar() {
             <AddNewRequestButton />
           </div>
 
-          <div className='flex flex-row justify-center mt-4  '>
-            <p>Powered with ❤️  by</p> <p className='text-red-600'>DJ.com</p>
+          <div className='flex flex-row justify-center mt-2 sm:mt-4  '>
+            <p>Powered with ❤️  by</p> <p className='text-xs sm:text-sm text-red-600'>DJ.com</p>
           </div>
         </div>
 

@@ -10,14 +10,14 @@ export default async function ArtistCard({ item }: { item: Artist }) {
   const { artistName, briefDescription, activeSince, images, visible } = item
   return (
 
-    <article className={`
+    <article className={` 
     ${!visible && 'hidden'}
     bg-white
-    flex-initial mt-4 
+    flex-initial  mt-2
     basis-full   
     sm:w-48 sm:basis-1/2 sm:mx-0 sm:px-4
     md:basis-1/3 
-    lg:lg:basis-1/4 px-2 
+    lg:lg:basis-1/4 
    ` }>
 
       <section className='

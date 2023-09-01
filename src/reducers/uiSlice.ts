@@ -37,47 +37,57 @@ const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    uiSetError: (state, action: PayloadAction<string>) => {
+     //adds or removes the modal panel to the app
+    uiSetError: (state, action: PayloadAction<string>) => {//(receives as parameters the message)
       state.msgError = action.payload;
       state.showFeedback = true;
     },
-    uiRemoveError: (state) => {
+    uiRemoveError: (state) => {//removes the modal panel from the app
       state.msgError = "";
       state.showFeedback = false;
     },
+    // adds or removes the backdrop to avoid user do any action during fetching
     uiStartLoading: (state) => {
       state.loading = true;
     },
     uiFinishLoading: (state) => {
       state.loading = false;
     },
+      //adds or removes the feedback to app when a artist's image us uploading to cloud
     uiStartUpLoadingImage: (state) => {
       state.uploadingImage = true;
     },
     uiFinishUpLoadingImage: (state) => {
       state.uploadingImage = false;
     },
+     //adds or removes the feedback to app when a artist's image is uploaded to cloud
     uiSetCloudImageMessage: (state, action: PayloadAction<string>) => {
       state.cloudImageMessage = action.payload;
     },
     uiRemoveCloudImageMessage: (state) => {
       state.cloudImageMessage = "";
     },
+     //enables or disable the modal with filled form for editing and artist info and update it to db
     uiEditArtist: (state, action: PayloadAction<boolean>) => {
       state.editArtist = action.payload;
     },
+      //enables or disable the modal with a empty form for adding a new artist to db
     uiAddArtist: (state, action: PayloadAction<boolean>) => {
       state.addArtist = action.payload;
     },
+      //enables or disable the modal with a empty form for adding a new artist request to administration
     uiRequestAddArtist: (state, action: PayloadAction<boolean>) => {
       state.requestAddArtist = action.payload;
     },
+      //handle a modal to confirm that the artist will be removed from the db
     uiDeleteArtist: (state, action: PayloadAction<boolean>) => {
       state.deleteArtist = action.payload;
     },
+     //enambles the form to edit a request
     uiEditRequests: (state, action: PayloadAction<boolean>) => {
       state.editRequest = action.payload;
     },
+     //edits the seeRequests properti on context to display the requests or the artists on admin panel
     adminSetSeeRequests: (state, action: PayloadAction<boolean>) => {
       state.seeRequests = action.payload;
     },
