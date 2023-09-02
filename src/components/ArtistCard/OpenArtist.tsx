@@ -16,7 +16,5 @@ export default function OpenArtist({item }: {item: Artist}) {
         More...
       </button>
     </div>
-
-
   )
 }

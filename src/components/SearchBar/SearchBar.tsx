@@ -9,18 +9,25 @@ import AddNewRequestButton from './AddNewRequestButton';
 import Marquee from '../Marquee/Marquee';
 import Link from 'next/link';
 import { Artist } from '@/interfaces/Artists';
+import { uiSetSearchText } from '@/reducers/uiSlice';
+import { useAppDispatch } from '@/hooks';
 
 
 
 export default function SearchBar({ artists }: { artists: Artist[] }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const searchText = searchParams.get("search") || '';
+
+  const dispatch = useAppDispatch();
+
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { value } = event.target;
-    router.push(`/main/?search=${value}`);
+    dispatch(uiSetSearchText(value))
+    router.push('/main');
+    router.refresh();
+   
+  
 
   };
 
@@ -48,7 +55,7 @@ export default function SearchBar({ artists }: { artists: Artist[] }) {
           <div className='flex justify-center mt-2 sm:mt-4 '>
             <div className=" rounded-[1px] w-3/4 sm:w-1/2 shadow-sm">
               <input
-                value={searchText}
+
                 onChange={handleInputChange}
                 id="searchArtist"
                 name="searchArtist"
@@ -69,7 +76,7 @@ export default function SearchBar({ artists }: { artists: Artist[] }) {
           </div>
 
           <div className='flex flex-row justify-center mt-2 sm:mt-4  '>
-            <p>Powered with ❤️  by</p> <p className='text-xs sm:text-sm text-red-600'>DJ.com</p>
+            <p>Powered with ❤️  by </p> <p className='text-xs sm:text-sm text-red-600'> DJ.com</p>
           </div>
         </div>
 
