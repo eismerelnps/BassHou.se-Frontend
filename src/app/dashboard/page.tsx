@@ -15,6 +15,8 @@ export default async function DashboardPage() {
   const artists = await fetchArtists();
   const requests  = await fetchRequests();
 
+   
+
    return <AdminPanel artists={artists} requests={requests}/>;
   
 }
