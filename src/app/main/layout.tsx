@@ -1,4 +1,5 @@
 import ArtistList from '@/components/ArtistList/ArtistList';
+import LoadingArtistCard from '@/components/Loading/LoadingArtistCard';
 import SearchBar from '@/components/SearchBar/SearchBar'
 import React from 'react'
 
@@ -21,6 +22,7 @@ export default async function layout({ children }: { children: React.ReactNode }
       <main className="my-5 ">
       <div className='bg-[#efed84] fixed top-60 sm:top-72 my-5 w-full h-24  z-0'></div>
       <ArtistList artists={artists} />
+     
     </main>
     </div>
   )

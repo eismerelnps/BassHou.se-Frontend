@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SkeletonArtistCard() {
+export default function LoadingArtistCard() {
   return (
     <div className="relative top-72  ">
       <div className=" bg-white flex flex-wrap flex-col mx-1 sm:mx-12 mb-8  sm:flex-row  place-content-start shadow-xl pb-8 z-10 ">

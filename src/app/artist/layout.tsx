@@ -1,4 +1,5 @@
 import ArtistScreen from '@/components/ArtistScreen/ArtistScreen';
+import LoadingArtistScreen from '@/components/Loading/LoadingArtistScreen';
 import SearchBar from '@/components/SearchBar/SearchBar'
 import React from 'react'
 
@@ -17,6 +18,7 @@ export default async function layout({ children }: { children: React.ReactNode }
     <div>
       <SearchBar artists={artists} />
       <ArtistScreen artists={artists} />
+      
     </div>
   )
 }

@@ -25,8 +25,8 @@ export default async function ArtistCard({ item }: { item: Artist }) {
         justify-between
         h-full
         border-2 border-slate-950
-        shadow shadow-sky-100/50 
-        hover:shadow-lg hover:shadow-sky-200/50'>
+        shadow shadow-yellow-100/50 
+        hover:shadow-lg hover:shadow-yellow-200/50'>
         <article className='flex flex-col'>
           {
             images[0]
