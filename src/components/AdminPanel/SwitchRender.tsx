@@ -1,6 +1,6 @@
 'use client'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { adminSetSeeRequests } from '@/reducers/uiSlice'
+import { uiSeeRequests } from '@/reducers/uiSlice'
 import React from 'react'
 
 export default function SwitchRender() {
@@ -9,10 +9,10 @@ export default function SwitchRender() {
 
 
     const handleSeeArtists = () => {
-        dispatch(adminSetSeeRequests(false))
+        dispatch(uiSeeRequests(false))
     }
     const handleSeeRequests = () => {
-        dispatch(adminSetSeeRequests(true))
+        dispatch(uiSeeRequests(true))
     }
     return (
         <div className='flex flex-row justify-center w-full'>

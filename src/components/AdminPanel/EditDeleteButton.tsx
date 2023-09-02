@@ -2,7 +2,7 @@
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { Artist } from '@/interfaces/Artists';
 import { adminAddArtist } from '@/reducers/artistSlice';
-import { adminSetSeeRequests, uiAddArtist, uiDeleteArtist, uiEditArtist, uiEditRequests } from '@/reducers/uiSlice';
+import { uiSeeRequests, uiAddArtist, uiDeleteArtist, uiEditArtist, uiEditRequests } from '@/reducers/uiSlice';
 
 export default function EditDeleteButton({ artist }: { artist: Artist }) {
   const dispatch = useAppDispatch();
@@ -18,7 +18,7 @@ export default function EditDeleteButton({ artist }: { artist: Artist }) {
   }
   const handleOpenEditRequest = () => {
     dispatch(adminAddArtist(artist));
-    dispatch(adminSetSeeRequests(true));
+    dispatch(uiSeeRequests(true));
     dispatch(uiEditRequests(true))
   }
   const handleDenyRequest = () => {

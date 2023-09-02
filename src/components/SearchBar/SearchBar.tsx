@@ -8,10 +8,11 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import AddNewRequestButton from './AddNewRequestButton';
 import Marquee from '../Marquee/Marquee';
 import Link from 'next/link';
+import { Artist } from '@/interfaces/Artists';
 
 
 
-export default function SearchBar() {
+export default function SearchBar({ artists }: { artists: Artist[] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const searchText = searchParams.get("search") || '';
@@ -64,7 +65,7 @@ export default function SearchBar() {
             </div>
           </div>
           <div>
-            <AddNewRequestButton />
+            <AddNewRequestButton artists={artists} />
           </div>
 
           <div className='flex flex-row justify-center mt-2 sm:mt-4  '>

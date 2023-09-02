@@ -6,18 +6,19 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { adminResetArtist } from "@/reducers/artistSlice";
 
 import Form from "./Form";
-import AcceptRequest from "./AcceptRequest";
-import AddArtist from "./AddArtist";
-import EditArtists from "./EditArtistsButton";
-import AddRequest from "./AddRequest";
-import { uiAddArtist, uiEditArtist, uiEditRequests, uiRequestAddArtist } from "@/reducers/uiSlice";
+import AcceptRequest from "./Buttons/AcceptRequest";
+import AddArtist from "./Buttons/AddArtist";
+import EditArtists from "./Buttons/EditArtistsButton";
+import AddRequest from "./Buttons/AddRequest";
+import { uiAddArtist, uiEditArtist, uiEditRequests } from "@/reducers/uiSlice";
+import CancelForm from "./Buttons/Cancel";
 
 
 export default function EditArtistForm() {
     const dispatch = useAppDispatch();
     const artist = useAppSelector((state) => state.artist);
 
-    const { seeRequests, requestAddArtist, addArtist, editArtist, editRequest } = useAppSelector((state) => state.ui);
+    const { seeRequests, addRequest, addArtist, editArtist, editRequest } = useAppSelector((state) => state.ui);
 
 
     const handleCloseForm = () => {
@@ -26,18 +27,12 @@ export default function EditArtistForm() {
         //dispatch(uiEditArtist(false));
         //dispatch(uiRequestAddArtist(false))
     }
-    const handdleCancel = () => {
-        dispatch(uiEditArtist(false));
-        dispatch(uiAddArtist(false));
-        dispatch(adminResetArtist());
-        dispatch(uiRequestAddArtist(false));
-        dispatch(uiEditRequests(false))
-    };
+    
 
     return (
 
         <div className="mt-16">
-            <Transition.Root show={editArtist || addArtist || requestAddArtist || editRequest  } as={Fragment}>
+            <Transition.Root show={editArtist || addArtist || addRequest || editRequest  } as={Fragment}>
                 <Dialog
                     as="div"
                     className="relative z-30"
@@ -97,11 +92,11 @@ export default function EditArtistForm() {
                                         </div>
                                         <Form />
                                         <div className="mt-6 flex items-center justify-end gap-x-6">
-                                            <button onClick={handdleCancel} type="button" className="text-sm font-semibold leading-6 text-gray-900"> Cancelar </button>
+                                            <CancelForm/>
                                             {seeRequests && <AcceptRequest />}
                                             {addArtist && <AddArtist />}
                                             {editArtist && <EditArtists />}
-                                            {requestAddArtist && <AddRequest />}
+                                            {addRequest && <AddRequest />}
                                         </div>
                                     </div>
                                 </Dialog.Panel>

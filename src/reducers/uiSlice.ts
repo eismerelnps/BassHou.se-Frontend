@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface UiState {
   editArtist: boolean;
   addArtist: boolean;
-  requestAddArtist: boolean;
+  addRequest: boolean;
   deleteArtist: boolean;
 
   loading: boolean;
@@ -20,8 +20,10 @@ interface UiState {
 const initialState: UiState = {
   editArtist: false,
   addArtist: false,
-  requestAddArtist: false,
+  addRequest: false,
   deleteArtist: false,
+  seeRequests: false,
+  editRequest: false,
 
   loading: false,
   showFeedback: false,
@@ -29,8 +31,7 @@ const initialState: UiState = {
   uploadingImage: false,
   cloudImageMessage: "",
   
-  seeRequests: false,
-  editRequest: false,
+  
 };
 
 const uiSlice = createSlice({
@@ -76,8 +77,8 @@ const uiSlice = createSlice({
       state.addArtist = action.payload;
     },
       //enables or disable the modal with a empty form for adding a new artist request to administration
-    uiRequestAddArtist: (state, action: PayloadAction<boolean>) => {
-      state.requestAddArtist = action.payload;
+    uiAddRequest: (state, action: PayloadAction<boolean>) => {
+      state.addRequest = action.payload;
     },
       //handle a modal to confirm that the artist will be removed from the db
     uiDeleteArtist: (state, action: PayloadAction<boolean>) => {
@@ -87,8 +88,8 @@ const uiSlice = createSlice({
     uiEditRequests: (state, action: PayloadAction<boolean>) => {
       state.editRequest = action.payload;
     },
-     //edits the seeRequests properti on context to display the requests or the artists on admin panel
-    adminSetSeeRequests: (state, action: PayloadAction<boolean>) => {
+     //edits the seeRequests property on context to display the requests or the artists on admin panel
+    uiSeeRequests: (state, action: PayloadAction<boolean>) => {
       state.seeRequests = action.payload;
     },
   },
@@ -112,14 +113,14 @@ export const {
   uiRemoveCloudImageMessage,
 
   //edits the seeRequests properti on context to display the requests or the artists on admin panel
-  adminSetSeeRequests,
+  uiSeeRequests,
 
   //enables or disable the modal with filled form for editing and artist info and update it to db
   uiEditArtist,
   //enables or disable the modal with a empty form for adding a new artist to db
   uiAddArtist,
   //enables or disable the modal with a empty form for adding a new artist request to administration
-  uiRequestAddArtist,
+  uiAddRequest,
   //enambles the form to edit a request
   uiEditRequests, 
   //handle a modal to confirm that the artist will be removed from the db

@@ -1,25 +1,19 @@
 import { startUploadingPhoto } from '@/actions/artist';
 import { adminEditArtist, adminResetArtist } from '@/reducers/artistSlice';
-import { uiAddArtist, uiEditArtist, uiRequestAddArtist } from '@/reducers/uiSlice';
+import { uiEditArtist } from '@/reducers/uiSlice';
 import React, { useState } from 'react'
 import { UpLoadingImage } from '../UpLoadingImage';
 import Image from 'next/image';
-import { Artist } from '@/interfaces/Artists';
+
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import EditArtists from './EditArtistsButton';
-import AddArtist from './AddArtist';
+
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { useForm } from '@/hooks/useForm';
-import AcceptRequest from './AcceptRequest';
-import AddNewRequestButton from '@/components/SearchBar/AddNewRequestButton';
-import AddNewArtistButton from '@/components/AdminPanel/AddNewArtistButton';
-import AddRequest from './AddRequest';
 
 export default function Form() {
     const dispatch = useAppDispatch();
     const artist = useAppSelector((state) => state.artist);
-    const { cloudImageMessage, uploadingImage } = useAppSelector((state) => state.ui);
-
+    const { cloudImageMessage, uploadingImage, addArtist, addRequest } = useAppSelector((state) => state.ui);
 
     // hook use
     const [formValues, handleInputChange, reset] = useForm(artist);
@@ -47,7 +41,7 @@ export default function Form() {
             //call the function that is responsible for uploading the image
             dispatch(startUploadingPhoto(file));
         }
-        //console.log(file);
+        
     };
 
 
@@ -56,7 +50,7 @@ export default function Form() {
         dispatch(adminResetArtist())
     }
 
-    
+
 
 
 
@@ -72,7 +66,7 @@ export default function Form() {
 
         // Here we remove the element if the input is empty
         if (event.target.value === '') {
-            newSongs.splice(index, 1); // Eliminamos el elemento del array
+            newSongs.splice(index, 1); 
         }
         //get actual artist from context and updates the songs field
         const updatedArtist = {
@@ -208,8 +202,9 @@ export default function Form() {
                                 htmlFor="name"
                                 className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
                             >
-                                Artist&apos;s name
+                                Artist&apos;s name*
                             </label>
+                            
                             <div className="">
                                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">{name} </span> */}
@@ -231,7 +226,7 @@ export default function Form() {
                                 htmlFor="name"
                                 className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
                             >
-                                Ranking
+                                Last Ranking
                             </label>
                             <div className="">
                                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -242,7 +237,7 @@ export default function Form() {
                                         name="ranking"
                                         id="ranking"
                                         autoComplete="off"
-                                        className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow  placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                        className={`${( addRequest || addArtist)  && 'pointer-events-none' }   bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow  placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
                                         placeholder="Ranking"
                                         onChange={handleInputChange}
                                     />
@@ -470,7 +465,7 @@ export default function Form() {
                 </div>
             </div>
 
-          
+
         </form>
     )
 }

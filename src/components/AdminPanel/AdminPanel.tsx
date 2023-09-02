@@ -17,7 +17,7 @@ export default function AdminPanel({ artists, requests }: { artists: Artist[], r
         px-0.5 mb-8 sm:flex-row 
         shadow-xl z-10'>
 
-            <AddNewArtistButton />
+            <AddNewArtistButton artists={artists} />
             <SwitchRender />
             <table className="table-auto w-full border-separate border-spacing-y-6">
                 <thead className="
@@ -69,17 +69,12 @@ export default function AdminPanel({ artists, requests }: { artists: Artist[], r
                                         {artist.visible ? <td className='text-emerald-400 '>Visible</td> : <td className='text-red-400'>Hidden</td>}
                                         <td className='text-neutral-500'>{artist.ranking}</td>
                                         <EditDeleteButton artist={artist} />
-
                                     </tr>
-
                                 </>
-
                             ))}
                         </tbody>
                         )
                 }
-
-
             </table>
         </section>
 
