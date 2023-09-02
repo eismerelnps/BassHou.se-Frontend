@@ -14,11 +14,5 @@ const fetchMenu = () => {
 export default async function layout({ children }: { children: React.ReactNode }) {
   const artists = await fetchMenu();
 
-  return (
-    <div>
-      <SearchBar artists={artists} />
-      <ArtistScreen artists={artists} />
-      
-    </div>
-  )
+  return <ArtistScreen artists={artists} />
 }

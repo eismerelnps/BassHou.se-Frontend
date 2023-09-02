@@ -16,14 +16,18 @@ import { useAppDispatch } from '@/hooks';
 
 export default function SearchBar({ artists }: { artists: Artist[] }) {
   const router = useRouter();
+
   const dispatch = useAppDispatch();
-  
+
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { value } = event.target;
     dispatch(uiSetSearchText(value))
-   router.refresh()
+    router.push('/main');
+    router.refresh();
+   
+  
 
   };
 
@@ -51,7 +55,7 @@ export default function SearchBar({ artists }: { artists: Artist[] }) {
           <div className='flex justify-center mt-2 sm:mt-4 '>
             <div className=" rounded-[1px] w-3/4 sm:w-1/2 shadow-sm">
               <input
-                
+
                 onChange={handleInputChange}
                 id="searchArtist"
                 name="searchArtist"
