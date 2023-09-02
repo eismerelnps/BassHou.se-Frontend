@@ -1,17 +1,15 @@
+//next imports
 import Image from 'next/image'
-import React from 'react'
-
 // Artists interface
 import { Artist } from '@/interfaces/Artists'
+//Child componets
 import OpenArtist from './OpenArtist';
 
 
-export default async function ArtistCard({ item }: { item: Artist }) {
+export default function ArtistCard({ item }: { item: Artist }) {
   const { artistName, briefDescription, activeSince, images, visible } = item
   return (
-
     <article className={` ${!visible && 'hidden'} bg-white flex-initial  mt-2 basis-full   pb-4 sm:w-48 sm:basis-1/2 sm:mx-0 sm:px-4 md:basis-1/3  lg:lg:basis-1/4 ` }>
-
       <section className=' flex flex-col justify-between h-full border-2 border-slate-950 shadow shadow-yellow-100/50 hover:shadow-lg hover:shadow-yellow-200/50'>
         <article className='flex flex-col'>
           {
@@ -23,7 +21,7 @@ export default async function ArtistCard({ item }: { item: Artist }) {
                   src={images[0]}
                   width={576}
                   height={250}
-                  alt='martin'
+                  alt={artistName}
                 />
               )
               :
@@ -42,20 +40,12 @@ export default async function ArtistCard({ item }: { item: Artist }) {
                 </svg>
               )
           }
-
-
         </article>
-
-
-
         <article className=' px-2 mt-0 text-start'>
-
           <article className='mt-0.5 overflow-x-auto'>
             <p className='sm:text-3xl md:text-2xl mt-0.5 text-center text-stone-950 text-xl break-words truncate overflow-x-auto'>
               {artistName}</p>
           </article>
-
-
           <article className='text-sky-900 text-center my-1'>
             <p className='text-[8px]'>Oficial Social Profiles</p>
             <div className='flex flex-row justify-center space-x-4 my-2'>
@@ -64,37 +54,22 @@ export default async function ArtistCard({ item }: { item: Artist }) {
               <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" /></svg>
             </div>
           </article>
-
-
           <article className='flex flex-row justify-center my-4 text-gray-500'>
             <p className='text-sm inline mx-0.5'>
               Active Since:
             </p>
             <p id="activeSinceText" className='mx-0.5  text-sm'>
               {activeSince}
-
             </p>
           </article>
-
-
           <article className='my-1 '>
             <p className=' my-0.5 text-justify text-stone-500 text-sm'>{briefDescription}</p>
-
           </article>
-
-
         </article>
-
         <article className=''>
           <OpenArtist item={item} />
         </article>
-
-
-
       </section>
-
-
     </article>
-
   )
 }

@@ -12,32 +12,22 @@ import { getArtistByName } from '@/helpers/getArtistByName'
 export default function AdminPanel({ artists, requests }: { artists: Artist[], requests: Artist[] }) {
     const router = useRouter();
     const dispatch = useAppDispatch();
-    const { searchTextAdmin } = useAppSelector((state) => state.ui)
-
+    const { searchTextAdmin, seeRequests } = useAppSelector((state) => state.ui)
 
     const artistsArray: Artist[] = searchTextAdmin ? getArtistByName(artists, searchTextAdmin) : artists
-    const { seeRequests } = useAppSelector((state) => state.ui);
-
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
         const { value } = event.target;
         dispatch(uiSetSearchTextAdmin(value))
         router.refresh()
-
     };
 
     return (
-        <section className='
-
-        bg-white 
-        flex flex-wrap flex-col  place-content-start
-        px-0.5 mb-8 sm:flex-row 
-        shadow-xl z-10'>
-            <div className='flex justify-center mt-2 sm:mt-4 '>
-                <div className=" rounded-[1px] w-3/4 sm:w-1/2 shadow-sm">
+        <section className='bg-white flex flex-wrap flex-col place-content-start px-0.5 mb-8 sm:flex-row shadow-xl z-10'>
+            <div className='flex justify-center mt-2 sm:mt-4 w-full'>
+                <div className=" rounded-[1px] sm:w-1/2 shadow-sm">
                     <input
-                        //value={'searchText'}
                         onChange={handleInputChange}
                         id="searchArtist"
                         name="searchArtist"
@@ -49,7 +39,7 @@ export default function AdminPanel({ artists, requests }: { artists: Artist[], r
                           outline  outline-2 outline-slate-950
                           focus:outline-2 hover:bg-slate-50 
                           duration-100 block w-full rounded-[1px]  py-1.5 ps-1.5 text-slate-950 shadow  
-                          placeholder:text-gray-400 f text-xs  sm:text-sm sm:leading-6`}
+                          placeholder:text-gray-400 text-xs  sm:text-sm sm:leading-6`}
                     />
                 </div>
             </div>
