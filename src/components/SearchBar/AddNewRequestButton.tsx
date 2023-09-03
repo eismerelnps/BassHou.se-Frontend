@@ -17,7 +17,7 @@ export default function AddNewRequestButton({ artists }: { artists: Artist[] }) 
 
 
   return (
-    <div className="flex justify-center w-full m-4">
+    <div className=" cursor-pointer flex justify-center w-full m-4">
       <div
         className="focus:outline-none focus:ring focus:ring-slate-950 hover:text-xl text-red-500  flex flex-col items-center justify-center   "
         onClick={handleAddRequest}

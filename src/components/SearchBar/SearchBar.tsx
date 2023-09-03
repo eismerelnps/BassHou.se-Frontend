@@ -33,7 +33,7 @@ export default function SearchBar({ artists }: { artists: Artist[] }) {
 
 
   return (
-    <div className='fixed top-0  w-full z-30 '>
+    <div className=' cursor-default fixed top-0  w-full z-30 '>
       <Marquee />
 
 
@@ -49,7 +49,7 @@ export default function SearchBar({ artists }: { artists: Artist[] }) {
             />
             <h1 className={`${rubik_glitch.className} text-xl sm:text-4xl text-center align-middle`}>BASSHOU.SE</h1>
           </Link>
-          <div className='text-center text-xs sm:text-xl mt-2 sm:mt-4 '>
+          <div className=' cursor-default text-center text-xs sm:text-xl mt-2 sm:mt-4 '>
             <h2>The biggest database of Bass House Artists!</h2>
           </div>
           <div className='flex justify-center mt-2 sm:mt-4 '>

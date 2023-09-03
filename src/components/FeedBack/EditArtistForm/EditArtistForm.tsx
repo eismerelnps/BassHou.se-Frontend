@@ -31,7 +31,7 @@ export default function EditArtistForm() {
 
     return (
 
-        <div className="mt-16">
+        
             <Transition.Root show={editArtist || addArtist || addRequest || editRequest  } as={Fragment}>
                 <Dialog
                     as="div"
@@ -105,6 +105,6 @@ export default function EditArtistForm() {
                     </div>
                 </Dialog>
             </Transition.Root>
-        </div>
+       
     )
 }

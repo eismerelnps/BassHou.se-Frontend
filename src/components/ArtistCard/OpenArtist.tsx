@@ -12,7 +12,7 @@ export default function OpenArtist({item }: {item: Artist}) {
   }
   return (
     <div className="flex justify-center   my-2">
-      <button onClick={handdleOpenArtist} className="bg-[#efed84] border border-slate-950 rounded-2xl text-center px-12 py-1 hover:bg-[#f3f1a0]">
+      <button onClick={handdleOpenArtist} className="bg-[#efed84] border border-slate-950 rounded-xl text-center px-12 py-1 hover:bg-[#f3f1a0]">
         More...
       </button>
     </div>

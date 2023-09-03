@@ -27,7 +27,7 @@ export default function ArtistScreen({ artists }: { artists: Artist[] }) {
     const { artistName, activeSince, briefDescription, biography, songs, profiles, images, ranking, youtubeVideo } = artist
 
     return (
-      <section className='shadow relative top-72 mx-8 mt-2 md:mx-24 md:mt-4 px-4 py-8 '>
+      <section className='shadow mt-24 relative top-72 mx-8  md:mx-24 md:mt-4 px-4 py-8 '>
         <hr className='h-0.5 bg-neutral-300 ' />
 
         <div className='flex flex-col sm:flex-row mt-2'>

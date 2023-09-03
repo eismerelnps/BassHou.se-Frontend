@@ -19,23 +19,23 @@ export default function AddNewArtistButton({ artists }: { artists: Artist[] }) {
 
 
   return (
-    <div className="flex justify-center w-full m-4">
+    <div className="flex justify-center ">
       <div
-        className="focus:outline-none focus:ring focus:ring-slate-950 border border-red-500 rounded-xl  hover:bg-red-100 text-red-500  flex flex-col items-center justify-center m-2 p-2  "
+        className="focus:outline-none focus:ring focus:ring-slate-950  text-red-500  flex flex-col items-center justify-center m-2 p-2  "
         onClick={handleAddProduct}
       >
         <div className="">
           <PlusCircleIcon
             id="plusCircleIcon"
-            className="block h-8 w-8  "
+            className="block h-6 w-6 sm:h-8 sm:w-8  "
             aria-hidden="true"
           />
         </div>
-        <div className="">
+        <div className=" sm:block">
           <p
-            className={`${'gilda_display.className'} text-sm text-center text-center `}
+            className={`${'gilda_display.className'} text-xs text-center `}
           >
-            Add new artist
+            New
           </p>
         </div>
       </div>

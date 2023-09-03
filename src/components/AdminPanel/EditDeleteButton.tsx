@@ -28,16 +28,16 @@ export default function EditDeleteButton({ artist }: { artist: Artist }) {
   
 
   return (
-    <td className='text-blue-600 hover:text-blue-400'>
+    <td className=''>
       {
         seeRequests
           ?
           (
-           <> <button onClick={handleOpenEditRequest} className='mx-1 text-sm'>Accept</button><button onClick={handleDenyRequest} className='mx-1 text-red-500 text-sm'>Deny</button></>
+           <> <button onClick={handleOpenEditRequest} className='mx-1 text-sm transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300'>Accept</button><button onClick={handleDenyRequest} className='mx-1 text-red-500 text-sm transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300'>Deny</button></>
           )
           :
           (
-            <><button onClick={handleOpenEdit} className='mx-1 text-sm'>Edit</button><button onClick={handleOpenDelete} className='mx-1 text-red-500 text-sm'>Delete</button></>
+            <><button onClick={handleOpenEdit} className='mx-1 text-blue-600 hover:text-blue-400 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300'>Edit</button><button onClick={handleOpenDelete} className='mx-1 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 text-red-500'>Delete</button></>
           )
       }
     </td>
