@@ -26,19 +26,13 @@ export default function SearchBar({ artists }: { artists: Artist[] }) {
     dispatch(uiSetSearchText(value))
     router.push('/main');
     router.refresh();
-   
-  
-
   };
 
 
   return (
     <div className=' cursor-default fixed top-0  w-full z-30 '>
       <Marquee />
-
-
       <div className='relative bg-[#efed84] pb-2  '>
-
         <div className='flex flex-col  place-content-stretch'>
           <Link href={'/main'} className='flex flex-col sm:flex-row mt-2 sm:mt-8 justify-center  items-center'>
             <Image
@@ -63,10 +57,10 @@ export default function SearchBar({ artists }: { artists: Artist[] }) {
                 autoComplete="true"
                 placeholder='Search by Artist/Brand Name'
                 required
-                className={`  bg-white shadow-md
-                          outline  outline-2 outline-slate-950
+                className={`  bg-white shadow
+                            
                           focus:outline-2 hover:bg-slate-50 
-                          duration-100 block w-full rounded-[1px]  py-1.5 ps-1.5 text-slate-950 shadow  
+                          duration-100 block w-full rounded-[1px]  py-1.5 ps-1.5 text-slate-950   
                           placeholder:text-gray-400 f text-xs  sm:text-sm sm:leading-6`}
               />
             </div>

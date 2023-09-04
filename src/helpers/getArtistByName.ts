@@ -12,6 +12,4 @@ export const getArtistByName = (artists: Artist[], name = "") => {
   return artists.filter((artist) =>
     artist.artistName.toLowerCase().trim().includes(name)
   );
-
-  console.log()
 };

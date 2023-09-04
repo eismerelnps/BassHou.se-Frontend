@@ -14,7 +14,7 @@ import website from '/public/website.png'
 export default function ArtistCard({ item }: { item: Artist }) {
   const { artistName, briefDescription, activeSince, images, visible } = item
   return (
-    <article className={` ${!visible && 'hidden'} cursor-default bg-white flex-initial  mt-2 basis-full   pb-4 sm:w-48 sm:basis-1/2 sm:mx-0 sm:px-4 md:basis-1/3  lg:lg:basis-1/4` }>
+    <article className={` ${!visible && 'hidden'} cursor-default bg-white flex-initial  mt-2 basis-full   pb-4 sm:w-48 sm:basis-1/2 sm:mx-0 sm:px-4 md:basis-1/3  lg:lg:basis-1/4 xl:basis-1/5 ` }>
       <section className=' flex flex-col justify-between h-full border-2 border-slate-950 shadow shadow-yellow-100/50 hover:shadow-lg hover:rounded hover:shadow-yellow-200/50  hover:scale-105 transition delay-100'>
         <article className='flex flex-col'>
           {

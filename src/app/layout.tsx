@@ -33,6 +33,7 @@ const PersistProvider = dynamic(
 const inter = Inter({ subsets: ["latin"] });
 
 const id = process.env.NEXT_PUBLIC_ANALYTICS_ID;
+const fontAwensomeKit = process.env.NEXT_PUBLIC_DB_API_APP
 
 export default function RootLayout({
   children,
@@ -43,19 +44,18 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* <link rel="icon" href="" /> */}
-         <Script src={`https://www.googletagmanager.com/gtag/${id}`}  />
+        <Script src={`https://www.googletagmanager.com/gtag/${id}`} />
         <Script id="google-analytics">
           {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
- 
-          gtag('config', ${id});
+          gtag('config', '${id}');
         `}
-        </Script> 
+        </Script>
         {/* <Script
-          src="https://kit.fontawesome.com/b88354b395.js"
-          crossorigin="anonymous"
+          src={`https://kit.fontawesome.com/${fontAwensomeKit}.js`}
+          crossOrigin="anonymous"
         ></Script> */}
       </head>
       <body className={`${inter.className} bg-gray-100`}>

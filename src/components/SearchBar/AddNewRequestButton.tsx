@@ -25,7 +25,7 @@ export default function AddNewRequestButton({ artists }: { artists: Artist[] }) 
 
         <div className="">
           <p
-            className={`${'gilda_display.className'} text-sm text-center text-center `}
+            className={`${'gilda_display.className'} text-sm text-center `}
           >
             Missing Artist? Click here
           </p>
