@@ -1,18 +1,19 @@
-import React from 'react'
-import './marquee.css'
+import React from 'react';
+import './marquee.css'; // Asegúrate de importar tu archivo CSS
+import MarqueeItems from './MarqueeItems';
 
-export default function Marquee() {
+function Marquee() {
     return (
-        <div className='w-full h-8 sm:h-12 bg-white flex items-center overflow-hidden'>
-            <div className='marquee-container'>
-                <div className='marquee-content '>
-                    House Music Forever! ¡Música house para siempre! Musique house pour toujours ! 永遠的浩室音樂！موسيقى البيت إلى الأبد! House glazba zauvijek! Huismusiek vir altyd! Muzyka house na zawsze!  Muzică House pentru totdeauna! Хаусмузыка навсегда! Doma Muziko Eterne! Âm nhạc gia đình mãi mãi! Musique house pour toujours!
-                </div>
-                <div className='marquee-content'>
-                    House Music Forever! ¡Música house para siempre! Musique house pour toujours ! 永遠的浩室音樂！موسيقى البيت إلى الأبد! House glazba zauvijek! Huismusiek vir altyd! Muzyka house na zawsze!  Muzică House pentru totdeauna! Хаусмузыка навсегда! Doma Muziko Eterne! Âm nhạc gia đình mãi mãi! Musique house pour toujours!
-                </div>
-            </div>
-
+        <div className=' border-b-[3px] border-slate-950 marquee w-full h-auto py-3.5 overflow-hidden '>
+            <ul className='marquee_content flex list-none  '>
+             <MarqueeItems/>
+             <MarqueeItems/>
+             <MarqueeItems/>
+             <MarqueeItems/>
+            </ul>
         </div>
-    )
+
+    );
 }
+
+export default Marquee;
