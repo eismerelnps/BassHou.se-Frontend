@@ -7,13 +7,22 @@ import ArtistCard from '../ArtistCard/ArtistCard'
 import { getArtistByName } from '@/helpers/getArtistByName';
 //hooks
 import { useAppSelector } from '@/hooks';
+import ArtisNotFound from '../FeedBack/ArtistNotFound';
 
 export default function ArtistList({ artists }: { artists: Artist[] }) {
     const { searchText } = useAppSelector((state) => state.ui)
     const artistsArray: Artist[] = searchText ? getArtistByName(artists, searchText) : artists
 
+
+
+
+    if (searchText) {
+        if (artistsArray.length <= 0) {
+            return <ArtisNotFound artists={artists} />
+        }
+    }
     return (
-        <section className='relative top-72 mt-16 bg-white flex flex-wrap flex-col mx-8 sm:mx-12 mb-8  sm:flex-row  place-content-start shadow-xl z-10'>
+        <section className='relative top-60 sm:top-72 mt-16 bg-white flex flex-wrap flex-col mx-8 sm:mx-12 mb-8  sm:flex-row content-center sm:place-content-start shadow-xl z-10'>
             {artistsArray.map((artist: Artist) => (
                 <ArtistCard key={artist._id} item={artist} />
             ))}
