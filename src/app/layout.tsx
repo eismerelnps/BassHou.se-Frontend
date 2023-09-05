@@ -1,5 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { Analytics } from '@vercel/analytics/react';
+ 
 
 import Script from "next/script";
 import dynamic from "next/dynamic";
@@ -66,6 +68,7 @@ export default function RootLayout({
             <Modal />
             <DeleteModal />
             {children}
+            <Analytics />
           </StoreProvider>
         </PersistProvider>
       </body>
