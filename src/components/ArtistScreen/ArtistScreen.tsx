@@ -27,21 +27,18 @@ export default function ArtistScreen({ artists }: { artists: Artist[] }) {
     const { artistName, activeSince, briefDescription, biography, songs, profiles, images, ranking, youtubeVideo } = artist
 
     return (
-      <section className='shadow mt-24 relative top-72 mx-8  md:mx-24 md:mt-4 px-4 py-8 '>
+      <section className='   mx-4  p-4 relative top-80 sm:mt-8 shadow'>
         <hr className='h-0.5 bg-neutral-300 ' />
-
-        <div className='flex flex-col sm:flex-row mt-2'>
-          <div className='sm:basis-3/5 '>
-            <h2 className='sm:text-3xl md:text-4xl mt-0.5 text-start text-stone-950 text-xl ms-8 '>{artistName}</h2>
+        <div className='flex flex-col sm:flex-row my-2 sm:my-4'>
+          <div className='basis-full sm:basis-3/5 text-center sm:text-start'>
+            <h2 className='text-2xl sm:text-3xl md:text-4xl my-1 sm:my-0.5  text-stone-950  sm:ms-8 '>{artistName}</h2>
             <section className='flex  justify-start'>
-              <article className=' mt-4  max-w-3xl'>
-                <p className='  text-start text-stone-500 text-sm ms-8 me-20'>{biography}</p>
+              <article className=' mt-4 sm:mt-2  max-w-3xl'>
+                <p className=' text-justify text-stone-500 text-sm sm:ms-8 sm:me-20'>{biography}</p>
               </article>
-
             </section>
           </div>
           <div className='sm:basis-2/5 '>
-
             {
               images[0]
                 ? (
@@ -69,13 +66,11 @@ export default function ArtistScreen({ artists }: { artists: Artist[] }) {
                   </svg>
                 )
             }
-            <article className='border border-2 p-4'>
+            <article className=' border-2 p-4'>
               <p>Networks</p>
-
               {
                 profiles.map(({ name, image }, index) => (
                   <div key={name} className='flex flex-row mt-2 items-center'>
-
                     <div>
                       <Image
                         className='rounded-t-md '
@@ -89,19 +84,13 @@ export default function ArtistScreen({ artists }: { artists: Artist[] }) {
                       {name}
                     </div>
                     <div>
-
                     </div>
                   </div>
                 ))
               }
-
-
-
             </article>
-
           </div>
         </div>
-
         <hr className='h-0.5 bg-neutral-300 ' />
         <section className='my-4'>
           <h2 className='text-center text-2xl'>Sounds Like:</h2>
