@@ -13,8 +13,8 @@ export default function Error404() {
         </div>
 
         <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 sm:text-5xl">
-            404
-          </h1>
+          404
+        </h1>
 
         <p className="mt-6 text-base leading-7 text-gray-500">
           Oops, it doesn&apos;t seem to exist or we had an error loading.
@@ -26,14 +26,6 @@ export default function Error404() {
           >
             Go To Home
           </Link>
-          {/* <a
-            href="https://api.whatsapp.com/send?phone=5356062474
-"
-            target="_blank"
-            className="text-sm font-semibold text-gray-900"
-          >
-            Contáctenos <span aria-hidden="true">&rarr;</span>
-          </a> */}
         </div>
       </div>
     </main>
