@@ -9,20 +9,21 @@ import OpenArtist from './OpenArtist';
 import facebook from '/public/facebook.png'
 import twitter from '/public/twitter.png'
 import website from '/public/website.png'
+import Link from 'next/link';
 
 
 export default function ArtistCard({ item }: { item: Artist }) {
-  const { artistName, briefDescription, activeSince, images, visible } = item
+  const { artistName, briefDescription, activeSince, images, visible, profiles } = item
   return (
-    <article className={` ${!visible && 'hidden'} cursor-default bg-white flex-initial  mt-2 basis-full   pb-4 sm:w-48 sm:basis-1/2 sm:mx-0 sm:px-4 md:basis-1/3  lg:lg:basis-1/4 xl:basis-1/5 ` }>
-      <section className=' flex flex-col justify-between h-full border-2 border-slate-950 shadow shadow-yellow-100/50 hover:shadow-lg hover:rounded hover:shadow-yellow-200/50  hover:scale-105 transition delay-100'>
-        <article className='flex flex-col'>
+    <article className={` ${!visible && 'hidden'} cursor-default  flex-initial  mt-2 basis-full max-w-xs  sm:w-48 sm:basis-1/2 sm:mx-0 sm:px-4 md:basis-1/3  lg:lg:basis-1/4 xl:basis-1/5    pb-4`}>
+      <section className='flex flex-col  h-full bg-white border-2 border-slate-950 shadow shadow-yellow-100/50 hover:shadow-lg hover:rounded hover:shadow-yellow-200/50  transition delay-100'>
+        <article className='flex-initial  flex flex-col'>
           {
             images[0]
               ?
               (
                 <Image
-                  className='max-h-40 self-center'
+                  className='h-36 sm:h-36 max-h-40 self-center'
                   src={images[0]}
                   width={576}
                   height={250}
@@ -32,7 +33,7 @@ export default function ArtistCard({ item }: { item: Artist }) {
               :
               (
                 <svg
-                  className="mx-auto h-28 w-28  text-neutral-300"
+                  className="mx-auto h-36 sm:h-36  w-28  text-neutral-300"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
@@ -46,36 +47,46 @@ export default function ArtistCard({ item }: { item: Artist }) {
               )
           }
         </article>
-        <article className=' px-2 mt-0 text-start'>
-          <article className='mt-0.5 overflow-x-auto'>
-            <p className='sm:text-3xl md:text-2xl mt-0.5 text-center text-stone-950 text-xl break-words truncate overflow-x-auto'>
+        <article className='my-2 flex-initial mt-0.5 overflow-x-auto'>
+            <p className='sm:text-xl  mt-0.5 text-center text-stone-950  break-words  overflow-x-auto'>
               {artistName}</p>
           </article>
-          <article className='text-sky-900 text-center my-1'>
-            <p className='text-[8px]'>Oficial Social Profiles</p>
-            <div className='flex flex-row justify-center space-x-4 my-2'>
+        <article className='flex-none px-2 mt-0 text-start'>
+          
+          <article className='my-2 text-sky-900 text-center '>
+            <div className='flex flex-row justify-center items-center space-x-4'>
+            <Link href={profiles[1].link} className='flex flex-col sm:flex-row  justify-center  items-center'>
             <Image
-                        className='rounded-t-md '
-                        src={facebook}
-                        width={25}
-                        height={25}
-                        alt={'facebook icon'}
-                      />
-                      <Image
-                        className='rounded-t-md '
-                        src={twitter}
-                        width={25}
-                        height={25}
-                        alt={'x icon'}
-                      />
-                      <Image
-                        className='rounded-t-md '
-                        src={website}
-                        width={25}
-                        height={25}
-                        alt={'website icon'}
-                      />
-              </div>
+                className='rounded-t-md '
+                src={facebook}
+                width={25}
+                height={25}
+                alt={'facebook icon'}
+              />
+            </Link>
+             
+             
+            <Link href={profiles[5].link} className='flex flex-col sm:flex-row  justify-center  items-center'>
+            <Image
+                className='rounded-t-md '
+                src={twitter}
+                width={25}
+                height={25}
+                alt={'x icon'}
+              />
+            </Link>
+            <Link href={profiles[0].link} className='flex flex-col sm:flex-row  justify-center  items-center'>
+            <Image
+                className='rounded-t-md '
+                src={website}
+                width={25}
+                height={25}
+                alt={'website icon'}
+              />
+            </Link>
+ 
+              
+            </div>
           </article>
           <article className='flex flex-row justify-center my-4 text-gray-500'>
             <p className='text-sm inline mx-0.5'>
@@ -85,8 +96,8 @@ export default function ArtistCard({ item }: { item: Artist }) {
               {activeSince}
             </p>
           </article>
-          <article className='my-1 '>
-            <p className=' my-0.5 text-justify text-stone-500 text-sm'>{briefDescription}</p>
+          <article className='my-1 h-24 '>
+            <p className=' my-0.5 text-justify inline-block  align-middle text-stone-500 text-sm'>{briefDescription}</p>
           </article>
         </article>
         <article className=''>
@@ -94,4 +105,5 @@ export default function ArtistCard({ item }: { item: Artist }) {
         </article>
       </section>
     </article>
-  )}
+  )
+}

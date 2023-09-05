@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import cactus from '../../../public/cactus.png'
+import cactus from '../../../public/cactus.jpg'
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { adminAddArtist, adminResetArtist } from "@/reducers/artistSlice";
 import { uiAddRequest } from "@/reducers/uiSlice";
