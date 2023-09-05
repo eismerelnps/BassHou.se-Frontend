@@ -10,15 +10,23 @@ import facebook from '/public/facebook.png'
 import twitter from '/public/twitter.png'
 import website from '/public/website.png'
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 
 export default function ArtistCard({ item }: { item: Artist }) {
   
+  const router = useRouter()
+  
+  const handdleOpenArtist = () => {
+    const  { _id  } = item
+    router.push(`/artist/?S=${_id}`);
+
+  }
 
 
   const { artistName, briefDescription, activeSince, images, visible, profiles, _id } = item
   return (
-    <article className={` ${!visible && 'hidden'} cursor-default  flex-initial  mt-2 basis-full max-w-xs  sm:w-48 sm:basis-1/2 sm:mx-0 sm:px-4 md:basis-1/3  lg:lg:basis-1/4 xl:basis-1/5    pb-4`}>
+    <article className={` ${!visible && 'hidden'} cursor-default  flex-initial  basis-full max-w-xs  sm:w-48 sm:basis-1/2 sm:mx-0 px-2  mt-2  pb-4 md:basis-1/3  lg:lg:basis-1/4 xl:basis-1/5   `}>
       <Link  href={`/artist/?S=${_id}`}>
      
       <section className='flex flex-col  h-full bg-white border-2 border-slate-950 shadow shadow-yellow-100/50 hover:shadow-lg hover:rounded hover:shadow-yellow-200/50  transition delay-100'>
@@ -28,7 +36,7 @@ export default function ArtistCard({ item }: { item: Artist }) {
               ?
               (
                 <Image
-                  className='h-36 sm:h-36 max-h-40 self-center'
+                  className='self-center'
                   src={images[0]}
                   width={576}
                   height={250}
@@ -58,9 +66,9 @@ export default function ArtistCard({ item }: { item: Artist }) {
           </article>
         <article className='flex-none px-2 mt-0 text-start'>
           
-          <article className='my-2 text-sky-900 text-center '>
+          <article className='my-2 text-sky-900 text-center'>
             <div className='flex flex-row justify-center items-center space-x-4'>
-            <Link href={profiles[1].link} className='flex flex-col sm:flex-row  justify-center  items-center'>
+           <Link href={profiles[1].link} onClick={(e) => e.stopPropagation()} target="_blank" className='flex flex-col sm:flex-row  justify-center  items-center'>
             <Image
                 className='rounded-t-md '
                 src={facebook}
@@ -68,10 +76,10 @@ export default function ArtistCard({ item }: { item: Artist }) {
                 height={25}
                 alt={'facebook icon'}
               />
-            </Link>
+            </Link> 
+          
              
-             
-            <Link href={profiles[5].link} className='flex flex-col sm:flex-row  justify-center  items-center'>
+            <Link href={profiles[5].link} onClick={(e) => e.stopPropagation()} target="_blank" className='flex flex-col sm:flex-row  justify-center  items-center'>
             <Image
                 className='rounded-t-md '
                 src={twitter}
@@ -80,7 +88,7 @@ export default function ArtistCard({ item }: { item: Artist }) {
                 alt={'x icon'}
               />
             </Link>
-            <Link href={profiles[0].link} className='flex flex-col sm:flex-row  justify-center  items-center'>
+            <Link href={profiles[0].link} onClick={(e) => e.stopPropagation()} target="_blank" className='flex flex-col sm:flex-row  justify-center  items-center'>
             <Image
                 className='rounded-t-md '
                 src={website}
