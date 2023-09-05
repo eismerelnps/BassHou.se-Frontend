@@ -1,4 +1,4 @@
-import SearchBar from '@/components/SearchBar/SearchBar'
+import NavBar from '@/components/NavBar/NavBar'
 import React from 'react'
 
 //get the endpoint of the api bd
@@ -8,14 +8,12 @@ const fetchMenu = () => {
   return fetch(artists_url, { cache: "no-store" }).then((res) => res.json());
 };
 
-
-
 export default async function layout({ children }: { children: React.ReactNode }) {
     const artists = await fetchMenu();
 
   return (
     <div>
-        <SearchBar artists={artists} />
+        <NavBar artists={artists} />
         { children }
     </div>
   )

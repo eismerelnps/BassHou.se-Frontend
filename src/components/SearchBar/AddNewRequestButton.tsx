@@ -17,20 +17,20 @@ export default function AddNewRequestButton({ artists }: { artists: Artist[] }) 
 
 
   return (
-    <div className=" cursor-pointer flex justify-center w-full m-4">
-      <div
-        className="focus:outline-none focus:ring focus:ring-slate-950 hover:text-xl text-red-500  flex flex-col items-center justify-center   "
-        onClick={handleAddRequest}
-      >
 
-        <div className="">
-          <p
-            className={`${'gilda_display.className'} text-sm text-center `}
-          >
-            Missing Artist? Click here
-          </p>
-        </div>
+    <div
+      className="focus:outline-none focus:ring focus:ring-slate-950 hover:text-xl text-red-500  flex flex-col items-center justify-center   "
+      onClick={handleAddRequest}
+    >
+
+      <div className="">
+        <p
+          className={`${'gilda_display.className'} text-sm text-center `}
+        >
+          Missing Artist? Click here
+        </p>
       </div>
     </div>
+
   )
 }

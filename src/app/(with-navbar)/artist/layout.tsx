@@ -1,6 +1,6 @@
 import ArtistScreen from '@/components/ArtistScreen/ArtistScreen';
 import LoadingArtistScreen from '@/components/Loading/LoadingArtistScreen';
-import SearchBar from '@/components/SearchBar/SearchBar'
+import SearchBar from '@/components/NavBar/NavBar'
 import React from 'react'
 
 //get the endpoint of the api bd

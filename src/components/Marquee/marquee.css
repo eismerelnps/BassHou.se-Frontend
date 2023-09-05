@@ -1,7 +1,0 @@
-.marquee_content {
-  animation: scrolling 20s linear infinite;
-}
-@keyframes scrolling {
-  0% { transform: translate(0);}
-  100% { transform: translateX(-100%);}
-}
