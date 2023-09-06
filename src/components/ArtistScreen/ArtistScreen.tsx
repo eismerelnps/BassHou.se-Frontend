@@ -24,6 +24,9 @@ export default function ArtistScreen({ artists }: { artists: Artist[] }) {
           <div className='basis-full sm:basis-1/2 text-center sm:text-start sm:border-e border-e-slate-300'>
             <div className='mx-4 flex sm:flex-row flex-col items-center space-x-1'>
               <div>
+                <h1 className='text-2xl lg:text-4xl text-stone-950  '>{ranking}</h1>
+              </div>
+              <div>
                 <h2 className='text-md lg:text-xl   text-stone-950  '>{artistName}</h2>
               </div>
 
