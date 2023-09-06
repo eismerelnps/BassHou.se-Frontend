@@ -25,7 +25,9 @@ export default function ArtistCard({ item }: { item: Artist }) {
   }
 
 
-  const { artistName, briefDescription, activeSince, images, visible, profiles } = item
+  const { artistName,  activeSince, images, visible, profiles, biography } = item;
+  const briefDescription = biography.length > 110 ? biography.substring(0, 110) + '...' : biography;
+  
   return (
     <article className={` ${!visible && 'hidden'} cursor-default  flex-initial  basis-full max-w-xs min-w-xs sm:basis-1/2 sm:mx-0 px-2  mt-2  pb-4 md:basis-1/3  lg:lg:basis-1/4 xl:basis-1/5   `}>
 
@@ -33,31 +35,46 @@ export default function ArtistCard({ item }: { item: Artist }) {
 
 
         <section className='flex flex-col  h-full bg-white border-2 border-slate-950 shadow shadow-yellow-100/50 hover:shadow-lg hover:rounded hover:shadow-yellow-200/50  transition delay-100'>
-          <article className='flex-initial  flex flex-col'>
-            {
-              images[0]
-                ?
-                (
-                  <Image
-                    className='self-center'
-                    src={images[0]}
-                    width={576}
-                    height={250}
-                    alt={artistName}
-                  />
-                )
-                :
-                (
-                  <Image
-                    className='self-center'
-                    src={no_image}
-                    width={155}
-                    height={50}
-                    alt={artistName}
-                  />
-                )
-            }
-          </article>
+        <article className='flex-initial  flex flex-col'>
+        <div
+  className='self-center'
+  style={{
+    height: '170px', // Establecer una altura fija para el contenedor de imágenes
+    display: 'flex',
+    alignItems: 'flex-start', // Alinear la imagen hacia arriba
+    justifyContent: 'center',
+    overflow: 'hidden', // Ocultar el contenido que se desborda
+  }}
+>
+  {images[0] ? (
+    <Image
+      src={images[0]}
+      width={320}
+      height={120}
+      style={{
+        maxWidth: '100%',
+        height: 'auto',
+        objectFit: 'cover',
+        objectPosition: 'top', // Alinear la imagen hacia arriba
+      }}
+      alt={artistName}
+    />
+  ) : (
+    <Image
+      src={no_image}
+      width={320}
+      height={120}
+      style={{
+        maxWidth: '100%',
+        height: 'auto',
+        objectFit: 'cover',
+        objectPosition: 'top', // Alinear la imagen hacia arriba
+      }}
+      alt={artistName}
+    />
+  )}
+</div>
+        </article>
           <article className='my-2 flex-initial mt-0.5 overflow-x-auto'>
             <p className='sm:text-xl  mt-0.5 text-center text-stone-950  break-words  overflow-x-auto'>
               {artistName}</p>
@@ -112,11 +129,11 @@ export default function ArtistCard({ item }: { item: Artist }) {
               <p className='w-full my-0.5 text-justify inline-block  align-middle text-stone-500 text-sm'>{briefDescription}</p>
             </article>
           </article>
-            <article className="flex justify-center   my-2">
-              <div  className="bg-[#efed84] border border-slate-950 rounded-xl text-center px-12 py-1 hover:bg-[#f3f1a0]">
-                More...
-              </div>
-            </article>
+          <article className="flex justify-center   my-2">
+            <div className="bg-[#efed84] border border-slate-950 rounded-xl text-center px-12 py-1 hover:bg-[#f3f1a0]">
+              More...
+            </div>
+          </article>
         </section>
       </button>
     </article>

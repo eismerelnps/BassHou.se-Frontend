@@ -18,8 +18,8 @@ export default function SearchBar() {
         router.refresh();
       };
   return (
-    <div className='flex justify-center my-2  '>
-    <div className=" rounded-[1px] w-3/4 sm:w-1/3 shadow-sm">
+    <div className='flex justify-center my-2 sm:mt-4  '>
+    <div className="  sm:w-96">
       <input
 
         onChange={handleInputChange}
@@ -29,9 +29,9 @@ export default function SearchBar() {
         autoComplete="true"
         placeholder='Search by Artist/Brand Name'
         required
-        className={`  bg-white shadow  rounded-3xl
+        className={` shadow-sm  bg-white   rounded-3xl
                   focus:outline-2 hover:bg-slate-50 
-                  duration-100 block w-full   py-1.5 ps-1.5 text-slate-950   
+                  duration-100 block w-full  py-1.5 ps-1.5 text-slate-950   
                   placeholder:text-gray-400 f text-xs  sm:text-sm sm:leading-6`}
       />
     </div>

@@ -16,12 +16,11 @@ export default function Form() {
     const { cloudImageMessage, uploadingImage, addArtist, addRequest } = useAppSelector((state) => state.ui);
 
     // hook use
-    const [formValues, handleInputChange, reset] = useForm(artist);
+    const [formValues, handleInputChange] = useForm(artist);
 
     const {
         artistName,
         activeSince,
-        briefDescription,
         biography,
         images,
         ranking,
@@ -334,50 +333,7 @@ export default function Form() {
                                 </fieldset>
                             </div>
                         </div>
-
-
-                        <div className="mt-4">
-                            <label
-                                htmlFor="briefDescription"
-                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
-                            >
-                                Brief Description
-                            </label>
-                            <div className="">
-                                <textarea
-                                    onChange={handleInputChange}
-                                    placeholder="Brief Description"
-                                    id="briefDescription"
-                                    name="briefDescription"
-                                    rows={3}
-                                    className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
-                                    defaultValue={briefDescription}
-                                />
-                            </div>
-
-
-                        </div>
-                        <div className="mt-4">
-                            <label
-                                htmlFor="description"
-                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
-                            >
-                                Biography
-                            </label>
-                            <div className="">
-                                <textarea
-                                    onChange={handleInputChange}
-                                    placeholder="Biography"
-                                    id="biography"
-                                    name="biography"
-                                    rows={9}
-                                    className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
-                                    defaultValue={biography}
-                                />
-                            </div>
-
-
-                        </div>
+                        
                         <div className='mt-4'>
                             <label
                                 htmlFor="description"
@@ -456,6 +412,27 @@ export default function Form() {
                                         aria-hidden="true" />
                                 </button>
                             </div>
+                            <div className="mt-4">
+                            <label
+                                htmlFor="description"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                            >
+                                Biography
+                            </label>
+                            <div className="">
+                                <textarea
+                                    onChange={handleInputChange}
+                                    placeholder="Biography"
+                                    id="biography"
+                                    name="biography"
+                                    rows={9}
+                                    className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                    defaultValue={biography}
+                                />
+                            </div>
+
+
+                        </div>
                         </div>
 
 

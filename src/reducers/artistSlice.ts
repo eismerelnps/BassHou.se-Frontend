@@ -4,7 +4,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState: Artist = {
   _id: 1,
   artistName: "",
-  briefDescription: "",
   activeSince: 2023,
   biography: "",
   songs: [],

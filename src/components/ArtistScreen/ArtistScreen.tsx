@@ -15,7 +15,7 @@ export default function ArtistScreen({ artists }: { artists: Artist[] }) {
   const artist = getArtistsById(artists, searchID);
 
   if (artist) {
-    const { artistName, activeSince, briefDescription, biography, songs, profiles, images, ranking, youtubeVideo } = artist
+    const { artistName, activeSince,  biography, songs, profiles, images, ranking, youtubeVideo } = artist
 
     return (
       <section className='   mx-4  p-4 relative top-80 sm:mt-8 shadow border-2 border-slate-300'>

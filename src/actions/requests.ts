@@ -34,7 +34,7 @@ export const startAddingNewRequest = () => {
     //const { token } = getState().auth;
     const artist = getState().artist;
 
-    
+
 
     dispatch(uiStartLoading());
     fetch(urlRequests, {
@@ -64,27 +64,32 @@ export const startAddingNewRequest = () => {
 
 
 // in administration to accep a request
-export const startAcceptingRequestAndDelete = () => {
+export const  startAcceptingRequestAndDelete = () => {
   return async (dispatch: Dispatch<AnyAction>, getState: () => RootState) => {
     //const { token } = getState().auth;
     const artist = getState().artist;
 
-    
+
 
     dispatch(uiStartLoading());
     fetch(urlArtits, {
       method: "POST",
       body: JSON.stringify(artist),
-      headers
+      headers,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      })
       .then((data) => {
         dispatch(uiFinishLoading());
         dispatch(uiSetError(data.message));
-        //dispatch(startDeletingRequest())
-        
+        //dispatch(startDeletingRequest());
+         
       })
-
       .catch((error) => {
         dispatch(uiFinishLoading());
         dispatch(
@@ -93,38 +98,42 @@ export const startAcceptingRequestAndDelete = () => {
           )
         );
       });
+    
   };
 }
 
- 
- 
- //To delete a request from the database by its id
- export const startDeletingRequest = () => {
-    return async (dispatch: Dispatch<AnyAction>, getState: () => RootState) => {
-      //const { token } = getState().auth;
-      const { _id } = getState().artist;
-  
-      
-  
-      dispatch(uiStartLoading());
-      fetch(`${urlRequests}/${_id}`, {
-        method: "DELETE",
-        body: JSON.stringify({}),
-        headers
+
+
+//To delete a request from the database by its id
+export const startDeletingRequest = () => {
+  console.log('deleting')
+  return async (
+    dispatch: Dispatch<AnyAction>, 
+    getState: () => RootState): Promise<any> => {
+    //const { token } = getState().auth;
+    const { _id } = getState().artist;
+
+    console.log(_id)
+
+    dispatch(uiStartLoading());
+    fetch(`${urlRequests}/${_id}`, {
+      method: "DELETE",
+      body: JSON.stringify({}),
+      headers
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(uiFinishLoading());
+        dispatch(uiSetError(data.message));
+        //router.refresh();
       })
-        .then((response) => response.json())
-        .then((data) => {
-          dispatch(uiFinishLoading());
-          dispatch(uiSetError(data.message));
-          //router.refresh();
-        })
-        .catch((error) => {
-          dispatch(uiFinishLoading());
-           dispatch(
-             uiSetError(
-               "Se ha producido un error al crear el producto. Por favor, inténtelo de nuevo."
-             )
-           );
-        });
-     };
+      .catch((error) => {
+        dispatch(uiFinishLoading());
+        dispatch(
+          uiSetError(
+            "Se ha producido un error al crear el producto. Por favor, inténtelo de nuevo."
+          )
+        );
+      });
   };
+};

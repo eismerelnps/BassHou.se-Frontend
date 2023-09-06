@@ -22,7 +22,7 @@ export default function ArtistList({ artists }: { artists: Artist[] }) {
         }
     }
     return (
-        <section className='relative top-60 sm:top-72 my-12 bg-white flex flex-wrap flex-col mx-2 sm:mx-12 mb-8  sm:flex-row content-center sm:place-content-start 2xl:place-content-center shadow-xl rounded z-10'>
+        <section className='relative top-60 sm:top-60 my-12 bg-white flex flex-wrap flex-col mx-2 sm:mx-12 mb-8  sm:flex-row content-center sm:place-content-start 2xl:place-content-center shadow-xl rounded z-10'>
             {artistsArray.map((artist: Artist) => (
                 <ArtistCard key={artist._id} item={artist} />
             ))}
