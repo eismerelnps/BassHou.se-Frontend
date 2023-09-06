@@ -5,10 +5,13 @@ import React, { useState } from 'react'
 import { UpLoadingImage } from '../UpLoadingImage';
 import Image from 'next/image';
 
+
+
 import { useAppDispatch, useAppSelector } from '@/hooks';
 
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { useForm } from '@/hooks/useForm';
+import { embedYouTubeURL } from '@/helpers/embedYouTubeURL';
 
 export default function Form() {
     const dispatch = useAppDispatch();
@@ -40,7 +43,7 @@ export default function Form() {
             //call the function that is responsible for uploading the image
             dispatch(startUploadingPhoto(file));
         }
-        
+
     };
 
 
@@ -65,7 +68,7 @@ export default function Form() {
 
         // Here we remove the element if the input is empty
         if (event.target.value === '') {
-            newSongs.splice(index, 1); 
+            newSongs.splice(index, 1);
         }
         //get actual artist from context and updates the songs field
         const updatedArtist = {
@@ -203,7 +206,7 @@ export default function Form() {
                             >
                                 Artist&apos;s name*
                             </label>
-                            
+
                             <div className="">
                                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">{name} </span> */}
@@ -236,7 +239,7 @@ export default function Form() {
                                         name="ranking"
                                         id="ranking"
                                         autoComplete="off"
-                                        className={`${( addRequest || addArtist)  && 'pointer-events-none' }   bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow  placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                        className={`${(addRequest || addArtist) && 'pointer-events-none'}   bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow  placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
                                         placeholder="Ranking"
                                         onChange={handleInputChange}
                                     />
@@ -262,7 +265,11 @@ export default function Form() {
                                         autoComplete="off"
                                         className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50  duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow   placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
                                         placeholder="Youtube video URL"
-                                        onChange={handleInputChange}
+                                        onChange={(e) => {
+                                            //const inputUrl = e.target.value;
+                                            //const embeddedUrl = embedYouTubeURL(inputUrl); // 
+                                            handleInputChange({ target: { name: 'youtubeVideo', value: e.target.value } }); //
+                                        }}
                                     />
                                 </div>
                             </div>
@@ -333,7 +340,7 @@ export default function Form() {
                                 </fieldset>
                             </div>
                         </div>
-                        
+
                         <div className='mt-4'>
                             <label
                                 htmlFor="description"
@@ -413,26 +420,26 @@ export default function Form() {
                                 </button>
                             </div>
                             <div className="mt-4">
-                            <label
-                                htmlFor="description"
-                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
-                            >
-                                Biography
-                            </label>
-                            <div className="">
-                                <textarea
-                                    onChange={handleInputChange}
-                                    placeholder="Biography"
-                                    id="biography"
-                                    name="biography"
-                                    rows={9}
-                                    className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
-                                    defaultValue={biography}
-                                />
+                                <label
+                                    htmlFor="description"
+                                    className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                                >
+                                    Biography
+                                </label>
+                                <div className="">
+                                    <textarea
+                                        onChange={handleInputChange}
+                                        placeholder="Biography"
+                                        id="biography"
+                                        name="biography"
+                                        rows={9}
+                                        className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50 duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                        defaultValue={biography}
+                                    />
+                                </div>
+
+
                             </div>
-
-
-                        </div>
                         </div>
 
 

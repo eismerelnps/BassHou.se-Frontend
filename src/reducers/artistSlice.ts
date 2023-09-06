@@ -21,6 +21,8 @@ const initialState: Artist = {
   visible: true,
   youtubeVideo: "",
 };
+//IU_qq_c_lKA?si=cgbrXckOMOxPdfmE
+//IU_qq_c_lKA?si=R9MJzvoN_VoUYdwm
 
 const artistSlice = createSlice({
   name: 'artist',

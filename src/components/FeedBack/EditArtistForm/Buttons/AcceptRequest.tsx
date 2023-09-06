@@ -10,11 +10,16 @@ export default function AcceptRequest() {
 
     const handleAcceptAdd = (e: any) => {
         e.preventDefault();
+
         if (isFormValid()) {
             dispatch(startAcceptingRequestAndDelete());
-            
+
         }
     };
+
+
+
+
     const isFormValid = () => {
         if (artistName.trim().length === 0 || artistName.trim().length < 3) {
             dispatch(uiSetError("Enter a valid artist name"));
@@ -32,7 +37,7 @@ export default function AcceptRequest() {
         else if (activeSince < 1950 || activeSince > 2023) {
             dispatch(uiSetError("Active since must be between 1950 and 2023"));
             return false;
-        }  else if (biography.length < 200 || biography.length > 10000) {
+        } else if (biography.length < 200 || biography.length > 10000) {
             dispatch(uiSetError("Please type a biography between 200 and 10000 characters "));
             return false;
         }
