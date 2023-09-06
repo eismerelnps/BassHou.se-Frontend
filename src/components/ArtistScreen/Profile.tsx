@@ -14,7 +14,7 @@ import { ProfileInterFace } from '@/interfaces/Profile'
 
 
 
-export default function Profile({ images, profiles }: { images: string[], profiles: ProfileInterFace[] }) {
+export default function Profile({ images, profiles, activeSince }: { images: string[], profiles: ProfileInterFace[], activeSince: number }) {
 
     const networkImages = [website, facebook, music, myspace, soundcloud, youtube, twitter]
 
@@ -48,7 +48,15 @@ export default function Profile({ images, profiles }: { images: string[], profil
                         </svg>
                     )
             }
-            <article className=' border-2 p-4 my-2'>
+            <article className='sm:hidden flex flex-row justify-start my-4 text-gray-500'>
+              <p className='text-sm inline mx-0.5'>
+                Active Since:
+              </p>
+              <p id="activeSinceText" className='mx-0.5  text-sm'>
+                {activeSince}
+              </p>
+            </article>
+            <article className=' border-2 p-4 m-2'>
                 <p className='my-2'>Networks</p>
                 {
                     profiles.map((profile: ProfileInterFace, index: number) => (

@@ -22,7 +22,7 @@ export default function ArtistCard({ item }: { item: Artist }) {
   }
 
 
-  const { artistName, briefDescription, activeSince, images, visible, profiles, _id } = item
+  const { artistName, briefDescription, activeSince, images, visible, profiles } = item
   return (
     <article className={` ${!visible && 'hidden'} cursor-default  flex-initial  basis-full max-w-xs  sm:w-48 sm:basis-1/2 sm:mx-0 px-2  mt-2  pb-4 md:basis-1/3  lg:lg:basis-1/4 xl:basis-1/5   `}>
 

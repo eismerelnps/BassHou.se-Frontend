@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function Songs({ songs }: { songs: string[] }) {
     return (
-        <div className='border-2 p-4 '>
+        <div className='border-2 p-4 m-2'>
             <p className='my-2'>Songs</p>
             <article className='flex flex-col space-y-3 my-2 '>
                 {songs.map((song: string) => (
