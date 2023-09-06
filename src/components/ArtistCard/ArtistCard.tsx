@@ -2,8 +2,6 @@
 import Image from 'next/image'
 // Artists interface
 import { Artist } from '@/interfaces/Artists'
-//Child componets
-import OpenArtist from './OpenArtist';
 
 //network images
 import facebook from '/public/facebook.png'
