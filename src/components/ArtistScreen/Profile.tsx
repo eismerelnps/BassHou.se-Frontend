@@ -21,6 +21,7 @@ export default function Profile({ images, profiles, activeSince }: { images: str
 
     return (
         <div className=''>
+            <div className='flex justify-center'>
             {
                 images[0]
                     ? (
@@ -48,6 +49,8 @@ export default function Profile({ images, profiles, activeSince }: { images: str
                         </svg>
                     )
             }
+            </div>
+          
             <article className='sm:hidden flex flex-row justify-start my-4 text-gray-500'>
               <p className='text-sm inline mx-0.5'>
                 Active Since:
@@ -56,7 +59,7 @@ export default function Profile({ images, profiles, activeSince }: { images: str
                 {activeSince}
               </p>
             </article>
-            <article className=' border-2 p-4 m-2'>
+            <article className=' border-2 p-4 m-2 2xl:me-12'>
                 <p className='my-2'>Networks</p>
                 {
                     profiles.map((profile: ProfileInterFace, index: number) => (

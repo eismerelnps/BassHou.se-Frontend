@@ -1,5 +1,4 @@
 import ArtistScreen from '@/components/ArtistScreen/ArtistScreen';
-import NavBar from '@/components/NavBar/NavBar';
 
 
 //get the endpoint of the api bd
@@ -17,19 +16,5 @@ async function fetchArtists() {
 
 export default async function page() {
   const artists = await fetchArtists();
-
-  return (
-    <div>
-     
-      <ArtistScreen artists={artists} />
-
-    </div>
-  )
-
-
-
-
-
-
-
+  return <ArtistScreen artists={artists} />
 }
