@@ -4,24 +4,20 @@
  * @param url The YouTube video URL to embed.
  * @returns The embedded YouTube video URL.
  */
-export function embedYouTubeURL(url: string): string {
+export function embedYouTubeURL(url: string): string | null {
     // Regular expression to check if the URL is a YouTube link
     //const youtubeRegex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|v\/)|youtu\.be\/)([a-zA-Z0-9_-]+)$/;
     //const youtubeRegex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]+)$/;
-    const youtubeRegex = /^(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]+)(?:\?.*)?$/;
-
-
-    // Try to match the URL with the regular expression
-    const match = url.match(youtubeRegex);
-
+    const regex = /^https:\/\/youtu\.be\/([\w-]+)(\?si=[\w-]+)?$/;
+  
+    const match = url.match(regex);
+    
     if (match) {
-        // The URL is a YouTube link, return the embed URL
-        const videoId = match[1];
-
-        return `https://www.youtube.com/embed/${videoId}`;
-    } else {
-        // The URL is not a YouTube link, return the original URL
-
-        return url;
+      const videoId = match[1];
+      const queryString = match[2] ? match[2] : '';
+      return `https://www.youtube.com/embed/${videoId}${queryString}`;
     }
-}
+    
+    return null;
+  }
+  
