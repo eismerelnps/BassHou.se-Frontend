@@ -59,7 +59,7 @@ export default function AdminPanel({ artists, requests }: { artists: Artist[], r
                                             <td className='text-start  text-neutral-950  '>{request.artistName}</td>
                                             {request.visible ? <td className='text-emerald-400 '>Visible</td> : <td className='text-red-400'>Hidden</td>}
                                             <td className='text-neutral-500'>{request.ranking}</td>
-                                            <EditDeleteButton artist={request} />
+                                            <EditDeleteButton artist={request} artists={artists} />
 
                                         </tr>
 

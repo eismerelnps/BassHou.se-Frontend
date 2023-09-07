@@ -1,15 +1,14 @@
-import { uiFinishLoading, uiFinishUpLoadingImage, uiSetCloudImageMessage, uiSetError, uiStartLoading, uiStartUpLoadingImage } from "@/reducers/uiSlice";
+import { uiFinishLoading, uiSetError, uiStartLoading } from "@/reducers/uiSlice";
 
 import { Dispatch, AnyAction } from 'redux';
 
-import { RootState, rootReducer } from "@/store/store";
-import { fileUpload } from "@/helpers/fileUpload";
+import { AppDispatch, RootState } from "@/store/store";
 
 const token = process.env.NEXT_PUBLIC_TOKEN || '';
 const urlRequests = process.env.NEXT_PUBLIC_DB_API_REQUESTS || '';
 const urlArtits = process.env.NEXT_PUBLIC_DB_API_ARTISTS || '';
 
-rootReducer
+
 
 type HttpHeaders = {
   "Content-Type": string;
@@ -24,7 +23,7 @@ const headers: HttpHeaders = {
   "Accept-Encoding": "gzip, deflate, br",
   Authorization: token,
 };
-
+type DispatchFunc = () => AppDispatch
 
 
 
@@ -32,6 +31,7 @@ const headers: HttpHeaders = {
 export const startAddingNewRequest = () => {
   return async (dispatch: Dispatch<AnyAction>, getState: () => RootState) => {
     //const { token } = getState().auth;
+
     const artist = getState().artist;
 
 
@@ -42,11 +42,16 @@ export const startAddingNewRequest = () => {
       body: JSON.stringify(artist),
       headers
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      })
       .then((data) => {
         dispatch(uiFinishLoading());
         dispatch(uiSetError(data.message));
-        //router.refresh();
       })
 
       .catch((error) => {
@@ -61,11 +66,9 @@ export const startAddingNewRequest = () => {
 };
 
 
-
-
 // in administration to accep a request
-export const  startAcceptingRequestAndDelete = () => {
-  return async (dispatch: Dispatch<AnyAction>, getState: () => RootState) => {
+export const startAcceptingRequestAndDelete = () => {
+  return async (dispatch: any, getState: () => RootState) => {
     //const { token } = getState().auth;
     const artist = getState().artist;
 
@@ -87,8 +90,8 @@ export const  startAcceptingRequestAndDelete = () => {
       .then((data) => {
         dispatch(uiFinishLoading());
         dispatch(uiSetError(data.message));
-        //dispatch(startDeletingRequest());
-         
+        dispatch(startDeletingRequest());
+
       })
       .catch((error) => {
         dispatch(uiFinishLoading());
@@ -98,7 +101,7 @@ export const  startAcceptingRequestAndDelete = () => {
           )
         );
       });
-    
+
   };
 }
 
@@ -108,7 +111,7 @@ export const  startAcceptingRequestAndDelete = () => {
 export const startDeletingRequest = () => {
   console.log('deleting')
   return async (
-    dispatch: Dispatch<AnyAction>, 
+    dispatch: Dispatch<AnyAction>,
     getState: () => RootState): Promise<any> => {
     //const { token } = getState().auth;
     const { _id } = getState().artist;
@@ -121,11 +124,16 @@ export const startDeletingRequest = () => {
       body: JSON.stringify({}),
       headers
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      })
       .then((data) => {
         dispatch(uiFinishLoading());
         dispatch(uiSetError(data.message));
-        //router.refresh();
       })
       .catch((error) => {
         dispatch(uiFinishLoading());

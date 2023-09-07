@@ -5,15 +5,18 @@ import { Dialog, Transition } from '@headlessui/react'
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { uiRemoveError } from '@/reducers/uiSlice';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import { useRouter } from 'next/navigation';
 
 export default function Modal() {
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const cancelButtonRef = useRef(null)
 
   const { msgError } = useAppSelector((state) => state.ui);
 
   const handleClose = () => {
+    router.refresh()
     dispatch(uiRemoveError());
   }
 

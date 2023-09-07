@@ -7,6 +7,7 @@ export default function Cancel() {
     const dispatch = useAppDispatch();
     const handdleCancel = () => {
         dispatch(uiEditArtist(false));
+        dispatch(uiEditRequests(false))
         dispatch(uiAddArtist(false));
         dispatch(uiAddRequest(false));
         dispatch(uiEditRequests(false));

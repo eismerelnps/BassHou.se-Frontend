@@ -19,7 +19,7 @@ export default function SearchBar() {
       };
   return (
     <div className='flex justify-center my-2 sm:mt-4  '>
-    <div className="  sm:w-96">
+    <div className="w-1/2 sm:w-96">
       <input
 
         onChange={handleInputChange}
@@ -31,8 +31,8 @@ export default function SearchBar() {
         required
         className={` shadow-sm  bg-white   rounded-3xl
                   focus:outline-2 hover:bg-slate-50 
-                  duration-100 block w-full  py-1.5 ps-1.5 text-slate-950   
-                  placeholder:text-gray-400 f text-xs  sm:text-sm sm:leading-6`}
+                  duration-100 block w-full  py-1.5 px-2 text-slate-950   
+                  placeholder:text-gray-400 text-xs   sm:text-sm sm:leading-6`}
       />
     </div>
   </div>

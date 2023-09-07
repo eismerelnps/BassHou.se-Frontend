@@ -10,7 +10,7 @@ import { Artist } from '@/interfaces/Artists';
 import SearchBar from '../SearchBar/SearchBar';
 
 
-export default function NavBar({ artists }: { artists: Artist[] }) {
+export default function NavBar() {
   return (
     <div className=' cursor-default fixed top-0  w-full z-30 '>
       <Marquee />
@@ -26,12 +26,12 @@ export default function NavBar({ artists }: { artists: Artist[] }) {
             <h1 className={`${rubik_glitch.className} text-xl sm:text-4xl text-center align-middle`}>BASSHOU.SE</h1>
           </Link>
           <SearchBar />
-          <div className=' cursor-default  w-full my-2  '>
-            <h2 className='text-center'>The biggest database of Bass House Artists!</h2>
+          <div className=' cursor-default  w-full   '>
+            <h2 className='text-center text-xs'>The biggest database of Bass House Artists!</h2>
           </div>
           
           <div className=" cursor-pointer flex justify-center w-full my-2 ">
-            <AddNewRequestButton artists={artists} />
+            <AddNewRequestButton />
           </div>
           {/* <div className='flex flex-row place-content-center items-center mx-4 my-1 text-center  '>
             <p className='mx-0.5 text-xs sm-text-sm'>Powered with ❤️ by </p> <p className='mx-0.5 text-xs sm:text-sm text-red-600'> DJ.com</p>

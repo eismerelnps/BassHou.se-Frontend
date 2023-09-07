@@ -93,7 +93,7 @@ export default function EditArtistForm() {
                                         <Form />
                                         <div className="mt-6 flex items-center justify-end gap-x-6">
                                             <CancelForm/>
-                                            {seeRequests && <AcceptRequest />}
+                                            {editRequest && <AcceptRequest />}
                                             {addArtist && <AddArtist />}
                                             {editArtist && <EditArtists />}
                                             {addRequest && <AddRequest />}

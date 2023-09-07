@@ -16,7 +16,7 @@ import { embedYouTubeURL } from '@/helpers/embedYouTubeURL';
 export default function Form() {
     const dispatch = useAppDispatch();
     const artist = useAppSelector((state) => state.artist);
-    const { cloudImageMessage, uploadingImage, addArtist, addRequest } = useAppSelector((state) => state.ui);
+    const { cloudImageMessage, uploadingImage,  addArtist, addRequest } = useAppSelector((state) => state.ui);
 
     // hook use
     const [formValues, handleInputChange] = useForm(artist);
@@ -223,7 +223,7 @@ export default function Form() {
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-4">
+                        <div className={`mt-4 ${addRequest && 'hidden'}`}>
                             <label
                                 htmlFor="name"
                                 className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}

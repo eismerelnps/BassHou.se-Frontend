@@ -4,7 +4,7 @@ import { Artist } from '@/interfaces/Artists';
 import { adminAddArtist } from '@/reducers/artistSlice';
 import { uiSeeRequests, uiAddArtist, uiDeleteArtist, uiEditArtist, uiEditRequests } from '@/reducers/uiSlice';
 
-export default function EditDeleteButton({ artist }: { artist: Artist }) {
+export default function EditDeleteButton({ artist, artists }: { artist: Artist, artists: Artist[] }) {
   const dispatch = useAppDispatch();
   const { seeRequests } = useAppSelector((state) => state.ui);
 
@@ -17,7 +17,7 @@ export default function EditDeleteButton({ artist }: { artist: Artist }) {
     dispatch(uiDeleteArtist(true));
   }
   const handleOpenEditRequest = () => {
-    dispatch(adminAddArtist(artist));
+    dispatch(adminAddArtist({...artist, ranking: artists.length + 1}));
     dispatch(uiSeeRequests(true));
     dispatch(uiEditRequests(true))
   }
