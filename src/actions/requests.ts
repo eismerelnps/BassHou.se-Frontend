@@ -109,15 +109,14 @@ export const startAcceptingRequestAndDelete = () => {
 
 //To delete a request from the database by its id
 export const startDeletingRequest = () => {
-  console.log('deleting')
+
   return async (
     dispatch: Dispatch<AnyAction>,
     getState: () => RootState): Promise<any> => {
     //const { token } = getState().auth;
     const { _id } = getState().artist;
 
-    console.log(_id)
-
+   
     dispatch(uiStartLoading());
     fetch(`${urlRequests}/${_id}`, {
       method: "DELETE",
