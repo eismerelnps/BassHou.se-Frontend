@@ -39,9 +39,6 @@ export default function AcceptRequest() {
         } else if (biography.length < 200 || biography.length > 10000) {
             dispatch(uiSetError("Please type a biography between 200 and 10000 characters "));
             return false;
-        } else if (isValidYoutubeUrl(profiles[5].link)) {
-            dispatch(uiSetError('Please enter a valid youtube url'));
-            return false;
         }
         dispatch(uiRemoveError());
         return true;

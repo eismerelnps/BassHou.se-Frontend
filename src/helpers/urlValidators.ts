@@ -1,17 +1,18 @@
 
 //to check youtube url
 export function isValidYoutubeUrl(url: string): boolean {
-  console.log(url)
-  const regex = /^https:\/\/(www\.)?youtube\.com\/embed\/[\w-]+(\?si=[\w-]+)?|^https:\/\/youtu\.be\/[\w-]+(\?si=[\w-]+)?$/;  return regex.test(url);
+  const regex = /^https:\/\/(www\.)?youtube\.com\/embed\/[\w-]+(\?si=[\w-]+)?|^https:\/\/youtu\.be\/[\w-]+(\?si=[\w-]+)?$/;  
+  return regex.test(url);
 }
 //to check urls
 export function isValidURL(url: string): boolean {
   const regex = /^(https?:\/\/)?(www\.)?[A-Za-z0-9_-]+\.[A-Za-z0-9-]+(\/[\w-./?%&=]*)?$/;
   return regex.test(url);
+
 }
 //to check facebook url
 export function isValidFacebookUrl(url: string) {
-  const regex = /^(https?:\/\/)?(www\.)?facebook\.com\/[A-Za-z0-9_-]+$/;
+  const regex = /^(https?:\/\/)?(www\.)?facebook\.com\/[\w-]+(\/[\w-]+)*\/?$/;
   return regex.test(url);
 }
 //to check SoundCloud url
@@ -25,7 +26,7 @@ export function isValidSoundCloudUrl(url: string) {
   return regex.test(url);
 }
 //to check youtube profile url
-export function isValidYoutubePerfil(url: string): boolean {
+export function isValidYoutubeProfile(url: string): boolean {
   const regex = /^(https?:\/\/)?(www\.)?youtube\.com\/[\w@-]+$/;  return regex.test(url);
 }
 //to check X url

@@ -1,10 +1,9 @@
-import { startAddingNewArtist } from '@/actions/artist';
 import { startAddingNewRequest } from '@/actions/requests';
 import { embedYouTubeURL } from '@/helpers/embedYouTubeURL';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { adminEditArtist } from '@/reducers/artistSlice';
 import { uiRemoveError, uiSetError } from '@/reducers/uiSlice';
-import { isValidFacebookUrl, isValidMySpacedUrl, isValidSoundCloudUrl, isValidURL, isValidXUrl, isValidYoutubePerfil, isValidYoutubeUrl } from '@/helpers/urlValidators'
+import { isValidFacebookUrl, isValidMySpacedUrl, isValidSoundCloudUrl, isValidURL, isValidXUrl, isValidYoutubeUrl } from '@/helpers/urlValidators'
 
 export default function AddRequest() {
   const dispatch = useAppDispatch();
@@ -13,46 +12,39 @@ export default function AddRequest() {
 
   const handleAdd = (e: any) => {
     e.preventDefault();
-    embedYoutubeUrl()
+
     if (isFormValid()) {
+      dispatch(adminEditArtist({ youtubeVideo: embedYouTubeURL(youtubeVideo) }));
       dispatch(uiSetError("Perfect"));
 
       //dispatch(startAddingNewRequest());
     }
   };
 
-  const embedYoutubeUrl = () => {
-    dispatch(adminEditArtist({ youtubeVideo: embedYouTubeURL(youtubeVideo) }));
-
-  }
-
+  
 
   const isFormValid = () => {
     if (artistName.trim().length === 0 || artistName.trim().length < 3) {
       dispatch(uiSetError("Enter a valid artist name"));
       return false;
-    } else if (ranking === null || ranking < 1) {
-      dispatch(
-        uiSetError("Enter a valid ranking greater than 1")
-      );
-      return false;
-    }
-    else if (artistName.trim().length > 20) {
+    } else if (artistName.trim().length > 20) {
       dispatch(uiSetError("Enter a shorter name"));
       return false;
-    }
-    else if (activeSince < 1950 || activeSince > 2023) {
+    } else if (!youtubeVideo) {
+      dispatch(uiSetError("Enter a Youtube Video URL"));
+      return false;
+    } else if (!isValidYoutubeUrl(youtubeVideo)) {
+      dispatch(uiSetError('Please enter a valid Youtube Video URL'));
+      return false;
+    } else if (activeSince < 1950 || activeSince > 2023) {
       dispatch(uiSetError("Active since must be between 1950 and 2023"));
       return false;
-    } else if (biography.length < 200 || biography.length > 10000) {
-      dispatch(uiSetError("Please type a biography between 200 and 10000 characters "));
-      return false;
-    } else if (youtubeVideo) {
-      if (!isValidYoutubeUrl(youtubeVideo)) {
-        dispatch(uiSetError('Please enter a valid Youtube Video URL'));
-        return false;
-      }
     }
+
+
+
+
+
     else if (profiles[0].link) {
       if (!isValidURL(profiles[0].link)) {
         dispatch(uiSetError('Please enter a valid website url'));
@@ -77,7 +69,7 @@ export default function AddRequest() {
         return false;
       }
     } else if (profiles[5].link) {
-      if (!isValidYoutubePerfil(profiles[5].link)) {
+      if (!isValidYoutubeUrl(profiles[5].link)) {
         dispatch(uiSetError('Please enter a valid Youtube url'));
         return false;
       }
@@ -87,6 +79,10 @@ export default function AddRequest() {
         dispatch(uiSetError('Please enter a valid X url'));
         return false;
       }
+    }
+    else if (biography.length < 200 || biography.length > 10000) {
+      dispatch(uiSetError("Please type a biography between 200 and 10000 characters "));
+      return false;
     }
 
     dispatch(uiRemoveError());
