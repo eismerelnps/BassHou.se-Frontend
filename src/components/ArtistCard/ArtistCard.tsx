@@ -76,7 +76,7 @@ export default function ArtistCard({ item }: { item: Artist }) {
 </div>
         </article>
           <article className='my-2 flex-initial mt-0.5 overflow-x-auto'>
-            <p className='sm:text-xl  mt-0.5 text-center text-stone-950  break-words  overflow-x-auto'>
+            <p className='sm:text-xl  mt-0.5 text-center text-stone-950  truncate  overflow-x-auto'>
               {artistName}</p>
           </article>
           <article className='flex-none px-2 mt-0 text-start'>
@@ -126,7 +126,7 @@ export default function ArtistCard({ item }: { item: Artist }) {
               </p>
             </article>
             <article className='my-1 h-24 '>
-              <p className='w-full my-0.5 text-justify inline-block  align-middle text-stone-500 text-sm'>{briefDescription}</p>
+              <p className='w-full my-0.5 text-justify inline-block  align-middle text-stone-500 text-sm break-all'>{briefDescription}</p>
             </article>
           </article>
           <article className="flex justify-center   my-2">

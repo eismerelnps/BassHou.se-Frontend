@@ -27,7 +27,7 @@ export default function ArtistScreen({ artists }: { artists: Artist[] }) {
                 <h1 className='text-2xl lg:text-4xl text-stone-950  '>{ranking}</h1>
               </div>
               <div>
-                <h2 className='text-md lg:text-xl   text-stone-950  '>{artistName}</h2>
+                <h2 className='text-md lg:text-xl   text-stone-950 break-all '>{artistName}</h2>
               </div>
 
               <article className='hidden sm:flex sm:flex-row justify-center  text-gray-500'>
@@ -51,7 +51,7 @@ export default function ArtistScreen({ artists }: { artists: Artist[] }) {
 
             <div className='flex  justify-start'>
               <div className=' mt-4 sm:mt-2 '>
-                <p className=' text-justify text-stone-500 text-sm mx-4 '>{biography}</p>
+                <p className=' text-justify text-stone-500 text-sm mx-4 break-all'>{biography}</p>
               </div>
             </div>
           </div>
