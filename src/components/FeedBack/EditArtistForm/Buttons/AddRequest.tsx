@@ -15,9 +15,7 @@ export default function AddRequest() {
 
     if (isFormValid()) {
       dispatch(adminEditArtist({ youtubeVideo: embedYouTubeURL(youtubeVideo) }));
-      dispatch(uiSetError("Perfect"));
-
-      //dispatch(startAddingNewRequest());
+      dispatch(startAddingNewRequest());
     }
   };
 
