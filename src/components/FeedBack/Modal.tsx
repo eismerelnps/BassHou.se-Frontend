@@ -16,8 +16,8 @@ export default function Modal() {
   const { msgError } = useAppSelector((state) => state.ui);
 
   const handleClose = () => {
-    router.refresh()
     dispatch(uiRemoveError());
+    router.refresh()
   }
 
 

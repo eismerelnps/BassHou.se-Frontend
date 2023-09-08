@@ -16,7 +16,7 @@ import { embedYouTubeURL } from '@/helpers/embedYouTubeURL';
 export default function Form() {
     const dispatch = useAppDispatch();
     const artist = useAppSelector((state) => state.artist);
-    const { cloudImageMessage, uploadingImage,  addArtist, addRequest } = useAppSelector((state) => state.ui);
+    const { cloudImageMessage, uploadingImage, addArtist, addRequest } = useAppSelector((state) => state.ui);
 
     // hook use
     const [formValues, handleInputChange] = useForm(artist);
@@ -200,12 +200,21 @@ export default function Form() {
 
 
                         <div className="mt-4">
-                            <label
-                                htmlFor="name"
-                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
-                            >
-                                Artist&apos;s name*
-                            </label>
+                            <div className='flex flex-row'>
+                                <label
+                                    htmlFor="name"
+                                    className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                                >
+                                    Artist&apos;s name
+                                </label>
+                                <label
+                                    htmlFor="price"
+                                    className={` ${'quicksand.className'} block text-md font-medium  text-red-500`}
+                                >
+                                    *
+                                </label>
+                            </div>
+
 
                             <div className="">
                                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -249,12 +258,21 @@ export default function Form() {
 
 
                         <div className="mt-4">
-                            <label
-                                htmlFor="category"
-                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
-                            >
-                                Youtube Video
-                            </label>
+                            <div className='flex flex-row'>
+                                <label
+                                    htmlFor="category"
+                                    className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                                >
+                                    Youtube Video
+                                </label>
+                                <label
+                                    htmlFor="price"
+                                    className={` ${'quicksand.className'} block text-md font-medium leading-6 text-red-500`}
+                                >
+                                    *
+                                </label>
+                            </div>
+
                             <div className="">
                                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input
@@ -264,23 +282,28 @@ export default function Form() {
                                         id="youtubeVideo"
                                         autoComplete="off"
                                         className={`${'quicksand.className'}  bg-white outline  outline-1 outline-slate-300 focus:outline-2 hover:bg-slate-50  duration-100 block w-full rounded-md  py-1.5 ps-1.5 text-slate-950 shadow   placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
-                                        placeholder="Youtube video URL"
-                                        onChange={(e) => {
-                                            //const inputUrl = e.target.value;
-                                            //const embeddedUrl = embedYouTubeURL(inputUrl); // 
-                                            handleInputChange({ target: { name: 'youtubeVideo', value: e.target.value } }); //
-                                        }}
+                                        placeholder="https://youtu.be/videoID"
+                                        onChange={(e) => { handleInputChange({ target: { name: 'youtubeVideo', value: e.target.value } }); }}
                                     />
                                 </div>
                             </div>
                         </div>
                         <div className="mt-4">
-                            <label
-                                htmlFor="price"
-                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
-                            >
-                                Active Since
-                            </label>
+                            <div className='flex flex-row'>
+                                <label
+                                    htmlFor="price"
+                                    className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                                >
+                                    Active Since
+                                </label>
+                                <label
+                                    htmlFor="price"
+                                    className={` ${'quicksand.className'} block text-md font-medium leading-6 text-red-500`}
+                                >
+                                    *
+                                </label>
+                            </div>
+
                             <div className="">
                                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input
@@ -301,7 +324,7 @@ export default function Form() {
 
 
 
-                        <div className="my-4">
+                        <div className={`mt-4 ${addRequest && 'hidden'}`}>
                             <label
                                 htmlFor="inOffer"
                                 className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
@@ -420,12 +443,21 @@ export default function Form() {
                                 </button>
                             </div>
                             <div className="mt-4">
-                                <label
-                                    htmlFor="description"
-                                    className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
-                                >
-                                    Biography
-                                </label>
+                                <div className='flex flex-row'>
+                                    <label
+                                        htmlFor="description"
+                                        className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                                    >
+                                        Biography
+                                    </label>
+                                    <label
+                                        htmlFor="price"
+                                        className={` ${'quicksand.className'} block text-md font-medium leading-6 text-red-500`}
+                                    >
+                                        *
+                                    </label>
+                                </div>
+
                                 <div className="">
                                     <textarea
                                         onChange={handleInputChange}

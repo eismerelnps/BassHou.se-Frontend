@@ -81,7 +81,7 @@ export default function EditArtistForm() {
                                                         <div>
                                                             <p
                                                                 className={`${'quicksand.className'} mt-1 text-sm leading-6 text-gray-600`}>
-                                                                Please verify all fields before submitting any change
+                                                                Please verify all fields before submitting any change, marked with <p className="text-red-500 inline">*</p> are required
                                                             </p>
                                                         </div>
 
