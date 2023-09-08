@@ -20,6 +20,12 @@ const PersistProvider = dynamic(
 );
 const inter = Inter({ subsets: ["latin"] });
 
+export const metadata = {
+  title: "BassHou.se",
+  description:
+    "The biggest database of Bass House Artists!",
+};
+
 
 //  const fontAwensomeKit = process.env.NEXT_PUBLIC_DB_API_APP
 
