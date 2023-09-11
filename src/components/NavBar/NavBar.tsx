@@ -27,7 +27,7 @@ export default function NavBar() {
           </Link>
           <SearchBar />
           <div className=' cursor-default  w-full   '>
-            <h2 className='text-center text-xs'>The biggest database of Bass House Artists!</h2>
+            <h2 className='text-center text-base'>The biggest database of Bass House Artists!</h2>
           </div>
           
           <div className=" cursor-pointer flex justify-center w-full my-2 ">

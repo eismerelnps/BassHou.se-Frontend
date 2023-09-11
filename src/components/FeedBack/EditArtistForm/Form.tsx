@@ -11,7 +11,6 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { useForm } from '@/hooks/useForm';
-import { embedYouTubeURL } from '@/helpers/embedYouTubeURL';
 
 export default function Form() {
     const dispatch = useAppDispatch();
@@ -27,6 +26,7 @@ export default function Form() {
         biography,
         images,
         ranking,
+        rankingVisible,
         visible,
         youtubeVideo,
     } = formValues;
@@ -253,6 +253,45 @@ export default function Form() {
                                         onChange={handleInputChange}
                                     />
                                 </div>
+                            </div>
+                        </div>
+                        <div className={`mt-4 ${addRequest && 'hidden'}`}>
+                            <label
+                                htmlFor="inOffer"
+                                className={` ${'quicksand.className'} block text-sm font-medium leading-6 text-gray-700`}
+                            >
+                                Hide public ranking
+                            </label>
+                            <div className=" rounded-lg border border-dashed border-gray-900/25 py-2 px-3 ">
+                                <fieldset>
+                                    <div className="">
+                                        <div className="relative flex gap-x-3">
+                                            <div className="flex items-center">
+                                                <input
+                                                    id="rankingVisible"
+                                                    name="rankingVisible"
+                                                    type="checkbox"
+                                                    checked={rankingVisible}
+                                                    onChange={handleInputChange}
+                                                    className={`${'quicksand.className'}  bg-white  outline  outline-1 outline-slate-300   focus:outline-2 hover:bg-slate-50   duration-100 block w-full rounded-md   text-slate-950 shadow  placeholder:text-gray-400 f   sm:text-sm sm:leading-6`}
+                                                />
+                                            </div>
+                                            <div className="text-sm leading-6">
+                                                {rankingVisible ? (
+                                                    <p className="text-gray-500 text-sm">
+                                                        Public Ranking is visible
+                                                    </p>
+                                                ) : (
+                                                    <p className="text-gray-500 text-sm">
+                                                        Public Ranking is not visible
+                                                    </p>
+                                                )}
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </fieldset>
                             </div>
                         </div>
 

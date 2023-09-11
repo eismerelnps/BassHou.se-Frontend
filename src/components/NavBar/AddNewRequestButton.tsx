@@ -23,7 +23,7 @@ export default async function AddNewRequestButton() {
     >
       <div className="">
         <p
-          className={`${'gilda_display.className'} text-sm text-center `}
+          className={`${'gilda_display.className'} text-xs text-center `}
         >
           Missing Artist? Click here
         </p>

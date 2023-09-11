@@ -22,45 +22,47 @@ export default function Profile({ images, profiles, activeSince }: { images: str
     return (
         <div className=''>
             <div className='flex justify-center'>
-            {
-                images[0]
-                    ? (
-                        <Image
-                            className=' '
-                            src={images[0]}
-                            width={768}
-                            height={300}
-                            alt='martin'
-                        />
-                    )
-                    :
-                    (
-                        <svg
-                            className="mx-auto h-28 w-28  text-neutral-300"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            aria-hidden="true"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-                                clip-rule="evenodd"
+                {
+                    images[0]
+                        ? (
+                            <Image
+                                className=' '
+                                src={images[0]}
+                                width={768}
+                                height={300}
+                                alt='martin'
                             />
-                        </svg>
-                    )
-            }
+                        )
+                        :
+                        (
+                            <svg
+                                className="mx-auto h-28 w-28  text-neutral-300"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                                    clip-rule="evenodd"
+                                />
+                            </svg>
+                        )
+                }
             </div>
-          
+
             <article className='sm:hidden flex flex-row justify-start my-4 text-gray-500'>
-              <p className='text-sm inline mx-0.5'>
-                Active Since:
-              </p>
-              <p id="activeSinceText" className='mx-0.5  text-sm'>
-                {activeSince}
-              </p>
+                <p className='text-sm inline mx-0.5'>
+                    Active Since:
+                </p>
+                <p id="activeSinceText" className='mx-0.5  text-sm'>
+                    {activeSince}
+                </p>
             </article>
-            <article className=' border-2 p-4 m-2 2xl:me-12'>
-                <p className='my-2'>Networks</p>
+            <div className='bg-slate-200/25 mx-2 2xl:me-12 p-2 sm:p-4'>
+                <p className='  text-xl sm:text-2xl '>Networks:</p>
+            </div>
+            <article className=' border-2 p-4 mx-2 2xl:me-12'>
                 {
                     profiles.map((profile: ProfileInterFace, index: number) => (
                         <>

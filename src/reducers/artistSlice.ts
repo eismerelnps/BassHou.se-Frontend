@@ -19,6 +19,7 @@ const initialState: Artist = {
   images: [],
   ranking: 100,
   visible: true,
+  rankingVisible: true,
   youtubeVideo: "",
 };
 //IU_qq_c_lKA?si=cgbrXckOMOxPdfmE

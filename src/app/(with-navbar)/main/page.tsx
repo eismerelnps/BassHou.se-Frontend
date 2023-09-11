@@ -1,4 +1,5 @@
 import ArtistList from '@/components/ArtistList/ArtistList';
+import LoadingArtistCard from '@/components/Loading/LoadingArtistCard';
 
 //get the endpoint of the api bd
 const artists_url = process.env.NEXT_PUBLIC_DB_API_ARTISTS || '';
@@ -21,7 +22,8 @@ export default async function DashboardPage() {
             <main className="my-5 ">
                 <div className='hidden sm:inline-block  bg-[#efed84] fixed top-60 py-8  w-full h-20  z-0'></div>
             </main>
-            <ArtistList artists={artists} />
+             <ArtistList artists={artists} /> 
+            {/* <LoadingArtistCard /> */}
         </div>
     )
 

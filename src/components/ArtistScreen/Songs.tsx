@@ -4,8 +4,12 @@ import React from 'react'
 
 export default function Songs({ songs }: { songs: string[] }) {
     return (
-        <div className='border-2 p-4 m-2 2xl:me-12'>
-            <p className='my-2'>Songs</p>
+        <>
+        <div className='bg-slate-200/25  p-2 sm:p-4'>
+                <p className='  text-xl sm:text-2xl '>Songs:</p>
+            </div>
+         <div className='border-2 p-4 m-2 '>
+           
             <article className='flex flex-col space-y-3 my-2 '>
                 {songs.map((song: string) => (
                     <>
@@ -39,5 +43,7 @@ export default function Songs({ songs }: { songs: string[] }) {
                 ))}
             </article>
         </div>
+        </>
+       
     )
 }
