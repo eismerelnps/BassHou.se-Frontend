@@ -12,7 +12,7 @@ async function fetchArtists() {
     throw new Error('Failed to fetch data')
   }
   return res.json()
-};
+}
 
 export default async function page() {
   const artists = await fetchArtists();
